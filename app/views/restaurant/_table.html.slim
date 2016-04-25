@@ -1,0 +1,26 @@
+- if @restaurant.present?
+	table.table
+		thead
+			tr
+				th Item
+				     
+				th Price
+				      
+				th Quantity
+				th
+		tbody
+			- @item.each do |t|
+				tr
+					td 
+						.col-md-3
+							= t.name
+					
+					td
+						.col-md-3
+						 	= t.price
+					
+					td
+						.col-md-3
+							form
+								input type="number" name="quantity" min="0" max="10"
+end

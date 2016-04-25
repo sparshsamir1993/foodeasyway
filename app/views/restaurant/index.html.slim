@@ -1,0 +1,16 @@
+head
+	title
+		| Order
+	body background="/assets/momos.jpg"
+		.jumbotron.text-center
+			h1 Order Now
+		.col-md-1
+		- @restaurant.each do |t|
+			
+			.col-md-3
+				.well.well-sm
+				  h2
+					= t.name
+				  hr
+				  h4
+				  	= link_to "Enter Me", restaurant_show_path , :action => 'show', :id => t.id
