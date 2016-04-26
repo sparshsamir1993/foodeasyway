@@ -1,4 +1,6 @@
 class Admin::RestaurantController < ApplicationController
+	before_action :authenticate_user!
+	skip_before_action :verify_authenticity_token
 	def index
 	end
 	def new
@@ -9,20 +11,20 @@ class Admin::RestaurantController < ApplicationController
 	end
 
 	def show
+		@restaurant = Restaurant.find(params[:id])
 	end
 
 	def create
-    @restaurant = Restaurant.new(retaurant_params)
-
-    respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to admin_restaurant_path }
-        format.json { render :show }
-      else
-        format.html { render :new }
-        format.json { render json: @restaurant.errors}
-      end
-    end
-  end
+		@restaurant = Restaurant.new(restaurant_params)
+		if @restaurant.save
+			redirect_to(:action => 'index')
+		else
+			render('new')
+		end
+	end
+	private
+		def restaurant_params
+			params.permit(:name, :id, :contact)
+		end
 end
 

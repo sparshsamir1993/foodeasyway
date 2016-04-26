@@ -5,9 +5,10 @@ class RestaurantController < ApplicationController
 		@item =Item.last
 	end
 	def show
-		@restaurant = Restaurant.order("id ASC")
-		@item =Item.order("id ASC")
-	      
-	    
+		@restaurant = Restaurant.find(params[:id])
+	     
 	end
+	def new
+	end
+
 end

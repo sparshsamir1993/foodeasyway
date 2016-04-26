@@ -13,4 +13,5 @@ head
 					= t.name
 				  hr
 				  h4
-				  	= link_to "Enter Me", restaurant_show_path , :action => 'show', :id => t.id
+				  	= link_to "Enter Me", {:action => 'show', :id => t.id}, :class => 'action show'
+		

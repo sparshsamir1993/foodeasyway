@@ -5,3 +5,5 @@
 	br
 	br
 	= render 'table', object: @restaurant
+
+	= link_to "Back to restaurants", {:action => 'index'}, :class =>'back-link'
