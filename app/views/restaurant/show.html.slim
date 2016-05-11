@@ -1,9 +1,13 @@
 .padding-all-around
-	.jumbotron.text-center
-		h1
-			= @restaurant.name
-	br
-	br
-	= render 'table', object: @restaurant
+	
+	body background="/assets/tandoori.jpg"
+		.jumbotron.text-center
+			h1
+				= @restaurant.name
 
-	= link_to "Back to restaurants", {:action => 'index'}, :class =>'back-link'
+			br
+			br
+		#table
+			= render 'table'
+
+		= link_to "Back to restaurants", {:action => 'index'}, :class =>'back-link'

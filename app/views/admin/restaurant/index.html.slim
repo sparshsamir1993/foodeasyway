@@ -1,3 +1,15 @@
-.padding-all-round
-	=link_to "New Restaurant", {:action => 'new'}, :class => 'action new'
+.padding-all-around
+	.col-md-3
+	.col-md-3
+		.btn.btn-success
+			=link_to "New Restaurant", {:action => 'new'}, :class => 'action new'
 	
+	table.table
+		thead
+			tr
+				th Name
+		- @restaurant.each do |f|
+			tbody
+				tr
+					td = link_to "#{f.name}", {:action => "show", :id=>f.id, :class => 'action show'}
+					td = link_to '', {:action=>"destroy", :controller=>"admin/restaurant",:id => f.id}, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash" 

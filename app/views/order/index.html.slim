@@ -1,0 +1,26 @@
+.padding-all-around
+	.jumbotron.text-center
+		h1 Your Order
+
+
+	.col-md-2
+	.col-md-2	
+		= link_to "Empty Your order", order_clear_path(:restaurant_id =>@restaurant_id), class:"btn btn-danger fa fa-trash"
+	.col-md-2
+	.col-md-2
+
+		= link_to "back", {:controller=>'restaurant',:action => "show", :id=>@restaurant.id}, class:"btn btn-success"
+	ul
+		
+			table.table
+				thead
+					tr
+						th Name
+						th Quantity
+						th Price
+				tbody
+				  - @order.each do |id, quantity|
+					tr
+						td = @restaurant.items.find_by_id(id).name
+						td = quantity
+						td = @restaurant.items.find_by_id(id).price * quantity

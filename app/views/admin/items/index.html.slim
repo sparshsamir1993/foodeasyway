@@ -1,0 +1,18 @@
+.padding-all-around
+	.container
+		.btn.btn-success
+			= link_to "New Item", {:action => 'new', :id=>@restaurant.id, :class => 'action new'}
+		table.table
+			thead
+				tr
+					th Item
+					     
+					th Price
+						      
+					th Quantity				
+					th
+			
+			tbody
+				tr
+					th =@item.last.name
+					

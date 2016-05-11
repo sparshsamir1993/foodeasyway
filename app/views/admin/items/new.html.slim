@@ -1,0 +1,6 @@
+.padding-all-around
+ 	= simple_form_for @item, :url => "/admin/items", :method => :post do |f|
+  		= f.hidden_field_tag :id, @restaurant.id
+  		= f.input :name
+  		= f.input :price
+  		= f.submit   

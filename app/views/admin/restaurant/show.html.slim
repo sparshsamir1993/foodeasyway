@@ -1,0 +1,26 @@
+.padding-all-around
+		body
+			.jumbotron.text-center
+				h2 
+					= @restaurant.name
+			.col-md-3
+			.col-md-3
+				= link_to "New Item",new_admin_item_path(:id=>@restaurant.id)
+			.col-md-3
+				
+				table.table
+					thead
+						tr
+							th Name
+							th Price
+							th
+							th
+					tbody
+						
+						- @item.each do |f|
+							tr	
+								td = f.name
+								td = f.price
+								td = link_to '', {:action=>"destroy", :controller=>"admin/items",:id => @restaurant.id, :item_id =>f.id }, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash"
+								
+			= link_to "Back to restaurant", admin_restaurant_index_path

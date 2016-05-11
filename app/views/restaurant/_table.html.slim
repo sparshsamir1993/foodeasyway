@@ -7,20 +7,20 @@
 				th Price
 				      
 				th Quantity
-				th
+				
 		tbody
-			- @item.each do |t|
-				tr
-					td 
-						.col-md-3
-							= t.name
-					
-					td
-						.col-md-3
-						 	= t.price
-					
-					td
-						.col-md-3
-							form
-								input type="number" name="quantity" min="0" max="10"
+				- @restaurant.items.each do |t|
+					tr
+						td 
+							
+								= t.name
+						
+						td
+							
+							 	= t.price
+						
+						td
+							
+							/= link_to "Add to cart",  order_index_path(:restaurant_id=>@restaurant.id,:id=>t.id)
+							a.btn.btn-primary href="/order/#{@restaurant.id}/#{t.id}"  Add to cart
 end

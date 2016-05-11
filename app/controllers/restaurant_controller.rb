@@ -6,7 +6,7 @@ class RestaurantController < ApplicationController
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])
-	     
+	    @item = Item.last
 	end
 	def new
 	end
