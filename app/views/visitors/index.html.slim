@@ -1,16 +1,17 @@
 .padding-all-around
-	body background="/assets/background.jpg"
-		.jumbotron.text-center
-			h1 Ambrosia
+	body background="/assets/giphy.gif"
+		.jumbotron.text-center background="/assets/giphy.gif"
+			h1 GrubVibes
 		br
 		br
 		br
 		.col-md-2
 		.col-md-3
 			= link_to "",restaurant_index_path, class: "btn btn-primary fa fa-cart-plus fa-3x"
+			h3 Order Now
 		.col-md-3
 			  = link_to "",user_facebook_omniauth_callback_path, class: "fa fa-facebook-square fa-5x"
 			  h3 Log in With Facebook
 		.col-md-3
 			h2#logout
-				= link_to "Log Out", destroy_user_session_path, method: :delete
+				= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
