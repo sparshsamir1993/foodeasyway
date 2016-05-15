@@ -12,7 +12,7 @@ $(document).ready ->
   setInterval (->
     if currentIndex == imageFile.length
       currentIndex = 0
-    $('bodrry').css 'background', 'url("/assets/' + imageFile[currentIndex++] + '")'
+    $('body').css 'background', 'url("/assets/' + imageFile[currentIndex++] + '")'
     return
   ), 4000
   return
