@@ -24,12 +24,12 @@
 	font-weight: bold;
 }
 body{
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed !important;
+	-webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
 }
 #quantity{
 	z-index: 99 !important;
