@@ -1,40 +1,52 @@
 class OrderController < ApplicationController
-	def add
-		@restaurant_id = params[:restaurant_id]
+	def create
+		
+		restaurant_id = params[:restaurant_id]
 		id = params[:id]
-			if  session[:order] then
-				order = session[:order]
-			else
-				session[:order] = {}
-				order = session[:order]
-			end
+		@restaurant = Restaurant.find(restaurant_id)
+		@item = @restaurant.items.find(id)
+		@order = @restaurant.orders.new
+		@order.restaurant_id = @restaurant.id
 
-			if  order[id] then
-				order[id] = order[id] + 1
-			else
-				order[id] = 1
-			end
-		redirect_to :action => :index, :restaurant_id =>@restaurant_id
+
+		if session[:order] then
+				bill = session[:order]
+				
+		else
+			session[:order] = @order.order
+			bill = session[:order]
+		end
+
+		if bill[id] then
+			bill[id] = bill[id] + 1
+		else
+			bill[id] = 1
+		end
+		@order.order = bill
+		@order.save
+		redirect_to :action => :index, :restaurant_id =>restaurant_id
+		
 	end
+
 
 	def clear
 		@restaurant_id = params[:restaurant_id]
 		session[:order] = nil
+		Restaurant.find(@restaurant_id).orders.destroy_all
+		
+
 		redirect_to :action => :index, :restaurant_id =>@restaurant_id
 	end
 
 	def index
 		@restaurant_id = params[:restaurant_id]
-		if @restaurant_id.present?
-			@restaurant = Restaurant.find(params[:restaurant_id])
-			@restaurant1 = Restaurant.find(params[:restaurant_id])
-		end
-		if  session[:order] then
-			@order = session[:order]
-		else
-			@order = {}
-		end
+		@restaurant = Restaurant.find(@restaurant_id)
+			
+		
+		@order = @restaurant.orders.all
+		
 	end
+	
 	def show
 	end
 

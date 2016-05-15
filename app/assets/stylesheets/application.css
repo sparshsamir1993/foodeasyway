@@ -16,8 +16,9 @@
  *= require_self
  */
 .jumbotron{
-	background-color: transparent !important;
-	color: #939393;
+	
+	
+	color: white;
 	font-size: 30px;
 	font-family: 'Press Start 2P';
 	font-weight: bold;
@@ -29,4 +30,9 @@ body{
 	-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+}
+#quantity{
+	z-index: 99 !important;
+	color: black !important;
+	text-decoration-color: black !important;
 }

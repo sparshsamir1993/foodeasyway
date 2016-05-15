@@ -4,7 +4,6 @@
 .paddin-all-around{
 	padding: 10px;
 }
-
 #form{
 	width: 450px;
 	border-radius: 5px;
@@ -17,4 +16,12 @@ h3{
 h2 a{
 	color:white;
 	font-weight: bold;
+}
+.tv img{
+	border-radius: 25px;
+	max-height: 150px;
+	width: 55%;	
+}
+#visitor{
+	background: transparent;
 }

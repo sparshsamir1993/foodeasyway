@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     get 'restaurant/index'
     get 'restaurant/show'
     get 'order/index' => 'order#index'
-    get 'order/:restaurant_id/:id' => 'order#add'
-    get 'order/clear' => 'order#clear'
+    post 'order/index' => 'order#create'
+    post 'order' => 'order#clear'
     get 'admin/restaurant/new_item' => 'admin/restaurant#new_item'
     post 'admin/restaurant/new_item' => 'admin/restaurant#create_item'
     namespace :admin do

@@ -11,6 +11,7 @@
 				th Quantity
 				
 		tbody
+				
 				- @restaurant.items.each do |t|
 					tr
 						td 
@@ -22,7 +23,11 @@
 							 	= t.price
 						
 						td
+							= form_tag(t.order, method: "post") do ||
+							  #quantity		
+							  	= text_field_tag(t.quantity) 
+								= link_to "Add to Cart", order_index_path(:restaurant_id=>@restaurant.id, :id => t.id), method: :post
 							
-							/= link_to "Add to cart",  order_index_path(:restaurant_id=>@restaurant.id,:id=>t.id)
-							a.btn.btn-primary href="/order/#{@restaurant.id}/#{t.id}"  Add to cart
+							/= link_to "Add to cart",  order_index_path(:restaurant_id=>@restaurant.id, :id => t.id), method: :post
+							/a.btn.btn-primary href="/order/#{@restaurant.id}/#{t.id}" method="post"  Add to cart
 end
