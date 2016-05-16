@@ -9,10 +9,11 @@
 			br
 			.col-md-2
 			.col-md-3
-				= link_to "",restaurant_index_path, class: "btn btn-primary fa fa-cart-plus fa-3x"
+
+				= link_to "",restaurant_index_path(@user_id), class: "btn btn-primary fa fa-cart-plus fa-3x"
 				h3 Order Now
 			.col-md-3
-				  = link_to "",user_facebook_omniauth_callback_path, class: "fa fa-facebook-square fa-5x"
+				  = link_to  "Sign in with Facebook","/users/auth/facebook" 
 				  h3 Log in With Facebook
 			.col-md-3
 				h2#logout

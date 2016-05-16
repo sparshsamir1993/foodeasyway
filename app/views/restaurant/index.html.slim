@@ -14,4 +14,4 @@ head
 				
 				  hr
 				  h4
-				  	= link_to "Enter Me", {:action => 'show', :id => t.id}
+				  	= link_to "Enter Me", user_restaurant_show_path(:user_id=>@user.id, :id=>t.id)

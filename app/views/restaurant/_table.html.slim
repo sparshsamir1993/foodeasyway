@@ -24,7 +24,7 @@
 						
 						td
 							
-								= link_to "Add to Cart", order_index_path(:restaurant_id=>@restaurant.id, :id => t.id), method: :post
+								= link_to "Add to Cart", user_order_index_path(:restaurant_id=>@restaurant.id, :id => t.id), method: :post
 							
 							
 end

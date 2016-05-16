@@ -1,12 +1,17 @@
 class OrderController < ApplicationController
+	before_action :authenticate_user!
+	
 	def create
-		
+		user_id = current_user.id
 		restaurant_id = params[:restaurant_id]
 		id = params[:id]
 		@restaurant = Restaurant.find(restaurant_id)
+		@restaurant.users.new
 		@item = @restaurant.items.find(id)
 		@order = @restaurant.orders.new
 		@order.restaurant_id = @restaurant.id
+		
+		@order.user_id = current_user.id
 
 
 		if session[:order] then
@@ -41,8 +46,8 @@ class OrderController < ApplicationController
 	def index
 		@restaurant_id = params[:restaurant_id]
 		@restaurant = Restaurant.find(@restaurant_id)
-			
-		
+
+		@user = current_user
 		@order = @restaurant.orders.all
 		
 	end
@@ -96,5 +101,6 @@ class OrderController < ApplicationController
       )
       puts message.to
     end
+
 
 end
