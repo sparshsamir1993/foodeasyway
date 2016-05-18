@@ -7,7 +7,7 @@ class OrderController < ApplicationController
 		id = params[:id]
 		@restaurant = Restaurant.find(restaurant_id)
 		@restaurant.users.new
-		@item = @restaurant.items.find(id)
+		#@item = @restaurant.items.find(id)
 		@order = @restaurant.orders.new
 		@order.restaurant_id = @restaurant.id
 		
@@ -55,51 +55,33 @@ class OrderController < ApplicationController
 	def show
 	end
 
-	def trigger_sms_alerts(e)
-	    @alert_message = "
-	      [This is a test] ALERT! 
-	      It appears the server is having issues. 
-	      Exception: #{e}. 
-	      Go to: http://newrelic.com for more details."
-	    @image_url = "http://howtodocs.s3.amazonaws.com/new-relic-monitor.png"
+	
+    def send_message
+      @phone_number = "+919176028509"
+      @twilio_number = '+19253923612'
+      @client = Twilio::REST::Client.new('ACc843e4924e89be0975444841e3803bc2', '121f13ae363f8942c0db202284b9df2a')
+      @restaurant_id = params[:restaurant_id]
+	  @restaurant = Restaurant.find(@restaurant_id)
+      @user = current_user
+	  @order = @restaurant.orders.all
+	  @text_order = ""
+	  if @order.last.present?
+		@order.last.order.each do |id,quantity|
+		  if @restaurant.items.find_by_id(id).present?
+			@item = @restaurant.items.find_by_id(id).name
+			@text_order.concat(" #{@item}") 		  
+		  end
+		end  	
+	  end					
 
-	    @admin_list = YAML.load_file('config/administrators.yml')
-
-	    begin
-	      @admin_list.each do |admin|
-	        phone_number = admin['phone_number']
-	        send_message(phone_number, @alert_message, @image_url)
-	    end
-	      
-	      flash[:success] = "Exception: #{e}. Administrators will be notified."
-	    rescue
-	      flash[:alert] = "Something when wrong."
-	    end
-
-
-	    redirect_to '/'
-	 end
-
-
-  def server_error
-    raise 'A test exception'
-  end
-
-  private
-
-    def send_message(phone_number, alert_message, image_url)
-
-      @twilio_number = ENV['TWILIO_NUMBER']
-      @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-      
       message = @client.account.messages.create(
         :from => @twilio_number,
-        :to => phone_number,
-        :body => alert_message,
+        :to => @phone_number,
+        :body => "#{@text_order}"
         # US phone numbers can make use of an image as well.
         # :media_url => image_url 
       )
-      puts message.to
+      
     end
 
 

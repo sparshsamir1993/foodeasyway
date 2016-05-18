@@ -11,5 +11,5 @@
 		- @restaurant.each do |f|
 			tbody
 				tr
-					td = link_to "#{f.name}", {:action => "show", id=>f.id, :class => 'action show'}
+					td = link_to "#{f.name}", {:action => "show", :id=>f.id, :class => 'action show'}
 					td = link_to '', {:action=>"destroy", :controller=>"admin/restaurant",:id => f.id}, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash" 

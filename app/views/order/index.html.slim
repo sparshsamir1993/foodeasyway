@@ -28,3 +28,5 @@
 								td = quantity
 								td = @restaurant.items.find_by_id(id).price * quantity
 								
+	= link_to "Send Order",{:controller => 'order', :action => 'send_message', :restaurant_id => @restaurant.id }, method: :post
+	/=link_to "Thanks", user_order_thank_you_path(:restaurant_id=>@restaurant.id)

@@ -91,6 +91,9 @@ GEM
     heroku-api (0.4.2)
       excon (~> 0.45)
       multi_json (~> 1.8)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -222,6 +225,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     temple (0.7.6)
+    textmagic (0.6.0)
+      httparty (~> 0.5)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -284,6 +289,7 @@ DEPENDENCIES
   simple_form
   slim-rails
   spring
+  textmagic (~> 0.6.0)
   therubyracer
   turbolinks
   twilio-ruby
