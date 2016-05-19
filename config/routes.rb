@@ -13,14 +13,16 @@ Rails.application.routes.draw do
         match 'order/index' => 'order#send_message', via:[:get, :post]
       end
       post 'order' => 'order#clear'
+    end
       get 'admin/restaurant/new_item' => 'admin/restaurant#new_item'
       post 'admin/restaurant/new_item' => 'admin/restaurant#create_item'
+      
       namespace :admin do
         resources :restaurant
 
         resources :items
       end
-    end  
+      
   end
   devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
   end

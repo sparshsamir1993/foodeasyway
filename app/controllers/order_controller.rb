@@ -77,7 +77,7 @@ class OrderController < ApplicationController
       message = @client.account.messages.create(
         :from => @twilio_number,
         :to => @phone_number,
-        :body => "#{@text_order}"
+        :body => "#{@text_order} ordered by #{@user.name}"
         # US phone numbers can make use of an image as well.
         # :media_url => image_url 
       )

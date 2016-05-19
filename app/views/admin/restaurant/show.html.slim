@@ -5,7 +5,7 @@
 					= @restaurant.name
 			.col-md-3
 			.col-md-3
-				= link_to "New Item",new_user_admin_item_path(:id=>@restaurant.id)
+				= link_to "New Item",new_admin_item_path(:id=>@restaurant.id)
 			.col-md-3
 				
 				table.table
@@ -23,4 +23,4 @@
 								td = f.price
 								td = link_to '', {:action=>"destroy", :controller=>"admin/items",:id => @restaurant.id, :item_id =>f.id }, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash"
 								
-			= link_to "Back to restaurant", user_admin_restaurant_index_path, {controller:"order", action:"clear"}
+			= link_to "Back to restaurant", admin_restaurant_index_path, {controller:"order", action:"clear"}
