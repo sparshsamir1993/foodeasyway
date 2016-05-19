@@ -12,4 +12,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+  def update
+    @user = current_user
+    
+    if @user.update_attributes(user_params)
+      @restaurant = @user.restaurant_id
+          redirect_to user_order_index_path(:user_id=>@user, :restaurant_id=>@restaurant)
+      else
+          @subjects = User.all
+          render :action => 'edit'
+        end
+        
+  end
 end

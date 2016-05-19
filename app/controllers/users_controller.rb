@@ -7,25 +7,18 @@ class UsersController < ApplicationController
 		@user = current_user
 		@restaurant =  Restaurant.find(params[:restaurant_id])
 		if @user.save
-			redirect_to :controller=>'order', :action => :index, :restaurant_id => @restaurant.id
+			redirect_to user_order_index_path(:restaurant_id => @restaurant.id, :user_id=>current_user.id)
 		else
 			render('new')
 		end
 	end
-	def update
-		@user = current_user
-		
-		if @user.update_attributes(user_params)
-			@restaurant = @user.restaurant_id
-      		redirect_to user_order_index_path(:user_id=>@user, :restaurant_id=>@restaurant)
-   		else
-      		@subjects = User.all
-      		render :action => 'edit'
-        end
-        
-    end
+	
     def show
     	@user = User.all
+    end
+    def destroy
+		current_user.destroy
+    	redirect_to root_path
     end
     def user_params
    		params.require(:user).permit(:contact, :address, :restaurant_id)
