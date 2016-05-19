@@ -16,5 +16,7 @@
 				  = link_to  "","/users/auth/facebook",class: "fa fa-facebook-square fa-5x" 
 				  h3 Log in With Facebook
 			.col-md-3
+			  -if user_signed_in?
 				h2#logout
 					= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
+					

@@ -1,11 +1,15 @@
 // Place all the styles related to the order controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.jumbotron h1{
+.jumbotron {
 	font-family: "Times New Roman" ;
+
 }
 p{
 	color: white;
 	font-size: 30px;
 	padding:10% 10% 10% 10%;
+}
+.btn{
+	margin-bottom: 15%;
 }

@@ -36,3 +36,9 @@ body{
 	color: black !important;
 	text-decoration-color: black !important;
 }
+.notice{
+	color:white;
+	background-color: black;
+	font-size: 25px;
+	font-weight: bold;
+}
