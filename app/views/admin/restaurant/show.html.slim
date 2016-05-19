@@ -23,4 +23,4 @@
 								td = f.price
 								td = link_to '', {:action=>"destroy", :controller=>"admin/items",:id => @restaurant.id, :item_id =>f.id }, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash"
 								
-			= link_to "Back to restaurant", admin_restaurant_index_path, {controller:"order", action:"clear"}
+			= link_to "Back to restaurant", admin_restaurant_index_path, {controller:"order", action:"clear"}, class: "btn btn-primary fa fa-arrow-left fa-2x"
