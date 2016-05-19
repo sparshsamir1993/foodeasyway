@@ -27,7 +27,14 @@
 								td = @restaurant.items.find_by_id(id).name 
 								td = quantity
 								td = @restaurant.items.find_by_id(id).price * quantity
+	
 	.col-md-2
-								
+		=form_for current_user do |f|
+			= f.text_field :contact, placeholder: "Phone Number"
+			= f.text_field :address, placeholder: "Address"
+			= f.hidden_field :restaurant_id, value: @restaurant.id
+			= f.submit
+	.col-md-2	
+	  -if current_user.contact.present?		
 		= link_to "Send Order",{:controller => 'order', :action => 'send_message', :restaurant_id => @restaurant.id }, method: :post, class: "btn btn-primary fa fa-bolt fa-2x"
 	/=link_to "Thanks", user_order_thank_you_path(:restaurant_id=>@restaurant.id)

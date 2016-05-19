@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  devise_scope :user do
+  devise_scope :users do
     root 'visitors#index'
     get 'restaurant/index'
-    resources :user do
+    resources :users do
       get 'users/index'
      
       get 'restaurant/show'
@@ -11,8 +11,10 @@ Rails.application.routes.draw do
       post 'order/index' => 'order#create'
       resources :restaurant do
         match 'order/index' => 'order#send_message', via:[:get, :post]
+        match 'users/index' => 'users#create', via:[:get, :post]
       end
       post 'order' => 'order#clear'
+
     end
       get 'admin/restaurant/new_item' => 'admin/restaurant#new_item'
       post 'admin/restaurant/new_item' => 'admin/restaurant#create_item'

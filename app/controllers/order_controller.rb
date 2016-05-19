@@ -1,6 +1,6 @@
 class OrderController < ApplicationController
 	before_action :authenticate_user!
-	
+	skip_before_filter :verify_authenticity_token  
 	def create
 		user_id = current_user.id
 		restaurant_id = params[:restaurant_id]
@@ -53,11 +53,14 @@ class OrderController < ApplicationController
 	end
 	
 	def show
+		restaurant_id = params[:restaurant_id]
+		@restaurant = Restaurant.find(@restaurant_id)
+		@orders = @restaurant.orders.all
 	end
 
 	
     def send_message
-      @phone_number = "+919789861158"
+      @phone_numbers = ["+919789861158", "+919176028509"]
       @twilio_number = '+19253923612'
       @client = Twilio::REST::Client.new('ACc843e4924e89be0975444841e3803bc2', '121f13ae363f8942c0db202284b9df2a')
       @restaurant_id = params[:restaurant_id]
@@ -73,15 +76,15 @@ class OrderController < ApplicationController
 		  end
 		end  	
 	  end					
-
-      message = @client.account.messages.create(
-        :from => @twilio_number,
-        :to => @phone_number,
-        :body => "#{@text_order} ordered by #{@user.name}"
-        # US phone numbers can make use of an image as well.
-        # :media_url => image_url 
-      )
-      
+	  @phone_numbers.each do |p|
+	      message = @client.account.messages.create(
+	        :from => @twilio_number,
+	        :to => p,
+	        :body => "#{@text_order} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address}"
+	        # US phone numbers can make use of an image as well.
+	        # :media_url => image_url 
+	      )
+      end
     end
 
 
