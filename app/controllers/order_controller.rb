@@ -73,7 +73,7 @@ class OrderController < ApplicationController
 		@order.last.order.each do |id,quantity|
 		  if @restaurant.items.find_by_id(id).present?
 			@item = @restaurant.items.find_by_id(id).name
-			@text_order.concat(" #{@item}") 		  
+			@text_order.concat(" #{@item} #{quantity}") 		  
 		  end
 		end  	
 	  end					
