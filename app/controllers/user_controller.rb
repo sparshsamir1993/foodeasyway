@@ -6,7 +6,7 @@ class UserController < ApplicationController
   			@restaurant = @user.restaurant_id
         		redirect_to user_order_index_path(:user_id=>@user, :restaurant_id=>@restaurant)
      		else
-        		@subjects = User.all
+        		
         		render :action => 'edit'
         end
           

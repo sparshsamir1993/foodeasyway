@@ -39,7 +39,7 @@ class Admin::RestaurantController < ApplicationController
 	end
 
 	def create_item
-		@restaurant = Restaurant.find(params[:id])
+		@restaurant = Restaurant.find(session[:id])
 		@item = @restaurant.items.new
 		if @item.save    
 			 
@@ -54,11 +54,24 @@ class Admin::RestaurantController < ApplicationController
 		Restaurant.find(params[:id]).destroy
     	redirect_to :action=>"index", :controller=>"admin/restaurant"
     end
-	
-
+	def edit
+		@restaurant = Restaurant.find(params[:restaurant_id])
+	end
+	def update
+  		@restaurant = Restaurant.find(params[:id])
+  		
+  		if @restaurant.update_attributes(restaurant_params)
+        		redirect_to edit_admin_restaurant_path(:id=>@restaurant.id, :restaurant_id=>@restaurant.id)
+     	else
+        		
+        		render :action => 'edit'
+        end
+          
+  end
+  
 	private
 		def restaurant_params
-			params.permit(:name, :contact)
+			params.require(:restaurant).permit(:name, :contact)
 		end
 
 		def items_params

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	end
 	def create
 		@user = current_user
+		
 		@restaurant =  Restaurant.find(params[:restaurant_id])
 		if @user.save
 			redirect_to user_order_index_path(:restaurant_id => @restaurant.id, :user_id=>current_user.id)

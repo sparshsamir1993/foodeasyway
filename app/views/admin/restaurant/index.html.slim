@@ -12,4 +12,5 @@
 			tbody
 				tr
 					td = link_to "#{f.name}", {:action => "show", :id=>f.id, :class => 'action show'}
+					td = link_to '',edit_admin_restaurant_path(:restaurant_id => f.id, :id=>f.id), class: "btn btn-success fa fa-pencil"
 					td = link_to '', {:action=>"destroy", :controller=>"admin/restaurant",:id => f.id}, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash" 
