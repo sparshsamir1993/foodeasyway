@@ -13,7 +13,7 @@ Rails.application.routes.draw do
           match 'order/index' => 'order#send_message', via:[:get, :post]
         end
       end
-      post 'order' => 'order#clear'
+      post 'order/index' => 'order#clear'
     end
     get 'admin/restaurant/new_item' => 'admin/restaurant#new_item'
     post 'admin/restaurant/new_item' => 'admin/restaurant#create_item'
