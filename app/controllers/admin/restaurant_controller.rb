@@ -15,6 +15,7 @@ class Admin::RestaurantController < ApplicationController
 	def show
 		@item =Restaurant.find(params[:id]).items
 		@restaurant = Restaurant.find(params[:id])
+		@orders = @restaurant.orders.all
 		#@item = Item.last
 	end
 

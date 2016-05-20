@@ -41,7 +41,7 @@ gem "font-awesome-rails"
 gem "slim-rails"
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'devise'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'rails-assets-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
