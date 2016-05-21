@@ -33,7 +33,11 @@
 					tbody
 						
 						- @orders.each do |f|
-							tr	
-								td = f
+							- f.order.each do |id, quantity|
+								-if @restaurant.items.find_by_id(id).present?
+								  tr	
+									td = @restaurant.items.find_by_id(id).name 
+									td = quantity
+									td = @restaurant.items.find_by_id(id).price * quantity
 								
 			= link_to "Back to restaurant", admin_restaurant_index_path, class: "btn btn-primary fa fa-arrow-left fa-2x"
