@@ -69,23 +69,32 @@ class OrderController < ApplicationController
       @user = current_user
 	  @order = @restaurant.orders.all
 	  @text_order = ""
+	  @bill_S=""
+	  @prices =Array.new
+	  sum = 0
 	  if @order.last.present?
 		@order.last.order.each do |id,quantity|
 		  if @restaurant.items.find_by_id(id).present?
 			@item = @restaurant.items.find_by_id(id).name
+			@price =  @restaurant.items.find_by_id(id).price * quantity
 			@text_order.concat(" #{@item} #{quantity}") 		  
+			@prices.push(@price)
 		  end
 		end  	
+	  end
+	  @prices.each do |p|
+	  	sum+=p
 	  end					
 	  @phone_numbers.each do |p|
 	      message = @client.account.messages.create(
 	        :from => @twilio_number,
 	        :to => p,
-	        :body => "#{@text_order} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address}"
+	        :body => "#{@text_order} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address} Total is #{sum}"
 	        # US phone numbers can make use of an image as well.
 	        # :media_url => image_url 
 	      )
       end
+      
     end
 
 
