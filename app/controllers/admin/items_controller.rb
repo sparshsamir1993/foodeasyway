@@ -13,7 +13,23 @@ class Admin::ItemsController < ApplicationController
 	end
 
 	def edit
+		@restaurant = Restaurant.find(params[:restaurant_id])
+  		@item  = @restaurant.items.find(params[:item_id])
 	end
+
+	def update
+		@restaurant = Restaurant.find(params[:restaurant_id])
+  		@item  = @restaurant.items.find(params[:item_id])
+  		@item_id = @item.id
+  		if @item.update_attributes(item_params)
+        		redirect_to edit_admin_restaurant_path(:item_id=>@item.id, :restaurant_id=>@restaurant.id)
+     	else
+        		
+        		render :action => 'edit'
+        		
+        end
+
+  end     
 
 	def show
 		@item = Item.last
@@ -42,6 +58,6 @@ class Admin::ItemsController < ApplicationController
 			if :action =='new'
 				params.permit(:name, :quantity, :price, :id,:item)
 			end 
-			params.require(:item).permit(:name, :price, :quantity, pets_attributes: [:id])
+			params.require(:items).permit(:name, :price, :quantity)
 		end
 end

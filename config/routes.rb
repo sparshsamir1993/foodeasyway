@@ -15,8 +15,11 @@ Rails.application.routes.draw do
       end
       post 'order/index' => 'order#clear'
     end
+    
     get 'admin/restaurant/new_item' => 'admin/restaurant#new_item'
     post 'admin/restaurant/new_item' => 'admin/restaurant#create_item'
+    get 'admin/items' => 'admin/items#edit'
+    post 'admin/items' => 'admin/items#update'
     namespace :admin do
         resources :restaurant do
           patch 'edit'

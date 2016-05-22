@@ -63,3 +63,20 @@ label{
 	height: 35px;
 	color: white;
 }
+footer{
+	width: 100%;
+	position: absolute;
+	z-index: 9999 !important;
+	padding-top: 2%;
+	background: transparent;
+	
+}
+footer .btn{
+	margin-top: 10%;
+	color: black;
+	background:none;
+	background-color: transparent;
+}
+#admin{
+	margin-bottom: 20%;
+}

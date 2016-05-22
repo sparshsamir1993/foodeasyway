@@ -61,13 +61,14 @@ class Admin::RestaurantController < ApplicationController
   		@restaurant = Restaurant.find(params[:id])
   		
   		if @restaurant.update_attributes(restaurant_params)
-        		redirect_to edit_admin_restaurant_path(:id=>@restaurant.id, :restaurant_id=>@restaurant.id)
+        		redirect_to edit_admin_restaurant_path( :restaurant_id=>@restaurant.id)
      	else
         		
         		render :action => 'edit'
         end
           
   end
+  
   
 	private
 		def restaurant_params

@@ -1,9 +1,11 @@
-.padding-all-around
-.col-md-2
-.col-md-4
-	h1 Edit Restaurant
+#admin
 
-	= form_for :restaurant, :url=>{:action=> 'update',:controller => 'admin/restaurant', :id=>@restaurant.id}, :method => :PATCH  do |f|
-		= f.text_field :name
-		= f.text_field :contact
-		= f.submit
+	.padding-all-around
+	.col-md-2
+	.col-md-4
+		h1 Edit Restaurant
+
+		= form_for :restaurant, :url=>{:action=> 'update',:controller => 'admin/restaurant', :id=>@restaurant.id}, :method => :PATCH  do |f|
+			= f.text_field :name
+			= f.text_field :contact
+			= f.submit
