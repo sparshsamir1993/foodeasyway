@@ -1,24 +1,22 @@
 Rails.application.routes.draw do
   
   
-
-  devise_scope :users do
+  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
     root 'visitors#index'
     get 'restaurant/index'
+  end
     resources :users do
+
       get 'restaurant/show'
       get 'order/index'
       resources :restaurant do
         get 'items/index'
+        post 'order/index' => 'order#create'
+        post 'order/index' => 'users#create'
+        match 'order/index' => 'order#send_message', via:[:get, :post]
       end
-       
-        resources :restaurant do
 
-          post 'order/index' => 'order#create'
-          post 'order/index' => 'users#create'
-          match 'order/index' => 'order#send_message', via:[:get, :post]
-        end
-      
       post 'order/index' => 'order#clear'
     end
     
@@ -32,9 +30,8 @@ Rails.application.routes.draw do
         end
         resources :items
     end
-  end
-  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
-  end
+  
+  
 
   
 end

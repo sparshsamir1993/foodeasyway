@@ -6,13 +6,14 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-   
+  
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -25,10 +26,8 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
   require 'omniauth-facebook'
-  config.secret_key = 'd02ea5738652e76b2aa84920a230a7a25eb2ac7e0f491b412fbbf3d73d1c684a72f97f9a71b2807c5cc3255ce5118918c73db2d106dfa00db20d48b0ca8c47e4'
+  config.secret_key = '7c0c87bffc5b00c8b03a9a38ddef71439ac731e77ead6564e70fa4fa1020791e304dd0379f46aab4eed3d4aa9e92712b8ed331a59fccd86bf6421fb5e3b37f7c'
   config.mailer_sender = 'sparshsamir1993@gmail.com'
-  config.omniauth :facebook, '1729669653945475', '8b3041f0dc55389119182b724ff396b2', scope: "email", info_fields: "email"
-  #config.omniauth :facebook, '1729669653945475', '8b3041f0dc55389119182b724ff396b2', scope: "email", info_fields: "email"
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -38,7 +37,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [:email]
-
+  config.omniauth :facebook, '1729669653945475', '8b3041f0dc55389119182b724ff396b2' , scope: 'email', info_fields: 'email'
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -105,7 +104,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '57ecbaec27d98655fb47afae7dde7fa052d69541209651f1cf5e6865bdbd6040d1c85cce370bdbf4289f93847df5f0135d65ab1576b317ebada9d2471d650913'
+  # config.pepper = '361383a8fa96a45fb202846bed8f40599a3ba97135deecba3dc966153af9d12450987f96d1664430e1eb64e59c04346bab3c1b2c99af96e44e32b23c7bc4a2db'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -156,7 +155,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
