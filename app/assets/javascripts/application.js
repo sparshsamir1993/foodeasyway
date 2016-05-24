@@ -19,3 +19,10 @@
 //= require bootstrap-datepicker
 //= require turbolinks
 //= require_tree .
+$(function() {
+
+  $("td").keyup(function() {
+    $.get($("#items_search").attr("action"), $("#items_search").serialize(), null, "script");
+    return false;
+  });
+});

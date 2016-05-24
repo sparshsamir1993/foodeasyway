@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
   
-  devise_scope :user do
+  
+
+  devise_scope :users do
     root 'visitors#index'
     get 'restaurant/index'
-    resources :user do
+    resources :users do
       get 'restaurant/show'
       get 'order/index'
-      resources :users do 
+      resources :restaurant do
+        get 'items/index'
+      end
+       
         resources :restaurant do
+
           post 'order/index' => 'order#create'
           post 'order/index' => 'users#create'
           match 'order/index' => 'order#send_message', via:[:get, :post]
         end
-      end
+      
       post 'order/index' => 'order#clear'
     end
     
