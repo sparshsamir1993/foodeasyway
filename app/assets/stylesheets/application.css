@@ -65,15 +65,15 @@ label{
 }
 footer{
 	width: 100%;
-	position: absolute;
 	z-index: 9999 !important;
 	padding-top: 2%;
-	background: transparent;
+	
 	
 }
 footer .btn{
 	margin-top: 10%;
-	color: black;
+	color: white;
+
 	background:none;
 	background-color: transparent;
 }

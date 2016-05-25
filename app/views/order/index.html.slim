@@ -13,31 +13,17 @@
 		= link_to "back", {:controller=>'restaurant',:action => "show", :id=>@restaurant.id}, class:"btn btn-success fa-2x"
 		
 	ul
-		
-			table.table#order
-				thead
-					tr
-						th Name
-						th Quantity
-						th Price
-				tbody
-				  -if @order.last.present?
-				  	- @order.last.order.each do |id,quantity|
-						tr
-							-if @restaurant.items.find_by_id(id).present?
-								td = @restaurant.items.find_by_id(id).name 
-								td = quantity
-								td = @restaurant.items.find_by_id(id).price * quantity
+		== render 'table'
 	
 	.col-md-4
-		=form_for current_user, :method=>:PATCH, :controller=>:users do |f|
+		=form_for current_user, :method=>:PATCH,  :controller=>:users do |f|
 			= f.label :contact
 			= f.text_field :contact, placeholder: "Phone Number", id: "email_field"
 			= f.label :address
 			= f.text_field :address, placeholder: "Address", id: "email_field"
 			= f.hidden_field :restaurant_id, value: @restaurant.id
 			= f.submit
-			/= link_to "update", user_user_restaurant_order_index_path(:restaurant_id=>@restaurant.id)
+			/= link_to "update", user_order_index_path(:restaurant_id=>@restaurant.id),:controller => 'users', :action => 'update', method: :PATCH
 	.col-md-1	
 	.col-md-2
 	.col-md-2

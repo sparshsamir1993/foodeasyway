@@ -1,0 +1,14 @@
+table.table#order
+				thead
+					tr
+						th Name
+						th Quantity
+						th Price
+				tbody
+				  -if @order.last.present?
+				  	- @order.last.order.each do |id,quantity|
+						tr
+							-if @restaurant.items.find_by_id(id).present?
+								td = @restaurant.items.find_by_id(id).name 
+								td = quantity
+								td = @restaurant.items.find_by_id(id).price * quantity

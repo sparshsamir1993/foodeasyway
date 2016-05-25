@@ -8,16 +8,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
   end
-  def update
-    @user = current_user
-    
-    if @user.update_attributes(user_params)
-      @restaurant = @user.restaurant_id
-          redirect_to user_order_index_path(:user_id=>@user, :restaurant_id=>@restaurant)
-      else
-          @subjects = User.all
-          render :action => 'edit'
-        end
-        
-  end
+  
 end

@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
       get 'restaurant/show'
       get 'order/index'
+      patch 'order/index' => 'users#create'
       resources :restaurant do
         get 'items/index'
         post 'order/index' => 'order#create'
-        post 'order/index' => 'users#create'
+          
         match 'order/index' => 'order#send_message', via:[:get, :post]
       end
 

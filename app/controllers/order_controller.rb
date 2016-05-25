@@ -50,6 +50,7 @@ class OrderController < ApplicationController
 		@user = current_user
 		@order = @restaurant.orders.all
 		
+		
 	end
 	
 	def show
