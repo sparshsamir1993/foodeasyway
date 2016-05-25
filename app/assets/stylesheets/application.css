@@ -65,7 +65,7 @@ label{
 }
 footer{
 	width: 100%;
-	position: static;
+	position: static !important;
 	z-index: 9999 !important;
 	padding-top: 2%;
 	
