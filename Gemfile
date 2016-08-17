@@ -22,8 +22,10 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem "workless", "~> 1.2.2"
 gem 'will_paginate', '~> 3.0'
+gem 'materialize-sass'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem "bower-rails", "~> 0.10.0"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'therubyracer'
@@ -62,4 +64,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

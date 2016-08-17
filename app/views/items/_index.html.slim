@@ -1,35 +1,32 @@
 - if @restaurant.present?
-    /= will_paginate @items		
-    = form_tag user_restaurant_path(:restaurant_id=>@restaurant.id, :id=>@restaurant.id), :method => 'get', :id=>'items_search' do
-	    = text_field_tag :search, params[:search]
-	    = submit_tag "Search"
-	end
-	table.table
+    /= will_paginate @items
+	input#item_search.form-control name="search_term_for_items" placeholder="Search Items" type="text" /
+	table.table#items_table
 		thead
 			tr
 				th Item
-				     
+
 				th Price
-				      
+
 				th Quantity
-				
+
 		tbody
-				
+
 				- @items.each do |t|
 					tr
 
-						td 
-							
+						td
+
 								= t.name
-						
+
 						td
-							
+
 							 	= t.price
-						
+
 						td
-							
+
 								= link_to "Add to Cart", user_restaurant_order_index_path(:restaurant_id=>@restaurant.id, :id => t.id),action: :create, method: :post, class: "btn btn-info"
-							
-							
+
+
     = will_paginate @items
 end

@@ -1,23 +1,26 @@
 .padding-all-around
-	body id="visitor" 
+	body id="visitor"
 		.container
-			.jumbotron.text-center
-				.tv
-					img src="/assets/grubtv.gif"
-			br
-			br
-			br
-			.col-md-2
-			.col-md-3
+			.parallax#blur
+			h1#title GrubVibes
 
-				= link_to "",restaurant_index_path(@user_id), class: "btn btn-primary fa fa-cart-plus fa-3x"
-				h3 Order Now
-			.col-md-3
-				  
-				  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-5x" 
-				  h3 Log in With Facebook
-			.col-md-3
-			  -if user_signed_in?
+			.row#buttons
+				.col-md-3
+					= link_to "",restaurant_index_path(@user_id), class: "btn btn-primary fa fa-cart-plus fa-2x"
+					h3 Order Now
+				.col-md-3
+
+					  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-2x"
+					  h3 Log in With Facebook
+				.row
+					.col-md-3
+					  -if user_signed_in?
 				h2#logout
 					= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
-					
+
+			.parallax-1
+			.container
+				.hotel-row
+					.hotel
+					.hotel
+					.hotel

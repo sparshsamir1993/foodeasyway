@@ -1,0 +1,42 @@
+<nav class='navbar'>
+  <div class="wrapper">
+
+    <ul class="nav nav-tabs">
+      <li>
+        <a href="#"> HOME</a>
+      </li>
+      <li>
+        <a href="#"> OUR RESTAURANTS</a>
+      </li>
+      <li>
+        <a href="#"> RESTAURANT CONTACTS</a>
+      </li>
+      <li>
+        <a href="#"> ABOUT US</a>
+      </li>
+        <div class="navbar-text pull-right">
+
+            <% if user_signed_in? %>
+              <%=  "user" %> Hello, <strong><%= current_user.email %></strong>
+              <span class="divider">|</span>
+              <%= link_to 'Profile', edit_user_registration_path %>
+              <span class="divider">|</span>
+              <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to 'Register', new_user_registration_path %>
+              <span class="divider">|</span>
+              <%= link_to 'Login', new_user_session_path %>
+            <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li class="active"><a href="#">About</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>-->
