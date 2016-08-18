@@ -1,9 +1,9 @@
 .padding-all-around
 	body id="visitor"
-		.container
-			.parallax#blur
-			h1#title GrubVibes
+		.parallax#blur
+		h1#title GrubVibes
 
+		.container
 			.row#buttons
 				.col-md-3
 					= link_to "",restaurant_index_path(@user_id), class: "btn btn-primary fa fa-cart-plus fa-2x"
@@ -18,9 +18,10 @@
 				h2#logout
 					= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
 
-			.parallax-1
+		.parallax-1
 			.container
-				.hotel-row
-					.hotel
-					.hotel
-					.hotel
+				section.working
+					.work
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					.work
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

@@ -8,6 +8,18 @@
 	width: 450px;
 	border-radius: 5px;
 }
+.working{
+	display: -webkit-flex;
+ 	display: flex;
+	background-color: grey;
+	margin-bottom: 15%;
+	margin-top: 15%;
+}
+.work{
+	-webkit-flex: .5;
+				 flex: .5;
+	background-color: white;
+}
 h3{
 	color: black;
 	border:1;
@@ -47,7 +59,7 @@ h2 a{
     /* The image used */
     background-image: url('/assets/chinese.jpg');
     /* Full height */
-    height: 50%;
+    height: 100%;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
