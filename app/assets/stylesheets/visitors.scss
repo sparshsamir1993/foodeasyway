@@ -4,6 +4,48 @@
 .paddin-all-around{
 	padding: 10px;
 }
+.carousel-inner > .item > .image, .carousel-inner > .item > a > .image{
+	width:900px;
+	height:460px;
+}
+#caption{
+	color: white;
+	font-weight: bolder;
+}
+.carousel-caption{
+	font-family: 'Righteous', cursive;
+}
+.carousel-inner {
+  .item {
+    opacity: 0;
+    transition-property: opacity;
+		background-color: transparent !important;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .active.left,
+  .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .next.left,
+  .prev.right {
+    opacity: 1;
+  }
+}
+.carousel{
+	width:900px;
+  height:460px;
+	position: relative;
+	left: 10%;
+	bottom: 650px;
+	margin-bottom: -55%;
+}
 #form{
 	width: 450px;
 	border-radius: 5px;
@@ -11,9 +53,19 @@
 .working{
 	display: -webkit-flex;
  	display: flex;
-	background-color: grey;
-	margin-bottom: 15%;
-	margin-top: 15%;
+	align-content: center;
+	background-color: transparent;
+	margin-bottom: 6%;
+	margin-top: 6%;
+}
+#works{
+	font-size: 300%;
+	position: relative;
+	left: 75%;
+}
+#second{
+	position: relative;
+	top: 75px;
 }
 .work{
 	-webkit-flex: .5;
@@ -57,7 +109,6 @@ h2 a{
 }
 .parallax-1 {
     /* The image used */
-    background-image: url('/assets/chinese.jpg');
     /* Full height */
     height: 100%;
     /* Create the parallax scrolling effect */
@@ -65,6 +116,10 @@ h2 a{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.cookvideo{
+	right: 30px;
+	position: relative;
 }
 .hotel-row{
 	display: flex;
@@ -86,25 +141,72 @@ h2 a{
 	position: relative;
 	color: white;
 	left: 33%;
+	font-family: 'Righteous', cursive;
 	width: 500px;
 	font-size: 600%;
-	-webkit-filter: blur(2px);
+	animation: fadein 2s;
 
 	&:hover {
 		-webkit-filter: none;
 	}
 }
+#menu{
+	padding-left: 10%;
+	width: 65%;
+	padding-bottom: 10%;
+	&:hover{
+		animation: greyoutText 2s;
+		#menutext{
+			opacity: 0;
+			animation: fadein 1s;
+		}
+	}
+}
+#menutext{
+	position: relative;
+	color: white;
+	bottom: 180px;
+	font-size: 195%;
+	left :-13%;
+	font-weight: bold;
+	font-family: 'Righteous', cursive;
+}
+//animations
+
+@keyframes fadein {
+	0% { opacity: 0; }
+	100%   { opacity: 1; }
+}
+
+@keyframes greyoutText{
+	from{
+		filter: brightness(100%);
+	}
+	to{
+		filter: brightness(30%);
+	}
+}
+//screens
+
+
 @media screen and (max-width: 768px) {
 	#title{
 		font-weight: bolder;
 		position: relative;
 		color: white;
 		left: 15%;
-		margin-top: 25%;
+		top: 250px;
 		-webkit-filter: none;
-
 		width: 500px;
 		font-size: 230%;
+	}
+	.carousel{
+		left: 2%;
+	}
+	#buttons{
+		position: relative;
+		top: 90px;
+		margin-bottom: 15%;
 	}
 }
 @media screen and (max-width: 450px) {
@@ -113,15 +215,35 @@ h2 a{
 		position: relative;
 		color: white;
 		left: 6%;
-		margin-top: 41%;
+		top: 90px;
 		-webkit-filter: none;
-
 		width: 200px;
 		font-size: 230%;
 
 	}
+	#myCarousel{
+		position: relative;
+		left: 1%;
+	}
+
+	#second{
+		position: relative;
+		top: 125px;
+	}
+	#works{
+		left:75%;
+	}
 	#buttons{
 		margin-top: 20%;
+		position: relative;
+		top: 70px;
+		margin-bottom: 15%;
 		display: block;
+	}
+}
+@media screen and (max-width:320px){
+	#myCarousel{
+		position: relative;
+		left: 1%;
 	}
 }

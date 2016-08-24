@@ -4,3 +4,10 @@
 $(document).ready ->
   $('.parallax').parallax()
   return
+  $('.carousel').carousel
+    interval: 1000
+    pause:  false
+  $(document).ready ->
+    $(element).backgroundVideo()
+    $('video').prop('muted', true)
+    return
