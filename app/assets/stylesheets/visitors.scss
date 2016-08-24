@@ -120,6 +120,8 @@ h2 a{
 .cookvideo{
 	right: 30px;
 	position: relative;
+	background-size: cover;
+	z-index: -1;
 }
 .hotel-row{
 	display: flex;
@@ -194,19 +196,29 @@ h2 a{
 		font-weight: bolder;
 		position: relative;
 		color: white;
-		left: 15%;
-		top: 250px;
+		left: 20%;
+		bottom: 10%;
+		top: 180px;
 		-webkit-filter: none;
 		width: 500px;
 		font-size: 230%;
 	}
 	.carousel{
-		left: 2%;
+		left: 7%;
+    height: 360px;
+		top: -460px;
+    width: 610px;
+    z-index: +1;
 	}
 	#buttons{
 		position: relative;
-		top: 90px;
+		top: 150px;
 		margin-bottom: 15%;
+	}
+	.cookvideo{
+		height: 480px;
+		width: 750px;
+		left: -11px
 	}
 }
 @media screen and (max-width: 450px) {
@@ -225,7 +237,24 @@ h2 a{
 		position: relative;
 		left: 1%;
 	}
-
+	.cookvideo{
+		height: 380px;
+		width: 550px;
+		left: -11px
+	}
+	.carousel{
+		left: 25% !important;
+		height: 260px;
+		top: -346px;
+		width: 410px;
+		z-index: +1;
+	}
+	#caption{
+		position: relative;
+		left: -280px;
+		font-size: 25px;
+		top: 20px;
+	}
 	#second{
 		position: relative;
 		top: 125px;

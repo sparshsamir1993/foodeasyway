@@ -58,6 +58,7 @@ group :development, :test do
 end
 group :production do
   gem 'rails_12factor'
+  gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
 end
 
 group :development do
