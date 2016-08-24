@@ -218,7 +218,7 @@ h2 a{
 	.cookvideo{
 		height: 480px;
 		width: 750px;
-		left: -11px
+		left: -15px
 	}
 }
 @media screen and (max-width: 450px) {
@@ -239,11 +239,11 @@ h2 a{
 	}
 	.cookvideo{
 		height: 380px;
-		width: 550px;
-		left: -11px
+		width: 100%;
+		left: 0px
 	}
 	.carousel{
-		left: 25% !important;
+		left: 2% !important;
 		height: 260px;
 		top: -346px;
 		width: 410px;
@@ -274,5 +274,8 @@ h2 a{
 	#myCarousel{
 		position: relative;
 		left: 1%;
+	}
+	.cookvideo{
+		width: 100%;
 	}
 }
