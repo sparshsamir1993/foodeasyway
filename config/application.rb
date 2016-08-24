@@ -24,5 +24,6 @@ module Sparsh
     config.action_controller.include_all_helpers = true
     config.serve_static_files = true
     config.active_record.raise_in_transactional_callbacks = true
+    config.assets.paths << "#{Rails.root}/app/assets"
   end
 end
