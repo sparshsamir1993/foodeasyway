@@ -1,22 +1,25 @@
 .padding-all-around
 	body id="visitor"
 		.parallax#blur
-		h1#title GrubVibes
+
+		h1#title class="animated flash" GrubVibes
 
 		.container#buttons
 			.row
-				.col-md-3
-					= link_to "",restaurant_index_path(@user_id), class: "btn btn-primary fa fa-cart-plus fa-2x"
-					h3 Order Now
+				.col-md-6.col-md-offset-3
+					= link_to " Order now",restaurant_index_path(@user_id), class: "btn btn-grub btn-block fa fa-cart-plus fa-2x grubfont"
+
+
+			.row
 				.col-md-3
 
-					  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-2x"
+					  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-4x"
 					  h3 Log in With Facebook
-				.row
-					.col-md-3
-					  -if user_signed_in?
-				h2#logout
-					= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
+			.row
+				.col-md-3
+				  -if user_signed_in?
+					h2#logout
+						= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
 
 		.parallax-1
 			#video-wrap
@@ -65,3 +68,14 @@
 						a.right.carousel-control data-slide="next" href="#myCarousel" role="button"
 							span.glyphicon.glyphicon-chevron-right aria-hidden="true"
 							span.sr-only Next
+		.row
+			.col-md-6.col-md-offset-3.text-center
+				h3
+					strong Why run around for you Grub ?
+		.row.mb50
+
+			.col-md-8.col-md-offset-2.text-center.grubtext
+				h5 "What's for lunch/dinner"?. Bored from your cook's food or lazy enough to go and buy groceries?
+				h5 Just login, choose through our range of restaurants and their menus. Order and wait. :)
+
+		.parallax-2

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
     belongs_to :restaurant, foreign_key: 'restaurant_id'
     has_many :orders
-    
+
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
 	      user.provider = auth.provider

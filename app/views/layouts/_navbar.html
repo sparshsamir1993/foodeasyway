@@ -1,7 +1,7 @@
 <nav class='navbar'>
   <div class="wrapper">
 
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-justified">
       <li>
         <a href="#"> HOME</a>
       </li>
@@ -9,26 +9,26 @@
         <a href="#"> OUR RESTAURANTS</a>
       </li>
       <li>
-        <a href="#"> RESTAURANT CONTACTS</a>
-      </li>
-      <li>
         <a href="#"> ABOUT US</a>
       </li>
-        <div class="navbar-text pull-right">
-
-            <% if user_signed_in? %>
-              <%=  "user" %> Hello, <strong><%= current_user.email %></strong>
-              <span class="divider">|</span>
-              <%= link_to 'Profile', edit_user_registration_path %>
-              <span class="divider">|</span>
-              <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-            <% else %>
-              <%= link_to 'Register', new_user_registration_path %>
-              <span class="divider">|</span>
-              <%= link_to 'Login', new_user_session_path %>
-            <% end %>
-        </div>
-      </li>
+      <% if user_signed_in? %>
+        <li>
+          <%=  "user" %> Hello, <strong><%= current_user.email %></strong>
+        </li>
+        <li>
+          <%= link_to 'Profile', edit_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to 'Register', new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to 'Login', new_user_session_path %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>

@@ -19,7 +19,7 @@
   .item {
     opacity: 0;
     transition-property: opacity;
-		background-color: transparent !important;
+	background-color: transparent !important;
   }
 
   .active {
@@ -117,6 +117,20 @@ h2 a{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.parallax-2 {
+    /* The image used */
+    /* Full height */
+	background-image: url('/assets/bg-pattern.jpg');
+    height: 400px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mb50{
+	margin-bottom: 10%;;
+}
 .cookvideo{
 	right: 30px;
 	position: relative;
@@ -146,23 +160,8 @@ h2 a{
 	font-family: 'Righteous', cursive;
 	width: 500px;
 	font-size: 600%;
-	animation: fadein 2s;
-
-	&:hover {
-		-webkit-filter: none;
-	}
-}
-#menu{
-	padding-left: 10%;
-	width: 65%;
-	padding-bottom: 10%;
-	&:hover{
-		animation: greyoutText 2s;
-		#menutext{
-			opacity: 0;
-			animation: fadein 1s;
-		}
-	}
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
 }
 #menutext{
 	position: relative;
