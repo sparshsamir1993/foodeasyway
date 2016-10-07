@@ -12,7 +12,7 @@ head
 						img class="card-img-top" src="#{t.avatar.url}"
 						.card-block
 							.card-title
-								h1= link_to t.name, user_restaurant_show_path(t.id)
+								h1= link_to t.name, restaurant_path(t.id)
 							.card-text
 								p = t.contact
 

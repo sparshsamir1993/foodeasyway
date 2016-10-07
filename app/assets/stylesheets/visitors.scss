@@ -132,10 +132,10 @@ h2 a{
 	margin-bottom: 10%;;
 }
 .cookvideo{
-	right: 30px;
 	position: relative;
 	background-size: cover;
 	z-index: -1;
+	width: 100%;
 }
 .hotel-row{
 	display: flex;
@@ -225,8 +225,8 @@ h2 a{
 		font-weight: bolder;
 		position: relative;
 		color: white;
-		left: 6%;
-		top: 90px;
+		left: 30%;
+		top: 110px;
 		-webkit-filter: none;
 		width: 200px;
 		font-size: 230%;

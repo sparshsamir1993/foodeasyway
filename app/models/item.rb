@@ -1,8 +1,9 @@
 class Item < ActiveRecord::Base
 	belongs_to :restaurant
-
+	has_many :orders
+	has_many :order_items
 	validates :name,  :presence => true
-  validates :price, :presence => true
+  	validates :price, :presence => true
 
 	scope :search, lambda { |query|
 	   return nil  if query.blank?

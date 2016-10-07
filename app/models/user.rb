@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
-    belongs_to :restaurant, foreign_key: 'restaurant_id'
+    
     has_many :orders
 
 	def self.from_omniauth(auth)

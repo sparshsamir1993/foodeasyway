@@ -1,0 +1,23 @@
+
+
+.order-flex
+    - @sec = 0
+    -@order_grouped.each do |order|
+        .order-flex-items id="#{@sec}_log"
+            - @sec = @sec + 1
+            - r_id = order[0]
+            -order[1].each do |item|
+            .card
+                .card-block.pad2
+                    h4.custom-card-title = Restaurant.find(r_id).name
+                    ul.list-group.list-group-flush
+                    -order[1].each do |item|
+                        .row
+                            .col-md-8
+                                li.list-group-item = item.item.name
+                            .col-md-2
+                                = item.quantity
+                            .col-md-2
+                                = (item.quantity.to_i * item.item.price.to_i)
+                    .card-block
+                    a.card-link href="#{restaurant_path(r_id)}"  Back To Restaurant
