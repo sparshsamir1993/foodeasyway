@@ -1,81 +1,46 @@
-.padding-all-around
 	body id="visitor"
-		.parallax#blur
+		#main-container
+			.grey-overlay
+				.row.content-1
+					.col-md-12.text-center
+						h2.raleway.boldest.fs350 Order yourself a delicious Grub online!
+				.container#buttons
+					.row
+						.col-md-6.col-md-offset-3
+							= link_to "Order now",restaurant_index_path, class: "btn order-now-btn btn-outline btn-block "
+					.row
+						.col-md-3
 
-		h1#title class="animated flash" GrubVibes
+							  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-4x"
+							  h3 Log in With Facebook
+						.col-md-3
+						  -if user_signed_in?
+							h2#logout
+								= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
 
-		.container#buttons
-			.row
-				.col-md-6.col-md-offset-3
-					= link_to " Order now",restaurant_index_path, class: "btn btn-grub btn-block fa fa-cart-plus fa-2x grubfont"
 
+		.container.mt40p
+			.step-flex
+				.step-flex-items
+					.thumb.text-center
+						i.fa.fa-cutlery.fa-5x
+					.content-step.text-center
+						p.head Choose your Grub
+						p  Sign up & flip through a menu of dishes from restaurants available for delivery around SRM, KTR. We make it simple for you to find just what you're craving.
 
-			.row
-				.col-md-3
+				.step-flex-items
+					.thumb.text-center
+						i.fa.fa-cart-arrow-down.fa-5x
+					.content-step.text-center
+						p.head Skip the Store
+						p	We have partnered with your favourites around here, so we save you a visit to their store at the very convenience of a few clicks, while they prepare & carefully pack your grub, once you've placed an order.
 
-					  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-4x"
-					  h3 Log in With Facebook
-			.row
-				.col-md-3
-				  -if user_signed_in?
-					h2#logout
-						= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
+				.step-flex-items
+					.thumb.text-center
+						i.fa.fa-bell.fa-5x
+					.content-step.text-center
+						p.head	Ding-Dong!
 
-		.parallax-1
-			#video-wrap
-			  video.cookvideo#my-video autoplay="" loop="" muted="" preload="metadata"
-			    source src="/assets/cook.mp4" type="video/mp4" style="background-position: center;"
-
-			.container
-				section.working
-					#myCarousel.carousel.slide data-ride="carousel"
-						/! Indicators
-						ol.carousel-indicators
-							li.active data-slide-to="0" data-target="#myCarousel"
-							li data-slide-to="1" data-target="#myCarousel"
-							li data-slide-to="2" data-target="#myCarousel"
-							li data-slide-to="3" data-target="#myCarousel"
-						/! Wrapper for slides
-						.carousel-inner role="listbox"
-							.item.active
-								.image
-									.row
-									.row
-									.row.text-center
-										h1#caption Choose Restaurant
-							.item
-								.image
-									.row
-									.row
-									.row.text-center
-										h1#caption Choose from Menu
-							.item
-								.image
-									.row
-									.row
-									.row.text-center
-										h1#caption Order
-
-							.item
-								.image
-									.row
-									.row
-									.row.text-center
-										h1#caption Wait for your Grub.
-						a.left.carousel-control data-slide="prev" href="#myCarousel" role="button"
-							span.glyphicon.glyphicon-chevron-left aria-hidden="true"
-							span.sr-only Previous
-						a.right.carousel-control data-slide="next" href="#myCarousel" role="button"
-							span.glyphicon.glyphicon-chevron-right aria-hidden="true"
-							span.sr-only Next
-		.row
-			.col-md-6.col-md-offset-3.text-center
-				h3
-					strong Why run around for you Grub ?
-		.row.mb50
-
-			.col-md-8.col-md-offset-2.text-center.grubtext
-				h5 "What's for lunch/dinner"?. Bored from your cook's food or lazy enough to go and buy groceries?
-				h5 Just login, choose through our range of restaurants and their menus. Order and wait. :)
+						p Bell? Please take the door! Pay your checkout amount to the delivery boy and enjoy your grub! We think long & hard about this whole process so you don't have to. And, if you like what you eat, you can always share the love or ask us a question!
 
 		.parallax-2

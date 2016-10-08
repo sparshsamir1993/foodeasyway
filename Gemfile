@@ -19,6 +19,8 @@ gem 'bootstrap-material-design'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'twilio-ruby'
+gem 'bulksms', '~> 0.5.2'
+gem "iconv", "~> 1.0.3"
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem "workless", "~> 1.2.2"
@@ -41,7 +43,7 @@ gem 'material_icons'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'twitter-bootstrap-rails'
-gem "font-awesome-rails"
+gem 'font-awesome-sass', '~> 4.6.2'
 gem "slim-rails"
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'devise'

@@ -3,7 +3,7 @@ class OrderItem < ActiveRecord::Base
     belongs_to :item
     belongs_to :restaurant
     def total_price_cents
-        return self.product.price_cents * self.quantity
+        return self.item.price * self.quantity
     end
 
     def get_product_preview

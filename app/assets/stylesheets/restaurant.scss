@@ -11,7 +11,9 @@ $grub-text: 'Righteous', cursive;
 	color: white;
 	font-size: 20px;
 }
-
+.righteous{
+	font-family: $grub-text;
+}
 .jumbotron{
 	background: transparent;
 	color: white;
@@ -25,22 +27,13 @@ $grub-text: 'Righteous', cursive;
 	bottom: 5px;
 }
 
-.btn-grub{
-	background-color: black;
-	&:hover{
-		background-color: white;
-		color: black;
-	}
-}
 
 td{
 	font-weight: bold;
 
 
 }
-a{
-	font-family: $grub-text;
-}
+
 
 .grubtext{
     font-family: $grub-text;

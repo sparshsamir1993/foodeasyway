@@ -11,12 +11,67 @@
  * file per style scope.
  *
  *= require bootstrap
- *= require font-awesome
  *= require_tree .
  *= require_self
  */
- @import "materialize";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ @font-face {
+  font-family: 'MT';
+  src:url('fontscorecomttwcenmt.ttf');
+ }
+ $mt: 'Tw Cen MT';
+ $raleway: 'Raleway', sans-serif;
+ $stalemate: 'Stalemate', cursive;
+ .btn-outline {
+     background-color: transparent;
+     color: inherit;
+     transition: all .5s;
+ }
 
+ .btn-primary.btn-outline {
+     color: #428bca;
+ }
+
+ .btn-success.btn-outline {
+     color: #5cb85c;
+ }
+
+ .btn-info.btn-outline {
+     color: #5bc0de;
+ }
+
+ .btn-warning.btn-outline {
+     color: #f0ad4e;
+ }
+
+ .btn-danger.btn-outline {
+     color: #d9534f;
+ }
+
+.order-now-btn.btn-outline{
+    color: white;
+    border: 2px solid white;
+    font-size: 200%;
+    font-weight: 700;
+    font-family: $mt;
+    text-transform: uppercase;;
+}
+
+
+ .btn-primary.btn-outline:hover,
+ .btn-success.btn-outline:hover,
+ .btn-info.btn-outline:hover,
+ .btn-warning.btn-outline:hover,
+ .btn-danger.btn-outline:hover {
+     color: #fff;
+ }
+ .order-now-btn.btn-outline:hover{
+     color: black;
+     background-color: white;
+     border: 2px solid black;
+
+ }
 input{
     color: black;
 }
@@ -35,6 +90,21 @@ input{
 	-webkit-text-stroke-width: 1px !important;
 	-webkit-text-stroke-color: black !important;
 }
+
+.stalemate{
+    font-family: 'Stalemate', cursive;
+}
+.navbar-brand{
+    width: 20%;
+    font-size: 600%;
+    color: white;
+}
+.nav-tabs.nav-justified > li > a{
+    border: none !important;
+    color: white;
+    font-size: 150%;
+}
+
 .card-img-top{
     background-size: cover;
     width: 100%;
@@ -84,9 +154,7 @@ input{
 label{
 	font-size: 30px;
 }
-nav{
-	background-color: black;
-}
+
 @media screen and (max-width: 768px){
   .nav-tabs{
       display: block;
@@ -97,7 +165,6 @@ nav{
 .nav-tabs{
 	border-bottom: 0px;
 	padding-top: 10px;
-    font-family: 'Righteous', cursive;
 	margin-bottom: -10px;
 }
 #email_field{

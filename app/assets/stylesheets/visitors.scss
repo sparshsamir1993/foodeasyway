@@ -1,8 +1,95 @@
 // Place all the styles related to the visitors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@font-face {
+ font-family: 'MT';
+ src:url('fontscorecomttwcenmt.ttf');
+}
+$mt: 'Tw Cen MT';
+$raleway: 'Raleway', sans-serif;
+$stalemate: 'Stalemate', cursive;
+
+.mt{
+	font-family: $mt;
+}
+.upper{
+	text-transform: uppercase;
+}
+
+.boldest{
+	font-weight: 900;
+}
+.grey-overlay{
+	background: rgba(black, .4);
+	height: 100vh;
+}
 .paddin-all-around{
 	padding: 10px;
+}
+.navbar-brand{
+    width: 20%;
+    font-size: 600%;
+	margin-top: 2.5%;
+	padding: 2%;
+}
+.content-1{
+	position: relative;
+	top: 30%;
+	color: white;
+	font-family: $raleway;
+	text-transform: uppercase;
+}
+.fs350{
+	font-size: 250%;
+}
+
+#main-container{
+	height: 100vh;
+	background: image-url('main-bg.jpg');
+	margin-top: -12%;
+	background-size: cover;
+	position: absolute;
+    z-index: 0;
+    width: 100%;
+}
+.navbar{
+	z-index: 1;
+}
+
+.mt40p{
+	margin-top: 45%;
+}
+.step-flex
+{
+	display: flex;
+}
+.step-flex-items
+{
+	margin: 2%;
+	padding: 2%;
+
+	p{
+		font-size: 20px;
+		font-family: $mt;
+
+	}
+	.head{
+		text-transform: uppercase;
+		font-size: 25px;
+		font-weight: 600;
+	}
+}
+.top30{
+	position: relative;
+	top: 30px;
+}
+#grad1 {
+    height: 100%;
+    background: -webkit-linear-gradient(black, transparent); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, transparent); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, transparent); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, transparent); /* Standard syntax (must be last) */
 }
 .carousel-inner > .item > .image, .carousel-inner > .item > a > .image{
 	width:900px;
@@ -150,7 +237,8 @@ h2 a{
 	background-color: green;
 }
 #buttons{
-	margin-top: 9%;
+	position: relative;
+	top: 55%;
 }
 #title{
 	font-weight: bolder;
