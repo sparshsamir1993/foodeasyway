@@ -9,13 +9,23 @@
                 .card-block.pad2
                     h4.custom-card-title = Restaurant.find(r_id).name
                     ul.list-group.list-group-flush
-                    -order[1].each do |item|
-                        .row
-                            .col-md-8
-                                li.list-group-item = item.item.name
-                            .col-md-2
-                                = item.quantity
-                            .col-md-2
-                                = (item.quantity.to_i * item.item.price.to_i)
+                        -order[1].each do |item|
+                            .row
+                                .col-md-6
+                                    li.list-group-item = item.item.name
+                                .col-md-2
+                                    = item.quantity
+                                .col-md-2
+                                    = item.total
+                                .col-md-2
+                                    = link_to "", order_item_path(:restaurant_id => r_id, :id => item.id), class: "fa fa-trash", method: 'delete'
+
                     .card-block
-                    a.card-link href="#{restaurant_path(r_id)}"  Back To Restaurant
+                        .row
+                            .col-md-4
+                                a.card-link href="#{restaurant_path(r_id)}"  Back To Restaurant
+                            .col-md-2.col-md-offset-4
+                                a.card-link href="#{edit_order_path}"  Edit
+                        .row
+                            .col-md-4
+                                //a.card-link href=

@@ -1,4 +1,4 @@
-class Admin::RestaurantController < ApplicationController
+class Admin::RestaurantsController < RestaurantsController
 	before_action :authenticate_user!
 	skip_before_action :verify_authenticity_token
 	def index
@@ -10,6 +10,7 @@ class Admin::RestaurantController < ApplicationController
 	end
 
 	def edit
+		@restaurant = Restaurant.find(params[:id])
 	end
 
 	def show
@@ -29,9 +30,9 @@ class Admin::RestaurantController < ApplicationController
 	end
 
 	def create
-		@restaurant = Restaurant.new(restaurant_params)
+		@restaurant = Restaurant.new(restaurants_params)
 		if @restaurant.save
-			redirect_to admin_restaurant_path(@restaurant)
+			redirect_to admin_restaurants_path(@restaurant)
 		else
 			render('new')
 		end
@@ -52,27 +53,28 @@ class Admin::RestaurantController < ApplicationController
 	end
 	def destroy
 		Restaurant.find(params[:id]).destroy
-    	redirect_to :action=>"index", :controller=>"admin/restaurant"
+    	redirect_to :action=>"index", :controller=>"admin/restaurants"
     end
 	def edit
-		@restaurant = Restaurant.find(params[:restaurant_id])
+		@restaurant = Restaurant.find(params[:id])
 	end
+
 	def update
-  		@restaurant = Restaurant.find(params[:id])
+		@restaurant = Restaurant.find(params[:id])
 
-  		if @restaurant.update_attributes(restaurant_params)
-        		redirect_to edit_admin_restaurant_path( :restaurant_id=>@restaurant.id)
-     	else
+		if @restaurant.update(restaurants_params)
+			redirect_to restaurant_path( :restaurant_id=>@restaurant.id)
+		else
 
-        		render :action => 'edit'
-        end
+			render :action => 'edit'
+	end
 
   end
 
 
 	private
-		def restaurant_params
-			params.require(:restaurant).permit(:name, :contact, :avatar)
+		def restaurants_params
+			params.require(:restaurant).permit(:name, :contact, :avatar, :min_order)
 		end
 
 		def items_params

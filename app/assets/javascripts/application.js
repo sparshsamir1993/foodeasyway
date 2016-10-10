@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
@@ -17,7 +18,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require bootstrap-datepicker
-//= require turbolinks
+//= require masonry/jquery.masonry
 //= require_tree .
 $(function() {
 

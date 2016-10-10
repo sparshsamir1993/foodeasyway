@@ -1,13 +1,13 @@
 .padding-all-around
 		body
 			.jumbotron.text-center
-				h2 
+				h2
 					= @restaurant.name
 			.col-md-3
 			.col-md-3
 				= link_to "New Item",new_admin_item_path(:id=>@restaurant.id)
 			.col-md-3
-				
+
 				table.table
 					thead
 						tr
@@ -16,9 +16,9 @@
 							th
 							th
 					tbody
-						
+
 						- @item.each do |f|
-							tr	
+							tr
 								td = f.name
 								td = f.price
 								td =  link_to '',edit_admin_item_path(:restaurant_id => @restaurant.id, :item_id=>f.id), class: "btn btn-success fa fa-pencil"
@@ -32,13 +32,13 @@
 							th
 							th
 					tbody
-						
+
 						- @orders.each do |f|
-							- f.order.each do |id, quantity|
-								-if @restaurant.items.find_by_id(id).present?
-								  tr	
-									td = @restaurant.items.find_by_id(id).name 
-									td = quantity
-									td = @restaurant.items.find_by_id(id).price * quantity
-								
-			= link_to "Back to restaurant", admin_restaurant_index_path, class: "btn btn-primary fa fa-arrow-left fa-2x"
+							- f.order_items.each do |item|
+								  tr
+								  	- if item.quantity.present? && item.item.present?
+										td = item.item.name
+										td = item.quantity
+										td = item.item.price * item.quantity
+
+			= link_to "Back to restaurant", admin_restaurant_path, class: "btn btn-primary fa fa-arrow-left fa-2x"

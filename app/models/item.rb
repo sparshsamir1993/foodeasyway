@@ -3,9 +3,9 @@ class Item < ActiveRecord::Base
 	has_many :orders
 	has_many :order_items
 	validates :name,  :presence => true
-  	validates :price, :presence => true
+	validates :price, :presence => true
 
-	scope :search, lambda { |query|
+	scope :searchname, lambda { |query|
 	   return nil  if query.blank?
 	 # Searches the students table on the 'first_name' and 'last_name' columns.
 	 # Matches using LIKE, automatically appends '%' to each term.
@@ -32,11 +32,4 @@ class Item < ActiveRecord::Base
 	 )
 	}
 
-  	def self.search(search)
-	  if search
-	    where('name LIKE ?', "%#{search}%")
-	  else
-	    all
-	  end
-	end
 end

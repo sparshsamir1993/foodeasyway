@@ -1,0 +1,6 @@
+= simple_form_for @restaurant, :method => :PATCH  do |f|
+    = f.input :name
+    = f.input :contact
+    = f.input :min_order, as: :integer
+    = f.file_field :avatar
+    = f.submit

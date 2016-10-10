@@ -132,6 +132,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    masonry-rails (0.2.4)
+      railties
     material_icons (2.2.0)
       railties (>= 3.2)
     materialize-sass (0.97.7)
@@ -308,6 +310,7 @@ DEPENDENCIES
   iconv (~> 1.0.3)
   jbuilder (~> 2.0)
   jquery-rails
+  masonry-rails
   material_icons
   materialize-sass
   omniauth-facebook (= 1.4.0)

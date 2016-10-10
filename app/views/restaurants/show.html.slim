@@ -1,0 +1,33 @@
+
+	body background="/assets/tandoori.jpg" style="background-repeat: no-repeat; background-attachment: fixed;"
+		.mt-12
+			.grey-overlay-1
+				.padding-all-around
+
+					.jumbotron.text-center
+						h1
+							= @restaurant.name
+
+						br
+						br
+					#table
+					    .col-md-12
+							.r-id value="#{@restaurant.id}"
+								- if @restaurant.present?
+									/= will_paginate @items
+									input#item_search.form-control name="search_term_for_items" placeholder="Search Items" type="text" /
+									table.table#items_table
+
+										thead
+											tr
+												th width="33%" Item
+
+												th width="33%" Price
+
+												th width="33%" Quantity
+										= render 'table'
+
+								    = will_paginate @items
+								end
+
+					= link_to "Back to GrubStore", {:action => 'index'}, :class =>'back-link  btn btn-danger'

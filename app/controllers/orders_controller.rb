@@ -49,6 +49,24 @@ class OrdersController < ApplicationController
 
 	end
 
+	def edit
+		@order = Order.find(params[:id])
+		@items = @order.order_items
+	end
+
+	def update
+		@items = @order.order_items
+	    respond_to do |format|
+	      if @order.update(order_params)
+	        format.html { redirect_to admin_order_path(@order), notice: 'Appointment was successfully updated.' }
+	        format.json { render :show, status: :ok, location: @order }
+	      else
+	        format.html { render :edit }
+	        format.json { render json: @order.errors, status: :unprocessable_entity }
+	      end
+	    end
+	end
+
 	def clear
 		@restaurant_id = params[:restaurant_id]
 		session[:order] = nil
@@ -63,7 +81,7 @@ class OrdersController < ApplicationController
 		@restaurant = Restaurant.find(@restaurant_id)
 
 		@user = current_user
-		@order = @restaurant.orders.all
+		@order = @restaurant.orders.find(params[:order_id])
 		@order_grouped = @order.order_items.group_by(&:restaurant_id)
 
 
@@ -76,9 +94,9 @@ class OrdersController < ApplicationController
 
 
     def send_message
-    @restaurant_id = params[:restaurant_id]
+      @restaurant_id = params[:restaurant_id]
 	  @restaurant = Restaurant.find(@restaurant_id)
-      @phone_numbers = ["+91#{@restaurant.contact}","+919176028509"]
+      @phone_numbers = ["+918056100208"]
       @twilio_number = '+14782027248'
       @client = Twilio::REST::Client.new('AC5dee8c153517e73b44172c169fbac183', 'f941bca314a94fab093b1290a91757a8')
 

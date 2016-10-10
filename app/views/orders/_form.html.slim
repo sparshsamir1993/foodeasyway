@@ -1,0 +1,11 @@
+- @items.each do |item|
+    .padding-all-around
+        h3 = item.item.name
+
+        = simple_form_for item do |f|
+            = f.input :quantity
+            = f.input :total, as: :hidden, value: "#{item.item.price * Order.find(session[:order_id]).order_items.find(item.id).quantity}"
+            = f.input :order_id , as: :hidden
+            = f.input :restaurant_id , as: :hidden
+            = f.input :item_id , as: :hidden
+            = f.button :submit

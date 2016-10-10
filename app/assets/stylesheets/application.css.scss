@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require 'masonry/transitions'
  *= require_tree .
  *= require_self
  */
@@ -28,7 +29,13 @@
      color: inherit;
      transition: all .5s;
  }
-
+ .mt-12{
+     margin-top: -12%;
+ }
+ #content{
+     width: 102%;
+     margin-left: -1%;
+ }
  .btn-primary.btn-outline {
      color: #428bca;
  }
@@ -108,8 +115,17 @@ input{
 .card-img-top{
     background-size: cover;
     width: 100%;
-    height: 100%;
+    height: 50vh;
 
+}
+.card-title{
+    a{
+        font-size: 100%;
+
+    }
+}
+.card-block{
+    padding: 2%;
 }
 .order-flex{
     display: flex;
@@ -126,8 +142,8 @@ input{
     flex-wrap: wrap;
 }
 .flex-item{
-    padding: 10px;
-    flex: 1;
+    padding: 1.5%;
+    width: 33%;
 
 }
 .card{
@@ -151,9 +167,7 @@ input{
 #login h2{
 	font-size: 40px;
 }
-label{
-	font-size: 30px;
-}
+
 
 @media screen and (max-width: 768px){
   .nav-tabs{

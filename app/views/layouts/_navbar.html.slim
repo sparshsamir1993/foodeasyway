@@ -15,7 +15,8 @@ nav.navbar
                 li.top30
                     = link_to 'Logout', destroy_user_session_path, :method => :delete
                 - if session[:order_id].present?
-                    = link_to 'My Order', current_user.orders.find(session[:order_id])
+                    li.top30
+                        = link_to 'My Order', current_user.orders.find(session[:order_id])
             - else
 
                 li.top30
