@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Location:
+  = @delivery_location.location
+
+= link_to 'Edit', edit_delivery_location_path(@delivery_location)
+'|
+= link_to 'Back', delivery_locations_path

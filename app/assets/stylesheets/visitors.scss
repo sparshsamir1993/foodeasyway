@@ -1,17 +1,176 @@
 // Place all the styles related to the visitors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@font-face {
+ font-family: 'MT';
+ src:url('fontscorecomttwcenmt.ttf');
+}
+$mt: 'Tw Cen MT';
+$raleway: 'Raleway', sans-serif;
+$stalemate: 'Stalemate', cursive;
+
+.mt{
+	font-family: $mt;
+}
+.upper{
+	text-transform: uppercase;
+}
+
+.boldest{
+	font-weight: 900;
+}
+.grey-overlay{
+	background: rgba(black, .4);
+	height: 100vh;
+}
+.grey-overlay-1{
+	background: rgba(black, .4);
+	height: 100%;
+}
 .paddin-all-around{
 	padding: 10px;
+}
+.navbar-brand{
+    width: 20%;
+    font-size: 600%;
+	margin-top: 2.5%;
+	padding: 2%;
+}
+.content-1{
+	position: relative;
+	top: 30%;
+	color: white;
+	font-family: $raleway;
+	text-transform: uppercase;
+    width: 100%;
+}
+.fs350{
+	font-size: 250%;
+}
+
+#main-container{
+	height: 100vh;
+	background: image-url('main-bg.jpg');
+	margin-top: -12%;
+	background-size: cover;
+	position: absolute;
+    z-index: 0;
+    width: 100%;
+}
+.navbar{
+	z-index: 1;
+}
+
+.mt40p{
+	margin-top: 45%;
+}
+.step-flex
+{
+	display: flex;
+    -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 1s;
+}
+.step-flex-items
+{
+    flex: 1;
+	margin: 2%;
+
+
+	p{
+		font-size: 20px;
+		font-family: $mt;
+
+	}
+	.head{
+		text-transform: uppercase;
+		font-size: 25px;
+		font-weight: 600;
+	}
+}
+.top30{
+	position: relative;
+	top: 30px;
+}
+#grad1 {
+    height: 100%;
+    background: -webkit-linear-gradient(black, transparent); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, transparent); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, transparent); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, transparent); /* Standard syntax (must be last) */
+}
+.carousel-inner > .item > .image, .carousel-inner > .item > a > .image{
+	width:900px;
+	height:460px;
+}
+#caption{
+	color: white;
+	font-weight: bolder;
+}
+.carousel-caption{
+	font-family: 'Righteous', cursive;
+}
+.carousel-inner {
+  .item {
+    opacity: 0;
+    transition-property: opacity;
+	background-color: transparent !important;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .active.left,
+  .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .next.left,
+  .prev.right {
+    opacity: 1;
+  }
+}
+.carousel{
+	width:900px;
+  height:460px;
+	position: relative;
+	left: 10%;
+	bottom: 650px;
+	margin-bottom: -55%;
 }
 #form{
 	width: 450px;
 	border-radius: 5px;
 }
+.working{
+	display: -webkit-flex;
+ 	display: flex;
+	align-content: center;
+	background-color: transparent;
+	margin-bottom: 6%;
+	margin-top: 6%;
+}
+#works{
+	font-size: 300%;
+	position: relative;
+	left: 75%;
+}
+#second{
+	position: relative;
+	top: 75px;
+}
+.work{
+	-webkit-flex: .5;
+				 flex: .5;
+	background-color: white;
+}
 h3{
-	color: white;
+	color: black;
 	border:1;
-	font-weight: bold;
+	font-family: 'Righteous', cursive;
 }
 h2 a{
 	color:white;
@@ -20,10 +179,198 @@ h2 a{
 .tv img{
 	border-radius: 25px;
 	max-height: 35%;
-	max-width: 35%;	
+	max-width: 35%;
+}
+.visitor-jumbo{
+	background-color: white;
+}
+#grubtv{
+
+}
+.parallax {
+    /* The image used */
+    background-image: url('/assets/Indian.jpg');
+    /* Full height */
+    height: 50%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+		&:hover {
+			-webkit-filter: blur(2px);
+			color: red;
+		}
+}
+.parallax-1 {
+    /* The image used */
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.parallax-2 {
+    /* The image used */
+    /* Full height */
+	background-image: url('/assets/bg-pattern.jpg');
+    height: 400px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mb50{
+	margin-bottom: 10%;;
+}
+.cookvideo{
+	position: relative;
+	background-size: cover;
+	z-index: -1;
+	width: 100%;
+}
+.hotel-row{
+	display: flex;
+	width: 80%;
+	height: 40%;
+	background-color: blue;
+
+}
+.hotel{
+	width: 20%;
+	height: 35%;
+	background-color: green;
+}
+#buttons{
+	position: relative;
+	top: 55%;
+}
+#title{
+	font-weight: bolder;
+	position: relative;
+	color: white;
+	left: 33%;
+	font-family: 'Righteous', cursive;
+	width: 500px;
+	font-size: 600%;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+}
+#menutext{
+	position: relative;
+	color: white;
+	bottom: 180px;
+	font-size: 195%;
+	left :-13%;
+	font-weight: bold;
+	font-family: 'Righteous', cursive;
+}
+//animations
+
+@keyframes fadein {
+	0% { opacity: 0; }
+	100%   { opacity: 1; }
 }
 
-#visitor{
-	background: url('burger.gif') ;
-    background-size: cover !important;
+@keyframes greyoutText{
+	from{
+		filter: brightness(100%);
+	}
+	to{
+		filter: brightness(30%);
+	}
+}
+//screens
+
+
+@media screen and (max-width: 768px) {
+	#title{
+		font-weight: bolder;
+		position: relative;
+		color: white;
+		left: 20%;
+		bottom: 10%;
+		top: 180px;
+		-webkit-filter: none;
+		width: 500px;
+		font-size: 230%;
+	}
+	.carousel{
+		left: 7%;
+    height: 360px;
+		top: -460px;
+    width: 610px;
+    z-index: +1;
+	}
+	#buttons{
+		position: relative;
+		top: 150px;
+		margin-bottom: 15%;
+	}
+	.cookvideo{
+		height: 480px;
+		width: 750px;
+		left: -15px
+	}
+}
+@media screen and (max-width: 450px) {
+	#title{
+		font-weight: bolder;
+		position: relative;
+		color: white;
+		left: 30%;
+		top: 110px;
+		-webkit-filter: none;
+		width: 200px;
+		font-size: 230%;
+
+	}
+	#myCarousel{
+		position: relative;
+		left: 1%;
+	}
+	.cookvideo{
+		height: 380px;
+		width: 100%;
+		left: 0px
+	}
+	.carousel{
+		left: 2% !important;
+		height: 260px;
+		top: -346px;
+		width: 410px;
+		z-index: +1;
+	}
+	#caption{
+		position: relative;
+		left: -280px;
+		font-size: 25px;
+		top: 20px;
+	}
+	#second{
+		position: relative;
+		top: 125px;
+	}
+	#works{
+		left:75%;
+	}
+	#buttons{
+		margin-top: 20%;
+		position: relative;
+		top: 70px;
+		margin-bottom: 15%;
+		display: block;
+	}
+}
+@media screen and (max-width:320px){
+	#myCarousel{
+		position: relative;
+		left: 1%;
+	}
+	.cookvideo{
+		width: 100%;
+	}
 }

@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+gem "paperclip", "~> 5.0.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-material-design'
@@ -18,12 +19,17 @@ gem 'bootstrap-material-design'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'twilio-ruby'
+gem 'masonry-rails'
+gem 'bulksms', '~> 0.5.2'
+gem "iconv", "~> 1.0.3"
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem "workless", "~> 1.2.2"
 gem 'will_paginate', '~> 3.0'
+gem 'materialize-sass'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem "bower-rails", "~> 0.10.0"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'therubyracer'
@@ -38,7 +44,7 @@ gem 'material_icons'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'twitter-bootstrap-rails'
-gem "font-awesome-rails"
+gem 'font-awesome-sass', '~> 4.6.2'
 gem "slim-rails"
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'devise'
@@ -53,6 +59,11 @@ gem 'rails-assets-bootstrap'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "better_errors"
+end
+group :production do
+  gem 'rails_12factor'
+  gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
 end
 
 group :development do
@@ -62,4 +73,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

@@ -1,6 +1,8 @@
 // Place all the styles related to the restaurant controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$grub-text: 'Righteous', cursive;
+
 .well{
 	height: 200px;
 	width: 200px;
@@ -9,24 +11,35 @@
 	color: white;
 	font-size: 20px;
 }
-.nav{
-	background-color: black;
-	border-radius: 10px;
-
-}
-.nav-justified a{
-	padding: 10px;
+.righteous{
+	font-family: $grub-text;
 }
 .jumbotron{
 	background: transparent;
 	color: white;
 
 }
+.grubfont{
+	font-family: $grub-text;
+}
+.fa-cart-plus:before{
+	position: relative;
+	bottom: 5px;
+}
+
+
 td{
 	font-weight: bold;
-	
+
 
 }
+
+
+.grubtext{
+    font-family: $grub-text;
+	color: black !important;
+}
+
 .card-action a{
 	color: black !important;
 }

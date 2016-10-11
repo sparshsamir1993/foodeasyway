@@ -1,0 +1,21 @@
+h1 Listing delivery_locations
+
+table
+  thead
+    tr
+      th Location
+      th
+      th
+      th
+
+  tbody
+    - @delivery_locations.each do |delivery_location|
+      tr
+        td = delivery_location.location
+        td = link_to 'Show', delivery_location
+        td = link_to 'Edit', edit_delivery_location_path(delivery_location)
+        td = link_to 'Destroy', delivery_location, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Delivery location', new_delivery_location_path

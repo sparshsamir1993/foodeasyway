@@ -1,23 +1,46 @@
-.padding-all-around
-	body id="visitor" 
-		.container
-			.jumbotron.text-center
-				.tv
-					img src="/assets/grubtv.gif"
-			br
-			br
-			br
-			.col-md-2
-			.col-md-3
+	body id="visitor"
+		#main-container
+			.grey-overlay
+				.row.content-1
+					.col-md-12.text-center
+						h2.raleway.boldest.fs350 Order yourself a delicious Grub online!
+				.container#buttons
+					.row
+						.col-md-6.col-md-offset-3
+							= link_to "Order now",restaurants_path, class: "btn order-now-btn btn-outline btn-block "
+					.row
+						.col-md-3
 
-				= link_to "",restaurant_index_path(@user_id), class: "btn btn-primary fa fa-cart-plus fa-3x"
-				h3 Order Now
-			.col-md-3
-				  
-				  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-5x" 
-				  h3 Log in With Facebook
-			.col-md-3
-			  -if user_signed_in?
-				h2#logout
-					= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
-					
+							  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-4x"
+							  h3 Log in With Facebook
+						.col-md-3
+						  -if user_signed_in?
+							h2#logout
+								= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
+
+
+		.container.mt40p
+			.step-flex
+				.step-flex-items
+					.thumb.text-center
+						i.fa.fa-cutlery.fa-5x
+					.content-step.text-center
+						p.head Choose your Grub
+						p  Sign up & flip through a menu of dishes from restaurants available for delivery around SRM, KTR. We make it simple for you to find just what you're craving.
+
+				.step-flex-items
+					.thumb.text-center
+						i.fa.fa-cart-arrow-down.fa-5x
+					.content-step.text-center
+						p.head Skip the Store
+						p	We have partnered with your favourites around here, so we save you a visit to their store at the very convenience of a few clicks, while they prepare & carefully pack your grub, once you've placed an order.
+
+				.step-flex-items
+					.thumb.text-center
+						i.fa.fa-bell.fa-5x
+					.content-step.text-center
+						p.head	Ding-Dong!
+
+						p Bell? Please take the door! Pay your checkout amount to the delivery boy & enjoy your grub! We think long & hard about this whole process so you don't have to. If you like what you eat, you can always share the love or ask us a question!
+
+		.parallax-2

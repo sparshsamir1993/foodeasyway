@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
+//= require twitter/bootstrap
 //= require bootstrap-sprockets
 //= require bootstrap
-//= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap-datepicker
-//= require turbolinks
+//= require masonry/jquery.masonry
 //= require_tree .
 $(function() {
 

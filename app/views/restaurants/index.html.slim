@@ -1,0 +1,30 @@
+head
+	title
+		| Order
+	body id="menu"
+	  .container-fluid
+		.jumbotron.text-center
+			h1.grubtext Order Now
+		.flex-container
+			- @restaurant.each do |t|
+				.flex-item
+					.card
+						img class="card-img-top" src="#{t.avatar.url}"
+						.card-block
+							.card-title
+								h1= link_to t.name, restaurant_path(t.id)
+							.card-text
+								p = t.contact
+
+
+
+
+/			.col-md-3
+/				.row
+/				  .col.s10
+/				    .card.blue-grey.darken-1
+/				      .card-content.white-text
+/				        span.card-title #{t.name}
+/				      .card-action.grey.lighten-1
+/				        = link_to "Enter Me", user_restaurant_show_path(:user_id=>@user.id, :id=>t.id)
+/

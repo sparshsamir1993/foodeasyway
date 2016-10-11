@@ -1,0 +1,25 @@
+nav.navbar
+    .container-fluid#grad1
+        .nav-header
+            a.navbar-brand.stalemate.boldest href="/"  Grubvibes
+        ul.nav.nav-justified.nav-tabs.mt.upper
+            li.top30
+                a href="#"  Home
+            li.top30
+                a href="#"  Our Restaurants
+            li.top30
+                a href="#"  ABOUT US
+            - if user_signed_in?
+                li.top30
+                    = link_to '',edit_user_registration_path, class: "fa fa-user fa-2x"
+                li.top30
+                    = link_to 'Logout', destroy_user_session_path, :method => :delete
+                - if session[:order_id].present?
+                    li.top30
+                        = link_to 'My Order', current_user.orders.find(session[:order_id])
+            - else
+
+                li.top30
+                    = link_to 'Register', new_user_registration_path
+                li.top30
+                    = link_to 'Login', new_user_session_path
