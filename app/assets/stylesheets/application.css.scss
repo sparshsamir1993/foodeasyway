@@ -105,6 +105,11 @@ input{
     width: 20%;
     font-size: 600%;
     color: white;
+    transition: .3s ease-in;
+    &:hover{
+        color: white;
+        text-shadow: 6px 9px 5px grey;
+    }
 }
 .nav-tabs.nav-justified > li > a{
     border: none !important;

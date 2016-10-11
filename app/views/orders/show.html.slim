@@ -1,31 +1,50 @@
 .order-flex
     - @sec = 0
+
     -@order_grouped.each do |order|
+
         .order-flex-items id="#{@sec}_log"
             - @sec = @sec + 1
             - r_id = order[0]
+            - @bill_total = Order.find(params[:id]).order_items.sum(:total)
             -order[1].each do |item|
-            .card
-                .card-block.pad2
-                    h4.custom-card-title = Restaurant.find(r_id).name
-                    ul.list-group.list-group-flush
-                        -order[1].each do |item|
+                - @min_order = Restaurant.find(r_id).min_order
+                .card
+                    .card-block.pad2
+                        h1.custom-card-title = Restaurant.find(r_id).name
+                        h4 = "Min Order: #{@min_order}"
+                        ul.list-group.list-group-flush
+                            - sum = 0
+                            -order[1].each do |item|
+                                .row
+                                    .col-md-6
+                                        li.list-group-item = item.item.name
+                                    .col-md-2
+                                        = item.quantity
+                                    .col-md-2
+                                        = item.total
+                                        - sum = sum +item.total
+                                    .col-md-2
+                                        = link_to "", order_item_path(:restaurant_id => r_id, :id => item.id), class: "fa fa-trash", method: 'delete'
+                        .card-block
                             .row
-                                .col-md-6
-                                    li.list-group-item = item.item.name
-                                .col-md-2
-                                    = item.quantity
-                                .col-md-2
-                                    = item.total
-                                .col-md-2
-                                    = link_to "", order_item_path(:restaurant_id => r_id, :id => item.id), class: "fa fa-trash", method: 'delete'
+                                .col-md-3.col-md-offset-9
+                                    h1 ="Total: #{sum}"
 
-                    .card-block
-                        .row
-                            .col-md-4
-                                a.card-link href="#{restaurant_path(r_id)}"  Back To Restaurant
-                            .col-md-2.col-md-offset-4
-                                a.card-link href="#{edit_order_path}"  Edit
-                        .row
-                            .col-md-4
-                                //a.card-link href=
+                            .row
+                                .col-md-4
+                                    a.card-link href="#{restaurant_path(r_id)}"  Back To Restaurant
+                                .col-md-2.col-md-offset-4
+                                    a.card-link href="#{edit_order_path}"  Edit
+
+                            .row
+                                .col-md-4
+                                    -if sum > @min_order
+                                        - if current_user.contact.present? && current_user.address.present?
+                                            //= link_to "Send Order", "#{send_message_order_path(:restaurant_id => r_id, :total => sum)}", method: 'POST'
+
+                                            a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
+
+                                        - else
+                                            h4 = link_to " Enter your contact and address to proceed", edit_us
+                                        //a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order

@@ -11,7 +11,7 @@ class OrderItem < ActiveRecord::Base
         def self.create_order(item_id, quantity, restaurant_id, user_id)
 
             if order = Order.create(restaurant_id: restaurant_id, user_id: user_id)
-                @total = quantity.to_i * Item.find(item_id).item.price
+                @total = quantity.to_i * Item.find(item_id).price
                 if order.order_items.create(item_id: item_id, quantity: quantity, restaurant_id: restaurant_id, total: @total)
                     return order
                 else

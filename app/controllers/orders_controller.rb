@@ -92,6 +92,10 @@ class OrdersController < ApplicationController
 		@order_grouped = @order.order_items.group_by(&:restaurant_id)
 	end
 
+	def success
+		
+	end
+
 
     def send_message
       @restaurant_id = params[:restaurant_id]
@@ -101,32 +105,40 @@ class OrdersController < ApplicationController
       @client = Twilio::REST::Client.new('AC5dee8c153517e73b44172c169fbac183', 'f941bca314a94fab093b1290a91757a8')
 
       @user = current_user
-	  @order = @restaurant.orders.all
-	  @text_order = ""
-	  @bill_S=""
-	  @prices =Array.new
-	  sum = 0
-	  if @order.last.present?
-		@order.last.order.each do |id,quantity|
-		  if @restaurant.items.find_by_id(id).present?
-			@item = @restaurant.items.find_by_id(id).name
-			@price =  @restaurant.items.find_by_id(id).price * quantity
-			@text_order.concat(" #{@item} #{quantity}")
-			@prices.push(@price)
-		  end
-		end
+	  @order = Order.find(session[:order_id])
+	  @order_items = @order.order_items
+	  @array = Array.new
+	  @order_items.each do |item|
+		  @array.push("#{item.item.name} #{item.quantity}")
 	  end
-	  @prices.each do |p|
-	  	sum+=p
-	  end
+	  @array = @array.join(',')
+	  @bill = params[:total]
+	#   @text_order = ""
+	#   @bill_S=""
+	#   @prices =Array.new
+	#   sum = 0
+	#   if @order.last.present?
+	# 	@order.last.order.each do |id,quantity|
+	# 	  if @restaurant.items.find_by_id(id).present?
+	# 		@item = @restaurant.items.find_by_id(id).name
+	# 		@price =  @restaurant.items.find_by_id(id).price * quantity
+	# 		@text_order.concat(" #{@item} #{quantity}")
+	# 		@prices.push(@price)
+	# 	  end
+	# 	end
+	#   end
+	#   @prices.each do |p|
+	#   	sum+=p
+	#   end
 	  @phone_numbers.each do |p|
 	      message = @client.account.messages.create(
 	        :from => @twilio_number,
 	        :to => p,
-	        :body => "#{@text_order} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address} Total is #{sum}"
+	        :body => "#{@array} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address} Total is #{@bill}"
 	        # US phone numbers can make use of an image as well.
 	        # :media_url => image_url
 	      )
+	  redirect_to order_path(session[:order_id])
       end
 
     end
