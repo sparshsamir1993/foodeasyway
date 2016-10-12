@@ -20,10 +20,3 @@
 //= require bootstrap-datepicker
 //= require masonry/jquery.masonry
 //= require_tree .
-$(function() {
-
-  $("td").keyup(function() {
-    $.get($("#items_search").attr("action"), $("#items_search").serialize(), null, "script");
-    return false;
-  });
-});

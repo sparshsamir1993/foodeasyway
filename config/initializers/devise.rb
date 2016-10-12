@@ -28,6 +28,7 @@ Devise.setup do |config|
   require 'omniauth-facebook'
   config.secret_key = '7c0c87bffc5b00c8b03a9a38ddef71439ac731e77ead6564e70fa4fa1020791e304dd0379f46aab4eed3d4aa9e92712b8ed331a59fccd86bf6421fb5e3b37f7c'
   config.mailer_sender = 'sparshsamir1993@gmail.com'
+  
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -267,5 +268,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  config.omniauth :facebook, '977470122361795', '84d066780d8096440a41f54fa250dd97' , scope: 'email', info_fields: 'name,email'
+  config.omniauth :facebook, '977470122361795', '84d066780d8096440a41f54fa250dd97', callback_url: "http://localhost:3001/users/auth/facebook/callback?" , scope: 'email', info_fields: 'name,email'
 end

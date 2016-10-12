@@ -11,7 +11,7 @@
 					.row
 						.col-md-3
 
-							  = link_to  "",user_facebook_omniauth_authorize_path,class: "fa fa-facebook-square fa-4x"
+							  = link_to  "",user_facebook_omniauth_authorize_path, class: "fa fa-facebook-square fa-4x", id: 'sign_in'
 							  h3 Log in With Facebook
 						.col-md-3
 						  -if user_signed_in?
