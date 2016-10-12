@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  movementStrength = 20
+  movementStrength = 10
   height = movementStrength / $(window).height()
   width = movementStrength / $(window).width()
   $('#main-container').mousemove (e) ->
@@ -19,7 +19,7 @@ $(document).on 'ready', ->
 $(window).on 'scroll', ->
   scroll = $(window).scrollTop()
   console.log scroll
-  if scroll > 75
+  if scroll > 40
     $('.step-flex').show()
     $('.step-flex').addClass 'animated fadeIn'
   return
