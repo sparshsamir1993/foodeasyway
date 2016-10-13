@@ -140,6 +140,12 @@ input{
 .order-flex-items{
     flex: 1;
     margin: 2%;
+
+    .card-block{
+        h1{
+            font-size: 100%;
+        }
+    }
 }
 .flex-container{
     display: flex;
@@ -149,6 +155,12 @@ input{
 .flex-item{
     padding: 1.5%;
     width: 33%;
+
+    .card-title{
+        h1{
+            font-size: 100%;
+        }
+    }
 
 }
 .card{
@@ -179,6 +191,14 @@ input{
       display: block;
       flex-direction: column;
       background-color: black;
+  }
+  .flex-item{
+      flex: none;
+      width: 100%;
+  }
+  .order-flex-items{
+      width: 100%;
+      flex: none;
   }
 }
 .nav-tabs{

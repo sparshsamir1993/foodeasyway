@@ -11,24 +11,24 @@
                 - @min_order = Restaurant.find(r_id).min_order
                 .card
                     .card-block.pad2
-                        h1.custom-card-title = Restaurant.find(r_id).name
+                        h2 = Restaurant.find(r_id).name
                         h4 = "Min Order: #{@min_order}"
                         ul.list-group.list-group-flush
                             - sum = 0
                             -order[1].each do |item|
                                 .row
-                                    .col-md-6
+                                    .col-md-6.col-xs-6
                                         li.list-group-item = item.item.name
-                                    .col-md-2
+                                    .col-md-2.col-xs-2
                                         = item.quantity
-                                    .col-md-2
+                                    .col-md-2.col-xs-2
                                         = item.total
                                         - sum = sum +item.total
-                                    .col-md-2
+                                    .col-md-2.col-xs-2
                                         = link_to "", order_item_path(:restaurant_id => r_id, :id => item.id), class: "fa fa-trash", method: 'delete'
                         .card-block
                             .row
-                                .col-md-3.col-md-offset-9
+                                .col-md-3.col-md-offset-9.col-xs-3.col-xs-offset-9
                                     h1 ="Total: #{sum}"
 
                             .row
@@ -38,7 +38,7 @@
                                     a.card-link href="#{edit_order_path}"  Edit
 
                             .row
-                                .col-md-4
+                                .col-md-12
                                     -if sum > @min_order
                                         - if current_user.contact.present? && current_user.address.present?
                                             //= link_to "Send Order", "#{send_message_order_path(:restaurant_id => r_id, :total => sum)}", method: 'POST'
@@ -46,5 +46,5 @@
                                             a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
 
                                         - else
-                                            h4 = link_to " Enter your contact and address to proceed", edit_us
+                                            h4 = link_to " Enter your contact and address to proceed", edit_user_registration_path
                                         //a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
