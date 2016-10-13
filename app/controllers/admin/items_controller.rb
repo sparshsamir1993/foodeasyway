@@ -24,12 +24,12 @@ class Admin::ItemsController < ApplicationController
   		if @item.update_attributes(item_params)
         		redirect_to edit_admin_restaurant_path(:item_id=>@item.id, :restaurant_id=>@restaurant.id)
      	else
-        		
+
         		render :action => 'edit'
-        		
+
         end
 
-  end     
+  end
 
 	def show
 		@item = Item.last
@@ -40,7 +40,7 @@ class Admin::ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		@item.restaurant_id = @restaurant.id
 		if @item.save
-			redirect_to :action=>"show", :controller=>"admin/restaurant", :id=>@restaurant.id
+			redirect_to admin_restaurant_path(@restaurant)
 		else
 			render('new')
 		end
@@ -57,7 +57,7 @@ class Admin::ItemsController < ApplicationController
 		def item_params
 			if :action =='new'
 				params.permit(:name, :quantity, :price, :id,:item)
-			end 
-			params.require(:items).permit(:name, :price, :quantity)
+			end
+			params.require(:item).permit(:name, :price, :quantity)
 		end
 end

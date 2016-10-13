@@ -1,5 +1,9 @@
 .padding-all-around
 	h1 New Restaurant
 
-	== render 'form'
-	
+	= simple_form_for [:admin,@restaurant], :method => :POST  do |f|
+	    = f.input :name
+	    = f.input :contact
+	    = f.input :min_order, as: :integer
+	    = f.file_field :avatar
+	    = f.submit
