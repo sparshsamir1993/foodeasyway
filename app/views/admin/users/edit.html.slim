@@ -1,0 +1,17 @@
+= simple_form_for [:admin, @user] do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@user.errors.count, "error")
+        | prohibited this user from being saved:
+      ul
+        - @user.errors.full_messages.each do |message|
+          li= message
+  .field
+
+    = f.input :email
+    = f.input :contact
+    = f.input :address
+    = f.input :admin
+  .actions
+    = f.submit 'Update User',class: 'btn btn-primary'

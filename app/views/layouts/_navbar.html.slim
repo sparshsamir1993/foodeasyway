@@ -10,7 +10,7 @@ nav.navbar
                 li.top30
                     a href="#"  Home
                 li.top30
-                    a href="#"  Our Restaurants
+                    a href="#{restaurants_path}"  Our Restaurants
                 li.top30
                     a href="#"  ABOUT US
                 - if user_signed_in?
@@ -21,6 +21,9 @@ nav.navbar
                     - if session[:order_id].present?
                         li.top30
                             = link_to 'My Order', current_user.orders.find(session[:order_id])
+                -if current_user.admin?
+                    li.top30
+                        = link_to 'admin panel', admin_restaurants_path
                 - else
 
                     li.top30

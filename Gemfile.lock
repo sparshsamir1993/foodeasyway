@@ -48,7 +48,7 @@ GEM
       railties (>= 3.0)
       sass (>= 3.2)
     arel (6.0.3)
-    autoprefixer-rails (6.5.0.2)
+    autoprefixer-rails (6.5.1)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -99,6 +99,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-sass (4.6.2)
       sass (>= 3.2)
+    geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.4.6)
@@ -122,7 +123,7 @@ GEM
       multi_json (>= 1.5)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.7.1)
+    less-rails (2.8.0)
       actionpack (>= 4.0)
       less (~> 2.6.0)
       sprockets (> 2, < 4)
@@ -307,6 +308,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   font-awesome-sass (~> 4.6.2)
+  geocoder
   iconv (~> 1.0.3)
   jbuilder (~> 2.0)
   jquery-rails

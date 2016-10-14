@@ -19,6 +19,7 @@ gem 'bootstrap-material-design'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'twilio-ruby'
+gem "geocoder"
 gem 'masonry-rails'
 gem 'bulksms', '~> 0.5.2'
 gem "iconv", "~> 1.0.3"

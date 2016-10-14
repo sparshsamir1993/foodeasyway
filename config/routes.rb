@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :restaurants
       resources :items
+      resources :users
   end
   root to: 'visitors#index'
 
