@@ -6,7 +6,7 @@
             - r_id = order[0]
             - @bill_total = Order.find(params[:id]).order_items.sum(:total)
             - @min_order = Restaurant.find(r_id).min_order
-            .card
+            .card id="card_id_#{r_id}"
                 .card-block.pad2
                     h2 = Restaurant.find(r_id).name
                     h4 = "Min Order: #{@min_order}"
@@ -39,9 +39,9 @@
                                 -if sum > @min_order
                                     - if current_user.contact.present? && current_user.address.present?
                                         //= link_to "Send Order", "#{send_message_order_path(:restaurant_id => r_id, :total => sum)}", method: 'POST'
-
-                                        a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
+                                        a.card-link#send-btn value="#{r_id}" name="#{sum}" Send Order
 
                                     - else
                                         h4 = link_to " Enter your contact and address to proceed", edit_user_registration_path
                                     //a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
+            i.fa.fa-thumbs-up.fa-3x.hidden id="thumbs_#{r_id}"                        

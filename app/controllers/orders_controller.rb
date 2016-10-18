@@ -93,14 +93,14 @@ class OrdersController < ApplicationController
 	end
 
 	def success
-		
+
 	end
 
 
     def send_message
       @restaurant_id = params[:restaurant_id]
 	  @restaurant = Restaurant.find(@restaurant_id)
-      @phone_numbers = ["+918056100208"]
+      @phone_numbers = ["+918056100208", @restaurant.contact]
       @twilio_number = '+14782027248'
       @client = Twilio::REST::Client.new('AC5dee8c153517e73b44172c169fbac183', 'f941bca314a94fab093b1290a91757a8')
 

@@ -4,19 +4,22 @@
 $(document).on 'ready', ->
     $('.navbar-brand').addClass('animated fadeIn')
 
-$(document).on 'click', '#send-btn', (e) ->
-    e.preventDefault()
-    console.log 'clicked'
-    restaurant_id = $('#send-btn').attr('value')
-    order_id = $('#send-btn').attr('name')
-    $.ajax this.href,
-        type: 'POST'
-        data:{
-            restaurant_id: restaurant_id
-        }
-        dataType: 'text'
-        success:(data, textStatus, jqxhr) ->
-          console.log 'insy'
-          alert 'sent'
-        error:(jqxhr, textStatus, errorThrown) ->
-          alert 'Something went wrong.', life:2000
+    $(document).on 'click', '#send-btn', (e) ->
+        e.preventDefault()
+        console.log 'clicked'
+        restaurant_id = $(this).attr('value')
+        total = $(this).attr('name')
+        $.ajax 'orders/send_message',
+            type: 'POST'
+            data:{
+                restaurant_id: restaurant_id
+                total: total
+            }
+            dataType: 'text'
+            success:(data, textStatus, jqxhr) ->
+              $("#card_id_"+restaurant_id).addClass('hidden')
+              $('#thumbs_'+restaurant_id).toggleClass('hidden')
+              console.log 'insy'
+              alert 'sent'
+            error:(jqxhr, textStatus, errorThrown) ->
+              alert 'Something went wrong.', life:2000
