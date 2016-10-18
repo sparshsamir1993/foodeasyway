@@ -16,7 +16,7 @@ class Admin::RestaurantsController < RestaurantsController
 	def show
 		@item =Restaurant.find(params[:id]).items
 		@restaurant = Restaurant.find(params[:id])
-		@orders = @restaurant.orders.all
+		@orders = @restaurant.order_items.group_by(&:order_id)
 		#@item = Item.last
 	end
 

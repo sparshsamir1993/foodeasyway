@@ -1,23 +1,23 @@
-tbody
 
-	- @items.each do |t|
-		tr
 
-			td width="33%"
+- @items.each do |t|
+	tr
 
-				= t.name
+		td width="33%"
 
-			td width="33%"
+			= t.name
 
-				= t.price
+		td width="33%"
 
-			td width="33%"
+			= t.price
 
-				form#products_index_add_to_cart_form action='/order_items' method='POST' autocomplete="off"
-					input type="hidden" name="authenticity_token" value="#{form_authenticity_token}"
-					input type="hidden" name="item_id" value="#{t.id}"
-					input type="hidden" name="restaurant_id" value="#{@restaurant.id}"
-					input type="hidden" name="user_id" value="#{current_user.id}"
-					input type="hidden" name="total" value="#{t.price * params[:quantity].to_i}"
-					input type="integer" name="quantity" style="width: 100%"
-					input#products_index_add_to_cart.btn.btn-primary.btn-outline.btn-block.btncart.margin_top5 type="submit" data-product="#{t.id}"
+		td width="33%"
+
+			form#products_index_add_to_cart_form action='/order_items' method='POST' autocomplete="off"
+				input type="hidden" name="authenticity_token" value="#{form_authenticity_token}"
+				input type="hidden" name="item_id" value="#{t.id}"
+				input type="hidden" name="restaurant_id" value="#{@restaurant.id}"
+				input type="hidden" name="user_id" value="#{current_user.id}"
+				input type="hidden" name="total" value="#{t.price * params[:quantity].to_i}"
+				input type="integer" name="quantity" style="width: 100%"
+				input#products_index_add_to_cart.btn.btn-danger.btn-outline.btn-block type="submit" data-product="#{t.id}" value="Add to Order"

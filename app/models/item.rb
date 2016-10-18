@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
 	validates :name,  :presence => true
 	validates :price, :presence => true
 
-	scope :searchname, lambda { |query|
+	scope :search, lambda { |query|
 	   return nil  if query.blank?
 	 # Searches the students table on the 'first_name' and 'last_name' columns.
 	 # Matches using LIKE, automatically appends '%' to each term.
@@ -26,7 +26,7 @@ class Item < ActiveRecord::Base
 	 num_or_conds = 1
 	 where(
 	   terms.map { |term|
-	     "(LOWER(items.name) LIKE ?)"
+		 "(LOWER(items.name) LIKE ?)"
 	   }.join(' AND '),
 	   *terms.map { |e| [e] * num_or_conds }.flatten
 	 )

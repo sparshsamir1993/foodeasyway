@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :restaurants
       resources :items
       resources :users
+      resources :orders
   end
   root to: 'visitors#index'
 

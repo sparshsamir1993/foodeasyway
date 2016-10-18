@@ -5,23 +5,29 @@ class RestaurantsController < ApplicationController
 	def index
 		@restaurant = Restaurant.order("id ASC")
 		@user = current_user
-		@item =Item.last
-
-
 	end
+
 	def show
 		@restaurant = Restaurant.find(params[:id])
-		@items = @restaurant.items.all.paginate(page: params[:page], per_page: 40).searchname(params[:searchname])
-		@user = current_user
-		if params.has_key?(:template) && params[:template] == 'false'
+		@items = @restaurant.items.paginate(page: params[:page], per_page: 40).search(params[:search])
 			respond_to do |format|
-				format.html { render partial: 'restauran' ,layout:false, status: :ok }
-			end
-		end
+		        if params.has_key?(:template)
+		            if params[:template] == 'false'
+		                format.html {render partial: 'table.html', locals: {users: @items}}
+		            else
+		                format.html
+		            end
+		        else
+		            format.html
+		        end
+		        format.html
+		        format.json {render json: @items}
+		    end
 	end
 
 	def new
 	end
+
 	def update
 		@restaurant = Restaurant.find(params[:id])
 

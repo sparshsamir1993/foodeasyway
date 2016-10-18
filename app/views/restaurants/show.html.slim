@@ -25,7 +25,8 @@
 												th width="33%" Price
 
 												th width="33%" Quantity
-										= render 'table'
+										tbody
+											= render 'table'
 
 								    = will_paginate @items
 								end

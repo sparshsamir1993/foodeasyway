@@ -19,7 +19,9 @@ $(document).on 'ready', ->
 $(window).on 'scroll', ->
   scroll = $(window).scrollTop()
   console.log scroll
-  if scroll > 40
+  if scroll > 20
     $('.step-flex').show()
-    $('.step-flex').addClass 'animated fadeIn'
+    $('.step-flex-items:nth-child(1)').addClass 'animated zoomInLeft'
+    $('.step-flex-items:nth-child(2)').addClass 'animated zoomInLeft'
+    $('.step-flex-items:nth-child(3)').addClass 'animated zoomInLeft'
   return

@@ -68,9 +68,7 @@ $stalemate: 'Stalemate', cursive;
 .step-flex
 {
     -webkit-flex: flex;
-	display: flex;
-    -webkit-animation-duration: 1s;
-  -webkit-animation-delay: 1s;
+    display: flex;
 }
 .step-flex-items
 {
@@ -78,7 +76,15 @@ $stalemate: 'Stalemate', cursive;
 	margin: 2%;
     align-self: auto;
 
-
+    &:nth-child(1){
+        animation-delay: .5s !important;
+    }
+    &:nth-child(2){
+        animation-delay: .7s !important;
+    }
+    &:nth-child(3){
+        animation-delay: .9s !important;
+    }
 	p{
 		font-size: 20px;
 		font-family: $mt;
