@@ -9,7 +9,7 @@ $(document).on 'ready', ->
         console.log 'clicked'
         restaurant_id = $(this).attr('value')
         total = $(this).attr('name')
-        $.ajax '/orders/send_message',
+        $.ajax 'orders/send_message',
             type: 'POST'
             data:{
                 restaurant_id: restaurant_id
