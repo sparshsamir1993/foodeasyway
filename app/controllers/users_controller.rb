@@ -8,15 +8,13 @@ class UsersController < ApplicationController
 	def edit
 	end
 
-	def update
-		@user = current_user
+	def update_contact
+		current_user.update(contact: params[:contact], address: params[:address])
 
-		@restaurant =  Restaurant.find(params[:user][:restaurant_id])
-		if @user.update_attributes(user_params)
-			redirect_to user_order_index_path(:restaurant_id => @restaurant.id, :user_id=>current_user.id)
-		else
-			render('new')
-		end
+		respond_to do |format|
+	      format.html{ redirect_to order_path(params[:id])}
+	      format.json { render json: current_user, status: :ok}
+	    end
 	end
 
     def destroy

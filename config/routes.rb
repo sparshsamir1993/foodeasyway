@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :items
   resources :order_items
-  resources :users
+  resources :users do
+      member do
+          post :update_contact
+      end
+  end
   namespace :admin do
       resources :restaurants
       resources :items

@@ -41,7 +41,22 @@
                                         //= link_to "Send Order", "#{send_message_order_path(:restaurant_id => r_id, :total => sum)}", method: 'POST'
                                         a.card-link#send-btn value="#{r_id}" name="#{sum}" Send Order
 
-                                    - else
-                                        h4 = link_to " Enter your contact and address to proceed", edit_user_registration_path
                                     //a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
-            i.fa.fa-thumbs-up.fa-3x.hidden id="thumbs_#{r_id}"                        
+            i.fa.fa-thumbs-up.fa-3x.hidden id="thumbs_#{r_id}"
+
+
+.card
+    .card-block
+        form#update_contact
+            .form-group.mtp10
+                .row
+                    .col-md-12
+                        label.integer.optional.control-label for="contact"  Phone Number:
+                        input#contact_value.numeric.integer.optional.form-control name="contact"  type="number"  required="true" value="#{current_user.contact.present? ? current_user.contact : "0"}" /
+                .row
+                    .col-md-12
+                        label.integer.optional.control-label for="address"  Address:
+                        input#address_value.numeric.integer.optional.form-control name="address"  type="textarea" required="true" value="#{current_user.address.present? ? current_user.address : "nil"}" /
+                .row
+                    .col-md-12.mt10
+                        input.btn.btn-block#update-contact name="commit" type="submit" value=("Update Contact") span="#{current_user.id}"

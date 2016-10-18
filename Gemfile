@@ -25,6 +25,7 @@ gem 'bulksms', '~> 0.5.2'
 gem "iconv", "~> 1.0.3"
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'sweetalert-rails'
 gem "workless", "~> 1.2.2"
 gem 'will_paginate', '~> 3.0'
 gem 'materialize-sass'

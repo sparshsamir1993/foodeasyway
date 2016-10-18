@@ -20,6 +20,26 @@ $(document).on 'ready', ->
               $("#card_id_"+restaurant_id).addClass('hidden')
               $('#thumbs_'+restaurant_id).toggleClass('hidden')
               console.log 'insy'
-              alert 'sent'
+              swal 'Order Sent','', 'success'
             error:(jqxhr, textStatus, errorThrown) ->
-              alert 'Something went wrong.', life:2000
+              swal 'Something went wrong.','', 'error'
+
+    $(document).on 'click', '#update-contact', (e) ->
+        e.preventDefault()
+        console.log 'clicked'
+        contact = $('#contact_value').val()
+        address = $('#address_value').val()
+        user_id = $(this).attr('span')
+        $.ajax "/users/" + user_id + "/update_contact",
+            type: 'POST'
+            data:{
+                contact: contact
+                address: address
+                template: false
+            }
+            dataType: 'text'
+            success:(data, textStatus, jqxhr) ->
+                # alert 'yay'
+                swal 'Contact Updated','', 'success'
+            error:(jqxhr, textStatus, errorThrown) ->
+                alert 'Not updated','', 'error'
