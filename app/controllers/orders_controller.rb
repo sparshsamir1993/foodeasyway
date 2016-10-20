@@ -100,7 +100,7 @@ class OrdersController < ApplicationController
     def send_message
       @restaurant_id = params[:restaurant_id]
 	  @restaurant = Restaurant.find(@restaurant_id)
-      @phone_numbers = ["+918056100208", @restaurant.contact.to_s]
+      @phone_numbers = ["+918056100208", "+91#{@restaurant.contact.to_s}]
       @twilio_number = '+14782027248'
       @client = Twilio::REST::Client.new('AC5dee8c153517e73b44172c169fbac183', 'f941bca314a94fab093b1290a91757a8')
 
@@ -138,7 +138,6 @@ class OrdersController < ApplicationController
 	        # US phone numbers can make use of an image as well.
 	        # :media_url => image_url
 	      )
-	  redirect_to order_path(session[:order_id])
       end
 
     end
