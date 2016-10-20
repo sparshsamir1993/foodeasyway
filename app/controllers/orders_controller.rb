@@ -140,6 +140,7 @@ class OrdersController < ApplicationController
 	      )
       end
 
+	  redirect_to order_path(@order)
     end
 
 	private
@@ -147,6 +148,5 @@ class OrdersController < ApplicationController
 		def order_params
 			params.require(:order).permit(:restaurant_id, :user_id)
 		end
-
 
 end
