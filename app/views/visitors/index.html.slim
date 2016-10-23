@@ -10,9 +10,9 @@
 							= link_to "Order now",restaurants_path, class: "btn order-now-btn btn-outline btn-block "
 					.row
 						.col-md-3
-
-							  = link_to  "",user_facebook_omniauth_authorize_path, class: "fa fa-facebook-square fa-4x", id: 'sign_in'
-							  h3 Log in With Facebook
+							.btn.btn-primary
+							  = link_to  "",user_facebook_omniauth_authorize_path, class: "fa fa-facebook-square fa-2x white", id: 'sign_in'
+							  p Log in With Facebook
 						.col-md-3
 						  -if user_signed_in?
 							h2#logout

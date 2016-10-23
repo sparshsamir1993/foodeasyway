@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 		current_user.update(contact: params[:contact], address: params[:address])
 
 		respond_to do |format|
-	      format.html{ redirect_to order_path(params[:id])}
+	      format.html{ redirect_to order_path(params[:order_id])}
 	      format.json { render json: current_user, status: :ok}
 	    end
 	end

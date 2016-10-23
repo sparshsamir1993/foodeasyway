@@ -90,6 +90,19 @@ class OrdersController < ApplicationController
 	def show
 		@order = Order.find(params[:id])
 		@order_grouped = @order.order_items.group_by(&:restaurant_id)
+		respond_to do |format|
+			if params.has_key?(:template)
+				if params[:template] == 'false'
+					format.html {render partial: 'cards'}
+				else
+					format.html
+				end
+			else
+				format.html
+			end
+			format.html
+			format.json {render json: @order}
+		end
 	end
 
 	def success

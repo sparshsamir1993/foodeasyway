@@ -43,5 +43,16 @@ Rails.application.configure do
     c.username = 'sparshsamir'
     c.password = 'blackdimples.13'
   end
-
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => 'grubvibes',
+  #     :access_key_id => "AKIAJ3EEVABVOLDGFHCA",
+  #     :secret_access_key => "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",
+  #     :s3_region => 'ap-south-1',
+  #     :s3_host_name => "s3.ap-south-1.amazonaws.com",
+  #     :s3_permissions => "public",
+  #     :use_accelerate_endpoint => true
+  #   }
+  # }
 end

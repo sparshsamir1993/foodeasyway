@@ -9,6 +9,7 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'skrollr-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 gem "paperclip", "~> 5.0.0"
@@ -31,6 +32,7 @@ gem "workless", "~> 1.2.2"
 gem 'will_paginate', '~> 3.0'
 gem 'materialize-sass'
 gem "jquery-ui-rails"
+gem 'modernizr-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem "bower-rails", "~> 0.10.0"

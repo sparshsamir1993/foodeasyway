@@ -29,17 +29,18 @@ $(document).on 'ready', ->
         console.log 'clicked'
         contact = $('#contact_value').val()
         address = $('#address_value').val()
+        order_id = $('#o-flex').attr('name')
         user_id = $(this).attr('span')
         $.ajax "/users/" + user_id + "/update_contact",
             type: 'POST'
             data:{
                 contact: contact
                 address: address
+                order_id: order_id
                 template: false
             }
-            dataType: 'text'
             success:(data, textStatus, jqxhr) ->
-                # alert 'yay'
+                $('#o-flex').html data
                 swal 'Contact Updated','', 'success'
             error:(jqxhr, textStatus, errorThrown) ->
                 alert 'Not updated','', 'error'

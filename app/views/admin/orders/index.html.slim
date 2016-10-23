@@ -1,0 +1,21 @@
+table.table
+    thead
+        tr
+            th Id
+            th user
+            th Restaurant
+    tbody
+        - @orders.each do |order|
+            tr
+                td = order.id
+                td
+                    - if order.user.present?
+                         = order.user.email
+                    - elsif order.user.present?
+                        = order.user.name
+                td
+                    - if order.restaurant.present?
+                        = order.restaurant.name
+                td
+                    - if order.restaurant.present? && order.user.present?
+                        = link_to 'show',admin_order_path(order)

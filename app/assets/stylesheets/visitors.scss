@@ -13,10 +13,23 @@ $stalemate: 'Stalemate', cursive;
 .mt{
 	font-family: $mt;
 }
+.white{
+    color: white;
+    &:hover{
+        color: white;
+    }
+}
 .upper{
 	text-transform: uppercase;
 }
+.fb-button{
+    background-color: white;
 
+    .fb-btn-text{
+        position: relative;
+
+    }
+}
 .boldest{
 	font-weight: 900;
 }

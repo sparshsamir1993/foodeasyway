@@ -17,6 +17,7 @@
 //= require twitter/bootstrap
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require skrollr
 //= require sweetalert
 //= require masonry/jquery.masonry
 //= require_tree .
