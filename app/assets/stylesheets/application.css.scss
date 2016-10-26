@@ -25,6 +25,9 @@
  $mt: 'Tw Cen MT';
  $raleway: 'Raleway', sans-serif;
  $stalemate: 'Stalemate', cursive;
+ .row{
+     margin: 0;
+ }
  .btn-outline {
      background-color: transparent;
      color: inherit;
@@ -33,10 +36,10 @@
  .mt-12{
      margin-top: -12%;
  }
- #content{
-     width: 101%;
-     margin-left: -1%;
- }
+ // #content{
+ //     width: 101%;
+ //     margin-left: -1%;
+ // }
  .btn-primary.btn-outline {
      color: #428bca;
  }
@@ -89,14 +92,7 @@ input{
 }
 
 .jumbotron{
-
-
-	color: white;
-	font-size: 30px;
-	font-family: Century Gothic, sans-serif !important;
-	font-weight: bold;
-	-webkit-text-stroke-width: 1px !important;
-	-webkit-text-stroke-color: black !important;
+    background-color: white;
 }
 
 .stalemate{
@@ -121,7 +117,7 @@ input{
 .card-img-top{
     background-size: cover;
     width: 100%;
-    height: 50vh;
+    height: 40vh;
 
 }
 .card-title{
@@ -152,6 +148,9 @@ input{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 2%;
+    padding: 3%;
+    background-color: white;
 }
 .flex-item{
     padding: 1.5%;

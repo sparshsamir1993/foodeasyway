@@ -1,34 +1,32 @@
 
-	body background="/assets/tandoori.jpg" style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover;"
-		.mt-12
-			.grey-overlay-1
-				.padding-all-around
+	body#menu-show
+		.padding-all-around
+		  .container-fluid
+			.jumbotron.text-center
+				h1.mt.upper
+					= @restaurant.name
 
-					.jumbotron.text-center
-						h1
-							= @restaurant.name
+				br
+				br
+			#table
+			    .col-md-12
+					.r-id value="#{@restaurant.id}"
+						- if @restaurant.present?
+							/= will_paginate @items
+							input#item_search.form-control name="search_term_for_items" placeholder="Search Items" type="text" /
+							table.table#items_table
 
-						br
-						br
-					#table
-					    .col-md-12
-							.r-id value="#{@restaurant.id}"
-								- if @restaurant.present?
-									/= will_paginate @items
-									input#item_search.form-control name="search_term_for_items" placeholder="Search Items" type="text" /
-									table.table#items_table
+								thead
+									tr
+										th width="33%" Item
 
-										thead
-											tr
-												th width="33%" Item
+										th width="33%" Price
 
-												th width="33%" Price
+										th width="33%" Quantity
+								tbody
+									= render 'table'
 
-												th width="33%" Quantity
-										tbody
-											= render 'table'
+						    = will_paginate @items
+						end
 
-								    = will_paginate @items
-								end
-
-					= link_to "Back to GrubStore", {:action => 'index'}, :class =>'back-link  btn btn-danger'
+				= link_to "Back to GrubStore", {:action => 'index'}, :class =>'back-link  btn btn-danger'

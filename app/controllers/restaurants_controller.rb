@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
+
 		@restaurant = Restaurant.find(params[:id])
 		@items = @restaurant.items.paginate(page: params[:page], per_page: 40).search(params[:search])
 			respond_to do |format|

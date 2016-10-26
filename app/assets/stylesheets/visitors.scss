@@ -10,6 +10,10 @@ $mt: 'Tw Cen MT';
 $raleway: 'Raleway', sans-serif;
 $stalemate: 'Stalemate', cursive;
 
+.b-top-margin{
+
+}
+
 .mt{
 	font-family: $mt;
 }
@@ -64,12 +68,22 @@ $stalemate: 'Stalemate', cursive;
 
 #main-container{
 	height: 100vh;
-	background: image-url('main-bg.jpg');
+	background: image-url('becburger.jpg');
 	margin-top: -12%;
-	background-size: cover;
+	background-size: 150%;
+    background-position: center;
 	// position: absolute;
     z-index: 0;
-    width: 101%;
+}
+
+.grey-overlay-card{
+    background-color: rgba(black, 0.2)
+}
+.burger{
+    position: relative;
+    left: 20%;
+    top: 20px;
+    animation-duration: 2s;
 }
 .navbar{
 	z-index: 1;
@@ -232,7 +246,7 @@ h2 a{
 .parallax-2 {
     /* The image used */
     /* Full height */
-	background-image: url('/assets/bg-pattern.jpg');
+	background-image: url('/assets/main-bg.jpg');
     height: 400px;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -242,24 +256,6 @@ h2 a{
 }
 .mb50{
 	margin-bottom: 10%;;
-}
-.cookvideo{
-	position: relative;
-	background-size: cover;
-	z-index: -1;
-	width: 100%;
-}
-.hotel-row{
-	display: flex;
-	width: 80%;
-	height: 40%;
-	background-color: blue;
-
-}
-.hotel{
-	width: 20%;
-	height: 35%;
-	background-color: green;
 }
 #buttons{
 	position: relative;
@@ -318,6 +314,12 @@ h2 a{
 		font-size: 230%;
 
 	}
+    #main-container{
+        background: image-url('bg-pattern.jpg');
+    }
+    .hide-on-sm{
+        display: none;
+    }
     .fa-bars{
         color: white;
     }
@@ -347,6 +349,13 @@ h2 a{
     }
 
 }
+@media screen and (min-width: 800px){
+    .hide-on-lg{
+        display: none;
+    }
+
+}
+
 @media screen and (max-width: 450px) {
 	#title{
 		font-weight: bolder;

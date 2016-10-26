@@ -1,6 +1,6 @@
 	body id="visitor"
 		#main-container
-			.grey-overlay
+			.grey-overlay.animated.fadeIn
 				.row.content-1
 					.col-md-12.text-center
 						h2.raleway.boldest.fs350 Order yourself a delicious Grub online!
@@ -20,27 +20,58 @@
 
 
 		.steps
-			.step-flex
+			.step-flex.hide-on-sm
 				.step-flex-items
 					.thumb.text-center
-						i.fa.fa-cutlery.fa-5x
+						img src='/assets/pav-bhaji.png' width="50%" data-50= "position: relative; left: 115%;" data-500="position: relative; left: 0%;"
 					.content-step.text-center
 						p.head Choose your Grub
 						p  Sign up & flip through a menu of dishes from restaurants available for delivery around SRM, KTR. We make it simple for you to find just what you're craving.
 
 				.step-flex-items
 					.thumb.text-center
-						i.fa.fa-cart-arrow-down.fa-5x
+						img src='/assets/canopy.png' width="50%" data-250= " transform: rotate(0deg);" data-500="transform: rotate(20deg);"
 					.content-step.text-center
 						p.head Skip the Store
 						p	We have partnered with your favourites around here, so we save you a visit to their store at the very convenience of a few clicks, while they prepare & carefully pack your grub, once you've placed an order.
 
 				.step-flex-items
 					.thumb.text-center
-						i.fa.fa-bell.fa-5x
+						img src='/assets/bell.png' width="50%" data-50= "position: relative; left: -115%;" data-500="position: relative; left: 0%;"
+					.content-step.text-center
+						p.head	Ding-Dong!
+
+						p Bell? Please take the door! Pay your checkout amount to the delivery boy & enjoy your grub! We think long & hard about this whole process so you don't have to. If you like what you eat, you can always share the love or ask us a question!
+			.step-flex.hide-on-lg
+				.step-flex-items
+					.thumb.text-center
+						img src='/assets/pav-bhaji.png' width="50%"
+					.content-step.text-center
+						p.head Choose your Grub
+						p  Sign up & flip through a menu of dishes from restaurants available for delivery around SRM, KTR. We make it simple for you to find just what you're craving.
+
+				.step-flex-items
+					.thumb.text-center
+						img src='/assets/canopy.png' width="50%"
+					.content-step.text-center
+						p.head Skip the Store
+						p	We have partnered with your favourites around here, so we save you a visit to their store at the very convenience of a few clicks, while they prepare & carefully pack your grub, once you've placed an order.
+
+				.step-flex-items
+					.thumb.text-center
+						img src='/assets/bell.png' width="50%"
 					.content-step.text-center
 						p.head	Ding-Dong!
 
 						p Bell? Please take the door! Pay your checkout amount to the delivery boy & enjoy your grub! We think long & hard about this whole process so you don't have to. If you like what you eat, you can always share the love or ask us a question!
 
+
 		.parallax-2
+
+		.row.hide-on-sm
+			.col-md-4
+				img.burger src='assets/fast-food-vector1.png' width="50%" data-1000= "opacity: 0; margin-top: 0px; left: -20%;  transform: rotate(0deg);" data-1500="opacity:  1; margin-top: 100px; left: 20%; transform: rotate(360deg);"
+			.col-md-4
+				img.burger src='assets/pizza' width="50%" data-1000= "opacity:0; margin-top: 0px; left: -20%;  transform: rotate(0deg);" data-1500="opacity:  1; margin-top: 100px; left: 20%; transform: rotate(360deg);"
+			.col-md-4
+				img.burger src='assets/umbrella-red.png' width="50%" data-1000= "opacity:0; margin-top: 0px; left: -20%;  transform: rotate(0deg);" data-1500="opacity:  1; margin-top: 100px; left: 20%; transform: rotate(360deg);"

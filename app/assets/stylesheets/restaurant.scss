@@ -8,17 +8,19 @@ $grub-text: 'Righteous', cursive;
 	width: 200px;
 }
 #table{
-	color: white;
+	color: black;
 	font-size: 20px;
+	background-color: white;
+	padding: 2%;
+	border-radius: 2px;
+}
+.r-id{
+	margin: 1%;
 }
 .righteous{
 	font-family: $grub-text;
 }
-.jumbotron{
-	background: transparent;
-	color: white;
 
-}
 .grubfont{
 	font-family: $grub-text;
 }
@@ -33,7 +35,9 @@ td{
 
 
 }
-
+#menu-show{
+	 background-color: rgba(grey, 0.5);
+}
 
 .grubtext{
     font-family: $grub-text;
@@ -43,7 +47,10 @@ td{
 .card-action a{
 	color: black !important;
 }
-body #menu{
-	background-size: contain !important;
-	background-repeat: repeat;
+#menu{
+	background-color: rgba(grey, 0.4);
+	background-size: cover !important;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
