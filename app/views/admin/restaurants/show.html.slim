@@ -3,6 +3,8 @@
 			.jumbotron.text-center
 				h2
 					= @restaurant.name
+				h5 order
+				= @analytics.this_month_order.count
 			.col-md-3
 				= link_to "New Item",new_admin_item_path(:id=>@restaurant.id)
 			.col-md-3

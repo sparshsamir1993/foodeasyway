@@ -18,6 +18,10 @@ class Admin::RestaurantsController < RestaurantsController
 		@item =Restaurant.find(params[:id]).items
 		@restaurant = Restaurant.find(params[:id])
 		@orders = @restaurant.order_items.group_by(&:order_id)
+		@analytics = OpenStruct.new
+		@analytics.this_month_order = @restaurant.orders.this_month_order_details
+
+
 		#@item = Item.last
 	end
 

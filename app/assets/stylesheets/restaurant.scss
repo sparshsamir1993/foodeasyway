@@ -1,7 +1,44 @@
 // Place all the styles related to the restaurant controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+ font-family: 'MT';
+ src:url('fontscorecomttwcenmt.ttf');
+}
+$mt: 'Tw Cen MT';
+
 $grub-text: 'Righteous', cursive;
+.mt{
+	font-family: $mt;
+}
+.restaurant-text{
+	font-family: $mt;
+	color: black;
+	font-size: 105%;
+}
+.list{
+	width: 100%;
+	background-color: beige;
+	ul{
+		background-color: transparent;
+		height: 75vh;
+		left: 13%;
+        margin: 3%;
+		li{
+			font-size: 200%;
+		}
+	}
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active{
+    background-color: red;
+    animation-name: getbig;
+    animation-duration: 1s;
+}
+.card{
+	margin: 3%;
+	background-color: white;
+}
+
 
 .well{
 	height: 200px;
@@ -53,4 +90,27 @@ td{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+}
+
+
+@keyframes getbig {
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.1);
+    }
+
+}
+@media screen and (max-width: 770px) {
+    .list{
+    	ul{
+    		height: 75vh;
+    		left: 13%;
+            margin: 3%;
+    		li{
+    			font-size: 50%;
+    		}
+    	}
+    }
 }

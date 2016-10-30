@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 
 
 	def index
-		@restaurant = Restaurant.order("id ASC")
+		@restaurants = Restaurant.order("id ASC")
 		@user = current_user
 	end
 

@@ -6,6 +6,8 @@
  font-family: 'MT';
  src:url('fontscorecomttwcenmt.ttf');
 }
+$berk: 'Berkshire Swash', cursive;
+$sofia:'Sofia', cursive;
 $mt: 'Tw Cen MT';
 $raleway: 'Raleway', sans-serif;
 $stalemate: 'Stalemate', cursive;
@@ -13,7 +15,12 @@ $stalemate: 'Stalemate', cursive;
 .b-top-margin{
 
 }
-
+.sofia{
+    font-family: $sofia;
+}
+.berk{
+    font-family: $berk;
+}
 .mt{
 	font-family: $mt;
 }
@@ -38,7 +45,7 @@ $stalemate: 'Stalemate', cursive;
 	font-weight: 900;
 }
 .grey-overlay{
-	background: rgba(black, .4);
+	background: rgba(grey, .2);
 	height: 100vh;
 }
 .grey-overlay-1{
@@ -59,18 +66,17 @@ $stalemate: 'Stalemate', cursive;
 	top: 30%;
 	color: white;
 	font-family: $raleway;
-	text-transform: uppercase;
     width: 100%;
 }
 .fs350{
-	font-size: 250%;
+	font-size: 350%;
 }
 
 #main-container{
 	height: 100vh;
 	background: image-url('becburger.jpg');
-	margin-top: -12%;
-	background-size: 150%;
+	margin-top: -11%;
+	background-size: 165%;
     background-position: center;
 	// position: absolute;
     z-index: 0;
@@ -87,6 +93,7 @@ $stalemate: 'Stalemate', cursive;
 }
 .navbar{
 	z-index: 1;
+    margin-bottom: 0px;
 }
 
 .mt40p{
@@ -125,7 +132,7 @@ $stalemate: 'Stalemate', cursive;
 }
 .top30{
 	position: relative;
-	top: 30px;
+	top: 15px;
 }
 #grad1 {
     height: 100%;
@@ -316,6 +323,7 @@ h2 a{
 	}
     #main-container{
         background: image-url('bg-pattern.jpg');
+        background-size: 200%;
     }
     .hide-on-sm{
         display: none;
