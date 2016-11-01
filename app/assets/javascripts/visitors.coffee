@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  skrollr.init();
+    if location.pathname == '/'
+        skrollr.init();
   # movementStrength = 10
   # height = movementStrength / $(window).height()
   # width = movementStrength / $(window).width()
