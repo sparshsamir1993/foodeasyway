@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :restaurant_owners
   get 'admin/dashboard'
 
   resources :delivery_locations
@@ -21,7 +22,11 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :restaurants
       resources :items
+      resources :restaurant_owners
       resources :users
+      resources :orders
+  end
+  namespace :restaurant_interface do
       resources :orders
   end
   root to: 'visitors#index'

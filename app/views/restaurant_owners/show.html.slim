@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Restaurant:
+  = @restaurant_owner.restaurant_id
+p
+  strong User:
+  = @restaurant_owner.user_id
+
+= link_to 'Edit', edit_restaurant_owner_path(@restaurant_owner)
+'|
+= link_to 'Back', restaurant_owners_path

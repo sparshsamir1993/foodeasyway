@@ -1,0 +1,12 @@
+table.table
+    thead
+        tr
+            th User
+            th Restaurant
+    tbody
+        - @restaurant_owners.each do |owner|
+            tr
+                td = owner.user.email
+                td = owner.restaurant.name
+
+= link_to 'New', new_admin_restaurant_owner_path

@@ -19,9 +19,32 @@ $(document).on 'keyup', '#item_search', (e) ->
     error:(jqxhr, textStatus, errorThrown) ->
       $.jGrowl 'Something went wrong.', life:2000
 
+$(document).on 'click', '#products_index_add_to_cart', (e) ->
+  restaurant_id = $(this).attr('data-restaurant')
+  user_id = $(this).attr('data-user')
+  item_id = $(this).attr('data-item')
+  id = 'quantity_' + item_id
+  quantity = $("#quantity_"+ item_id).val()
+  total = $(this).attr('data-total')
+  console.log total
+  $.ajax "/order_items" ,
+    type: 'POST'
+    data: {
+      restaurant_id: restaurant_id
+      user_id: user_id
+      item_id: item_id
+      quantity: quantity
+      total: total
+      template: false
+    }
+    success:(data, jqxhr, textStatus) ->
+      $('#items_table tbody').html data
+      swal "#{quantity} added to cart.",'', 'success'
+    error:(jqxhr, textStatus, errorThrown) ->
+      $.jGrowl 'Something went wrong.', life:2000
 
 $(document).on 'ready', ->
-    w_height = $('body').height()
+    w_height = $('#content').height()
     $('.list').css("height",w_height)
     $('body').scrollspy({target: ".nav"})
 

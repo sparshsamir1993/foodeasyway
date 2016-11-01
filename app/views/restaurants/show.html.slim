@@ -2,9 +2,9 @@
 	body#menu-show
 		.padding-all-around
 		  .container-fluid
-			.jumbotron.text-center
-				h1.mt.upper
-					= @restaurant.name
+			h1.sofia.upper
+				= @restaurant.name
+			hr
 
 				br
 				br
@@ -13,7 +13,7 @@
 					.r-id value="#{@restaurant.id}"
 						- if @restaurant.present?
 							/= will_paginate @items
-							input#item_search.form-control name="search_term_for_items" placeholder="Search Items" type="text" /
+							input#item_search.form-control name="search_term_for_items" placeholder="Search items, start typing..." type="text" /
 							table.table#items_table
 
 								thead

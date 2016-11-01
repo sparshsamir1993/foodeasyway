@@ -1,14 +1,25 @@
 class OrderItemsController < ApplicationController
 
     def create
+        @items = Restaurant.find(params[:restaurant_id]).items
+        @restaurant = Restaurant.find(params[:restaurant_id])
         if session[:order_id].present?
             order = OrderItem.update_order(session[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
             #@cart_item = CartItem.new(cart_item_params)
             if order
                 respond_to do |format|
-                    format.html { redirect_to order }
-                    format.json { render json: order.id.to_s, status: :created}
-                end
+    		        if params.has_key?(:template)
+    		            if params[:template] == 'false'
+    		                format.html {render partial: 'restaurants/table.html', locals: {users: @items}}
+    		            else
+    		                format.html
+    		            end
+    		        else
+    		            format.html
+    		        end
+    		        format.html
+    		        format.json {render json: @items}
+    		    end
             else
                 respond_to do |format|
                     format.html { render :new }
@@ -21,9 +32,18 @@ class OrderItemsController < ApplicationController
             if order
                 session[:order_id] = order.id
                 respond_to do |format|
-                    format.html { redirect_to order }
-                    format.json { render json: order.id.to_s, status: :created}
-                end
+    		        if params.has_key?(:template)
+    		            if params[:template] == 'false'
+    		                format.html {render partial: 'restaurants/table.html', locals: {users: @items}}
+    		            else
+    		                format.html
+    		            end
+    		        else
+    		            format.html
+    		        end
+    		        format.html
+    		        format.json {render json: @items}
+    		    end
             else
                 respond_to do |format|
                     format.html { render :new }

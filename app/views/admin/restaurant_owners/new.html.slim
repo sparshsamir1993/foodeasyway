@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @restaurant_owner] do |f|
+    .field
+        = f.association :user, collection: User.all, :label_method =>lambda { |user| "#{user.name} | #{user.email}" }
+    .flied
+        = f.association :restaurant, collection: Restaurant.all
+    .actions
+          .pull-right
+              = f.submit class: 'btn btn-primary'

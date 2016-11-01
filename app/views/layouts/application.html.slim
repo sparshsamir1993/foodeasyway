@@ -22,7 +22,7 @@ html
     = javascript_include_tag :modernizr
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body
+  body.grey-overlay
     #fb-root
     javascript:
        (function(d, s, id) {
@@ -32,8 +32,10 @@ html
          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=977470122361795";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
-
-    == render 'layouts/navbar'
+    - if content_for?(:navbar)
+        = yield(:navbar)
+    - else
+        == render 'layouts/navbar'
     #content
       .notice
         = notice

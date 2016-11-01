@@ -29,7 +29,7 @@ $grub-text: 'Righteous', cursive;
 		}
 	}
 }
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active{
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active, .nav-pills > li.active > a:focus{
     background-color: red;
     animation-name: getbig;
     animation-duration: 1s;

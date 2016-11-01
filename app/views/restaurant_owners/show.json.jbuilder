@@ -1,0 +1,1 @@
+json.partial! "restaurant_owners/restaurant_owner", restaurant_owner: @restaurant_owner

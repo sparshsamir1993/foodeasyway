@@ -15,15 +15,15 @@ body.grey-overlay data-spy="scroll" data-target="#myScrollspy" data-offset="100"
 					.card id="#{restaurant.id}"
 						= image_tag "#{restaurant.avatar}", class: "card-img-top"
 						.card-block
-							.card-title
+							.card-title.mt
 								= restaurant.name
 							.card-text
 								.row
 									.col-md-6
-										h5 Min Order
+										h4 Min Order
 										= restaurant.min_order
 									.col-md-6
-										h5 Contact
+										h4 Contact
 										= restaurant.contact
 								.row
 									= link_to 'Order Now', restaurant_path(restaurant), class:'grub-btn'

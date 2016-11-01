@@ -1,0 +1,2 @@
+module RestaurantInterface::OrdersHelper
+end

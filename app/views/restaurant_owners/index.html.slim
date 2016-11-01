@@ -1,0 +1,23 @@
+h1 Listing restaurant_owners
+
+table
+  thead
+    tr
+      th Restaurant
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @restaurant_owners.each do |restaurant_owner|
+      tr
+        td = restaurant_owner.restaurant_id
+        td = restaurant_owner.user_id
+        td = link_to 'Show', restaurant_owner
+        td = link_to 'Edit', edit_restaurant_owner_path(restaurant_owner)
+        td = link_to 'Destroy', restaurant_owner, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Restaurant owner', new_restaurant_owner_path
