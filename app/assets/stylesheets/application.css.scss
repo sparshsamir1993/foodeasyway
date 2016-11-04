@@ -86,13 +86,58 @@
 input{
     color: black;
 }
+.tops1{
+    position: relative;
+    top: 30px;
+}
+.tops2{
+    position: relative;
+    top: -25px;
+}
+.whitebght{
+    background-color: #c3c9cc;
+    height: 270px;
 
+}
+
+.pos{
+    position: relative;
+    top: 30px;
+}
+.posp{
+    position: relative;
+    top: 70px;
+}
+.sos{
+    position: relative;
+    top: -20px;
+}
+.sosp{
+    position: relative;
+    top: 20px;
+}
+.dosp{
+    position: relative;
+    top: 40px;
+}
+.whitebgg
+{
+    background: #fcd68a;
+}
+.fluidbanner{
+    background-color: white ;
+    height: 70px;
+
+}
 .pad2{
     padding: 2%;
 }
 
 .jumbotron{
     background-color: white;
+}
+.pading{
+    padding: 60px;
 }
 
 .stalemate{
