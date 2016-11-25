@@ -69,13 +69,13 @@ $stalemate: 'Stalemate', cursive;
     width: 100%;
 }
 .fs350{
-	font-size: 350%;
+	font-size: 640%;
 }
 
 #main-container{
 	height: 100vh;
 	background: image-url('becburger.jpg');
-	margin-top: -11%;
+	margin-top: -7%;
 	background-size: 165%;
     background-position: center;
 	// position: absolute;
@@ -120,14 +120,16 @@ $stalemate: 'Stalemate', cursive;
         animation-delay: .9s !important;
     }
 	p{
-		font-size: 20px;
+		font-size: 25px;
 		font-family: $mt;
+        color: black;
 
 	}
 	.head{
-		text-transform: uppercase;
-		font-size: 25px;
+		font-family: $sofia;
+		font-size: 55px;
 		font-weight: 600;
+        color:black;
 	}
 }
 .top30{
