@@ -1,0 +1,9 @@
+= simple_form_for(@order_restaurant) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :restaurant_id
+    = f.input :order_id
+
+  .form-actions
+    = f.button :submit

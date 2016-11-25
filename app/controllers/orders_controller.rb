@@ -36,7 +36,6 @@ class OrdersController < ApplicationController
 		@order = Order.new(order_params)
 		@order.restaurant_id = params[:restaurant_id]
 		@order.user_id = current_user.id
-		byebug
 		respond_to do |format|
 	      if @order.save
 	        format.html { redirect_to @order, notice: 'Cart was successfully created.' }

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :order_restaurants
   resources :restaurant_owners
   get 'admin/dashboard'
 

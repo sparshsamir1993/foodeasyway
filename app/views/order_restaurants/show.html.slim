@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Restaurant:
+  = @order_restaurant.restaurant_id
+p
+  strong Order:
+  = @order_restaurant.order_id
+
+= link_to 'Edit', edit_order_restaurant_path(@order_restaurant)
+'|
+= link_to 'Back', order_restaurants_path
