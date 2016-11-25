@@ -1,5 +1,15 @@
-- content_for :navbar do
-    = render 'layouts/sidenav'
-    end
 
-h1 sparsh
+.col-md-12.text-center
+    h2 = Restaurant.find(@restaurant_id).name
+table.table
+    thead
+        tr
+            th Order number
+            th Address
+            th Total
+    - @order_grouped.each do |order|
+        tbody
+            tr
+                    td = link_to "#{order}", restaurant_interface_order_path(order)
+                    td = "#{Order.find(order).user.address}"
+                    td = "#{Order.find(order).order_items.where(restaurant_id: @restaurant_id).map{|x| x.total}.sum}"

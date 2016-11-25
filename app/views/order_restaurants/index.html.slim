@@ -1,0 +1,23 @@
+h1 Listing order_restaurants
+
+table
+  thead
+    tr
+      th Restaurant
+      th Order
+      th
+      th
+      th
+
+  tbody
+    - @order_restaurants.each do |order_restaurant|
+      tr
+        td = order_restaurant.restaurant_id
+        td = order_restaurant.order_id
+        td = link_to 'Show', order_restaurant
+        td = link_to 'Edit', edit_order_restaurant_path(order_restaurant)
+        td = link_to 'Destroy', order_restaurant, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Order restaurant', new_order_restaurant_path

@@ -1,0 +1,12 @@
+table.table
+    thead
+        tr
+            th Item
+            th Quantity
+            th Total
+    - @order_items.each do |item|
+        tbody
+            tr
+                    td = item.item.name
+                    td = item.quantity
+                    td = item.total

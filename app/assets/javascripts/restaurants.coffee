@@ -24,6 +24,7 @@ $(document).on 'click', '#products_index_add_to_cart', (e) ->
   user_id = $(this).attr('data-user')
   item_id = $(this).attr('data-item')
   id = 'quantity_' + item_id
+  order_restaurant_id = $(this).attr('data-order-restaurant')
   quantity = $("#quantity_"+ item_id).val()
   total = $(this).attr('data-total')
   console.log total
@@ -34,6 +35,7 @@ $(document).on 'click', '#products_index_add_to_cart', (e) ->
       user_id: user_id
       item_id: item_id
       quantity: quantity
+      order_restaurant_id: order_restaurant_id
       total: total
       template: false
     }

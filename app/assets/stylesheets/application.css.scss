@@ -40,6 +40,9 @@
  //     width: 101%;
  //     margin-left: -1%;
  // }
+ a:hover{
+     background-color: transparent;
+ }
  .btn-primary.btn-outline {
      color: #428bca;
  }
@@ -156,7 +159,7 @@ input{
 .nav-tabs.nav-justified > li > a{
     border: none !important;
     color: white;
-    font-size: 150%;
+    font-size: 130%;
 }
 
 .card-img-top{
@@ -248,16 +251,10 @@ input{
 	padding-top: 10px;
 	margin-bottom: -10px;
 }
-.black{
-    background-color: black;
-}
-#email_field{
+#email_field, #password_field{
 	font-size: 25px;
 	height: 35px;
-}
-#password_field{
-	font-size: 25px;
-	height: 35px;
+    width: 100%;
 }
 footer{
 	width: 100%;
