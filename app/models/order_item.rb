@@ -29,7 +29,7 @@ class OrderItem < ActiveRecord::Base
             @total = quantity.to_i * Item.find(item_id).price
             if order.order_restaurants.where(restaurant_id: restaurant_id).first.present?
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
-                    if order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.update(quantity: quantity, restaurant_id: restaurant_id, order_id: order.id total: @total, order_restaurant_id: order_restaurant_id)
+                    if order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.update(quantity: quantity, restaurant_id: restaurant_id, order_id: order.id, total: @total, order_restaurant_id: order_restaurant_id)
                         return order
                     else
                         return false
