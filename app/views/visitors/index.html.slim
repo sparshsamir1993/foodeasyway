@@ -8,16 +8,6 @@
 					.row
 						.col-md-6.col-md-offset-3
 							= link_to "Order now",restaurants_path, class: "btn order-now-btn btn-outline btn-block "
-					.row
-						.col-md-3
-							.btn.btn-primary
-							  = link_to  "",user_facebook_omniauth_authorize_path, class: "fa fa-facebook-square fa-2x white", id: 'sign_in'
-							  p Log in With Facebook
-						.col-md-3
-						  -if user_signed_in?
-							h2#logout
-								= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
-
 
 		.fluidbanner data-150="opacity:1;" data-750="opacity:1;"
 
