@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
             #@cart_item = CartItem.new(cart_item_params)
             if order
                 if order.order_restaurants.group_by(&:restaurant_id).keys.include?(params[:restaurant_id].to_i)
-                    order.order_restaurants.where(restaurant_id: params[:restaurant_id]).first.update(order_id: session[:order_id], order_item_id: order.order_items.last.id)
+                    order.order_restaurants.where(restaurant_id: params[:restaurant_id]).first.update(order_id: session[:order_id])
                 else
                     order.order_restaurants.create(restaurant_id: params[:restaurant_id],order_id: session[:order_id], order_item_id: order.order_items.last.id)
                 end
@@ -36,7 +36,7 @@ class OrderItemsController < ApplicationController
 
             if order
                 session[:order_id] = order.id
-                
+
                 respond_to do |format|
     		        if params.has_key?(:template)
     		            if params[:template] == 'false'

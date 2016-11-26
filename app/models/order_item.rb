@@ -42,7 +42,7 @@ class OrderItem < ActiveRecord::Base
                     end
                 end
             else
-                order.order_restaurants.create(restaurant_id: restaurant_id, order_id: session[:order_id])
+                order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order_id)
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
                     if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.update(quantity: quantity, restaurant_id: restaurant_id, total: @total, order_restaurant_id: order_restaurant_id)
                         return order

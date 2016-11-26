@@ -61,6 +61,15 @@ class OrderRestaurantsController < ApplicationController
     end
   end
 
+  def confirm
+      @order = Order.find(params[:order_id])
+      @order_restaurant = OrderRestaurant.find(params[:order_restaurant_id])
+      @order_restaurant.confirm
+      respond_to do |format|
+          format.html { render partial: 'orders/cards', collection: @order}
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order_restaurant

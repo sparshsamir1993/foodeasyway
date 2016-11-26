@@ -7,19 +7,23 @@ $(document).on 'ready', ->
     $(document).on 'click', '#send-btn', (e) ->
         e.preventDefault()
         console.log 'clicked'
-        restaurant_id = $(this).attr('value')
+        order_id = $(this).data('order_id')
+        order_restaurant_id = $(this).data('order_restaurant_id')
         total = $(this).attr('name')
-        $.ajax 'orders/send_message',
+        console.log order_restaurant_id
+        console.log order_id
+        $.ajax '/order_restaurants/' + order_restaurant_id+ '/confirm.html',
             type: 'POST'
             data:{
-                restaurant_id: restaurant_id
+                order_restaurant_id: order_restaurant_id
                 total: total
+                order_id: order_id
             }
-            dataType: 'text'
             success:(data, textStatus, jqxhr) ->
-              $("#card_id_"+restaurant_id).addClass('hidden')
-              $('#thumbs_'+restaurant_id).toggleClass('hidden')
-              console.log 'insy'
+            #   $("#card_id_"+restaurant_id).addClass('hidden')
+            #   $('#thumbs_'+restaurant_id).toggleClass('hidden')
+            #   console.log 'insy'
+              $('#order_card').html data
               swal 'Order Sent','', 'success'
             error:(jqxhr, textStatus, errorThrown) ->
               swal 'Something went wrong.','', 'error'

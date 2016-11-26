@@ -5,16 +5,16 @@
 
 
 	.col-md-2
-	.col-md-2	
+	.col-md-2
 		= link_to "Empty Your order", user_order_index_path(:id =>@id, :restaurant_id =>@restaurant_id), class:"btn btn-danger fa fa-trash fa-2x", method: :clear
 	.col-md-2
 	.col-md-2
 
 		= link_to "back", {:controller=>'restaurant',:action => "show", :id=>@restaurant.id}, class:"btn btn-success fa-2x"
-		
+
 	ul
 		== render 'table'
-	
+
 	.col-md-4
 		=form_for current_user, :method=>:PATCH,  :controller=>:users do |f|
 			= f.label :contact
@@ -24,9 +24,9 @@
 			= f.hidden_field :restaurant_id, value: @restaurant.id
 			= f.submit
 			/= link_to "update", user_order_index_path(:restaurant_id=>@restaurant.id),:controller => 'users', :action => 'update', method: :PATCH
-	.col-md-1	
+	.col-md-1
 	.col-md-2
 	.col-md-2
-	  -if current_user.contact.present?		
+	  -if current_user.contact.present?
 		= link_to "Send Order",{:controller => 'order', :action => 'send_message', :restaurant_id => @restaurant.id }, class: "btn btn-primary fa fa-bolt fa-2x"
 	/=link_to "Thanks", user_order_thank_you_path(:restaurant_id=>@restaurant.id)

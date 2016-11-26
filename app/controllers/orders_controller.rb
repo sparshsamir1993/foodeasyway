@@ -88,11 +88,11 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		@order_grouped = @order.order_items.group_by(&:restaurant_id)
+		@restaurants = @order.restaurants
 		respond_to do |format|
 			if params.has_key?(:template)
 				if params[:template] == 'false'
-					format.html {render partial: 'cards'}
+					format.html {render partial: 'cards', locals: @order}
 				else
 					format.html
 				end

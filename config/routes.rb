@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
 
-  resources :order_restaurants
+  resources :order_restaurants do
+      member do
+          post :confirm
+      end
+  end
   resources :restaurant_owners
   get 'admin/dashboard'
 

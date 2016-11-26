@@ -1,5 +1,6 @@
-.order-flex#o-flex name="#{@order.id}"
-    = render 'cards'
+#order_card
+    .order-flex#o-flex name="#{@order.id}"
+        = render 'cards', collection: @order
 
 .card
     .card-block
