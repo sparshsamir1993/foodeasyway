@@ -10,14 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap
  *= require 'masonry/transitions'
-  *= require sweetalert
+ *= require sweetalert
  *= require_tree .
  *= require_self
+
  */
  @import "font-awesome-sprockets";
  @import "font-awesome";
+ @import "bootstrap";
  @font-face {
   font-family: 'MT';
   src:url('fontscorecomttwcenmt.ttf');

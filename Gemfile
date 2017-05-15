@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.8'
+gem "activesupport"
+gem "activemodel"
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -14,6 +16,9 @@ gem 'skrollr-rails'
 gem 'coffee-rails', '~> 4.1.0'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.5'
+gem 'active_model_serializers', '0.10.0.rc4'
+gem 'rack-cors', :require => 'rack/cors'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-material-design'
@@ -41,10 +46,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'therubyracer'
 gem 'textmagic', '~> 0.6.0'
 # bundle exec rake doc:rails generates the API under doc/api.
+gem 'rake', '< 11.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'rails-assets-bootstrap-material-design'
 gem 'material_icons'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
@@ -53,8 +58,9 @@ gem 'font-awesome-sass', '~> 4.6.2'
 gem "slim-rails"
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'devise'
+gem 'devise_token_auth' , '0.1.40'
+gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
-gem 'rails-assets-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -65,6 +71,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "better_errors"
+  gem 'rspec-rails', '3.1.0'
+  gem 'factory_girl_rails'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
 end
 group :production do
   gem 'rails_12factor'
