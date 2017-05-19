@@ -31,4 +31,5 @@ class User < ActiveRecord::Base
         if self.uid.blank?
         self.uid = self.email
       end
+  end
 end
