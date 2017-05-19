@@ -2,7 +2,7 @@ class Api::V1::RestaurantSerializer < ActiveModel::Serializer
   attributes :id,:name, :contact, :avatar, :min_order
   has_many :items, dependent: :destroy
   has_many :order_items
-  has_many :order_restaurants
+  belongs_to :order_restaurants
   has_many :orders, through: :order_restaurants
   has_many :delivery_locations
   has_one :restaurant_owner

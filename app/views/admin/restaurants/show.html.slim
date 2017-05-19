@@ -36,6 +36,7 @@
 
 						- @orders.each do |f|
 							tr
+							  -if(f[0])
 								td = link_to f[0] , admin_order_path(f[0])
 								- restaurant_total = 0
 								- f[1].each do |item|

@@ -88,7 +88,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		@restaurants = @order.restaurants
+		@restaurants = @order.order_restaurants
 		respond_to do |format|
 			if params.has_key?(:template)
 				if params[:template] == 'false'

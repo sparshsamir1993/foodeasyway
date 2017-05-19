@@ -4,14 +4,14 @@ class OrderItemsController < ApplicationController
         @items = Restaurant.find(params[:restaurant_id]).items
         @restaurant = Restaurant.find(params[:restaurant_id])
         if session[:order_id].present?
-            order = OrderItem.update_order(session[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:order_restaurant_id])
+            order = OrderItem.update_order(session[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
             #@cart_item = CartItem.new(cart_item_params)
             if order
-                if order.order_restaurants.group_by(&:restaurant_id).keys.include?(params[:restaurant_id].to_i)
-                    order.order_restaurants.where(restaurant_id: params[:restaurant_id]).first.update(order_id: session[:order_id])
-                else
-                    order.order_restaurants.create(restaurant_id: params[:restaurant_id],order_id: session[:order_id], order_item_id: order.order_items.last.id)
-                end
+                # if order.order_restaurants.group_by(&:restaurant_id).keys.include?(params[:restaurant_id].to_i)
+                #     order.order_restaurants.where(restaurant_id: params[:restaurant_id]).first.update(order_id: session[:order_id])
+                # else
+                #     order.order_restaurants.create(restaurant_id: params[:restaurant_id],order_id: session[:order_id])
+                # end
                 respond_to do |format|
     		        if params.has_key?(:template)
     		            if params[:template] == 'false'
@@ -32,7 +32,7 @@ class OrderItemsController < ApplicationController
                 end
             end
         else
-            order = OrderItem.create_order(params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:order_restaurant_id])
+            order = OrderItem.create_order(params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
 
             if order
                 session[:order_id] = order.id

@@ -20,7 +20,8 @@ nav.navbar.black
                         = link_to 'Logout', destroy_user_session_path, :method => :delete
                     - if session[:order_id].present?
                         li.top30
-                            = link_to 'My Order', current_user.orders.find(session[:order_id])
+                            - if current_user.orders.ids.include?(session[:order_id])
+                                = link_to 'My Order', current_user.orders.find(session[:order_id])
                 -if current_user.present? && current_user.admin?
                     li.top30
                         = link_to 'admin panel', admin_restaurants_path

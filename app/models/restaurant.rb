@@ -1,10 +1,9 @@
 class Restaurant < ActiveRecord::Base
 	attr_accessor :current_user
 	has_many :items, dependent: :destroy
-	has_many :users
 	has_many :order_items
 	has_many :order_restaurants
-	has_many :orders, through: :order_restaurants
+	has_many :orders
 	has_many :delivery_locations
 	has_one :restaurant_owner
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"

@@ -1,13 +1,13 @@
--@order.restaurants.each do |restaurant|
-
+-@order.order_restaurants.each do |restaurant|
+  -if(restaurant.restaurant)
     .order-flex-items
         .card
             .card-block.pad2
-                h2 = restaurant.name
-                h4 = restaurant.min_order
+                h2 = restaurant.restaurant.name
+                h4 = restaurant.restaurant.min_order
                 ul.list-group.list-group-flush
                     - sum = 0
-                    -@order.order_items.where(restaurant_id: restaurant.id).each do |item|
+                    -@order.order_items.where(restaurant_id: restaurant.restaurant.id).each do |item|
                         .row
                             .col-md-6.col-xs-6
                                 li.list-group-item = item.item.name
@@ -18,26 +18,26 @@
                                 - if item.total.present?
                                 - sum = sum +item.total
                             .col-md-2.col-xs-2
-                                = link_to "", order_item_path(:restaurant_id => restaurant.id, :id => item.id), class: "fa fa-trash", method: 'delete'
+                                = link_to "", order_item_path(:restaurant_id => restaurant.restaurant.id, :id => item.id), class: "fa fa-trash", method: 'delete'
                     .row
                         .col-md-3.col-md-offset-9.col-xs-3.col-xs-offset-9
                             h1 ="Total: #{sum}"
 
                     .row
                         .col-md-4
-                            a.card-link href="#{restaurant_path(restaurant.id)}"  Back To Restaurant
+                            a.card-link href="#{restaurant_path(restaurant.restaurant.id)}"  Back To Restaurant
                         .col-md-2.col-md-offset-4
                             a.card-link href="#{edit_order_path}"  Edit
                     .row
                         .col-md-12
-                            -if sum > restaurant.min_order
+                            -if sum > restaurant.restaurant.min_order
                                 - if current_user.contact.present? && current_user.address.present?
                                     //= link_to "Send Order", "#{send_message_order_path(:restaurant_id => r_id, :total => sum)}", method: 'POST'
-                                    a.card-link#send-btn data-order_restaurant_id="#{@order.order_restaurants.where(restaurant_id: restaurant.id).first.id}" data-order_id="#{@order.id}" name="#{sum}" Send Order
+                                    a.card-link#send-btn data-order_restaurant_id="#{@order.order_restaurants.where(restaurant_id: restaurant.restaurant_id).first.id}" data-order_id="#{@order.id}" name="#{sum}" Send Order
 
                                 //a.card-link#send-btn value="r_id" name="#{session[:order_id].to_i}" Send Order
                                 - else
                                     a href="#update_contact" Update your contact details please
                             - else
                                 p Please reach the min order
-        i.fa.fa-thumbs-up.fa-3x.hidden id="thumbs_#{restaurant.id}"
+        i.fa.fa-thumbs-up.fa-3x.hidden id="thumbs_#{restaurant.restaurant.id}"
