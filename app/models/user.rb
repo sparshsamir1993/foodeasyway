@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-    before_create :generate_authentication_token, :ensure_uid
+    before_create :generate_authentication_token
+    before_validation :set_provider
+    before_validation :set_uid
 
     include DeviseTokenAuth::Concerns::User
 	devise :database_authenticatable,
@@ -27,9 +29,12 @@ class User < ActiveRecord::Base
 
     	end
   	end
-    def ensure_uid
-        if self.uid.blank?
-        self.uid = self.email
+
+      def set_provider
+        self[:provider] = "email" if self[:provider].blank?
       end
-  end
+
+      def set_uid
+        self[:uid] = self[:email] if self[:uid].blank? && self[:email].present?
+      end
 end
