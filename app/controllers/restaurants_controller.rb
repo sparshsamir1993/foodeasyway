@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
 	def index
 		@restaurants = Restaurant.order("id ASC")
 		@user = current_user
+		@usr1=@user
 	end
 
 	def show
