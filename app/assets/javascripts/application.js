@@ -13,7 +13,6 @@
 //= require jquery2
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-datepicker
 //= require twitter/bootstrap
 //= require bootstrap-sprockets
 //= require bootstrap
