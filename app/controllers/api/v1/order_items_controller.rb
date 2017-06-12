@@ -7,7 +7,7 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
 
     end
     def create
-        @items = Order.find(session[:order_id]).order_items
+        @items = Restaurant.find(params[:restaurant_id]).items
         @restaurant = Restaurant.find(params[:restaurant_id])
         if params[:order_id].present?
             order = OrderItem.update_order(params[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
