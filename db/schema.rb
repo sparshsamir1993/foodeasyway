@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507133856) do
+ActiveRecord::Schema.define(version: 20170730115402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "delivery_locations", force: :cascade do |t|
     t.string   "location"
@@ -37,6 +43,13 @@ ActiveRecord::Schema.define(version: 20170507133856) do
     t.integer  "restaurant_id"
   end
 
+  create_table "models", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "quantity",            default: 1
     t.datetime "created_at",                      null: false
@@ -46,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170507133856) do
     t.integer  "restaurant_id"
     t.integer  "total"
     t.integer  "order_restaurant_id"
+    t.string   "name"
   end
 
   create_table "order_restaurants", force: :cascade do |t|
@@ -80,6 +94,14 @@ ActiveRecord::Schema.define(version: 20170507133856) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "min_order"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

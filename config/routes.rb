@@ -37,7 +37,8 @@ Rails.application.routes.draw do
         mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
         resources :restaurants, only: [:index, :create, :show, :update, :destroy]
         resources :orders, only: [:index, :create, :show, :update, :destroy]
-        resources :order_items, only: [:index, :create, :show, :update, :destroy]
+        get "order_items/:order_id" => "order_items#index"
+        resources :order_items, only: [:create, :show, :update, :destroy]
         resources :users, only:[:index, :show]
     end
   end

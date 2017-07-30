@@ -8,7 +8,7 @@ class OrderItem < ActiveRecord::Base
     # end
 
     private
-        def self.create_order(item_id, quantity, restaurant_id, user_id)
+        def self.create_order(item_id, quantity, restaurant_id, user_id, name)
 
             if order = Order.create(restaurant_id: restaurant_id, user_id: user_id)
                 @total = quantity.to_i * Item.find(item_id).price
@@ -18,7 +18,8 @@ class OrderItem < ActiveRecord::Base
                                                                     restaurant_id: restaurant_id,
                                                                     total: @total,
                                                                     order_id:  order.id,
-                                                                    order_restaurant_id: order.order_restaurants.last.id
+                                                                    order_restaurant_id: order.order_restaurants.last.id,
+                                                                    name: name
                                                                     )
                     return order
                 else
@@ -29,7 +30,7 @@ class OrderItem < ActiveRecord::Base
             end
         end
 
-        def self.update_order(order_id, item_id, quantity, restaurant_id, user_id)
+        def self.update_order(order_id, item_id, quantity, restaurant_id, user_id, name)
             print 'updating'
 
             order = Order.find(order_id)
@@ -40,7 +41,7 @@ class OrderItem < ActiveRecord::Base
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
                     print 'updating item'
 
-                    if order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.update(quantity: quantity, total: @total)
+                    if order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
                         print order.order_items
                         return order
                     else
@@ -52,7 +53,8 @@ class OrderItem < ActiveRecord::Base
                                                                                                                 restaurant_id: restaurant_id,
                                                                                                                 total: @total,
                                                                                                                 order_restaurant_id: order.order_restaurants.where(restaurant_id: restaurant_id).first.id,
-                                                                                                                order_id:  order.id
+                                                                                                                order_id:  order.id,
+                                                                                                                name: name
                                                                                                                 )
                         return order
                     else
@@ -62,13 +64,13 @@ class OrderItem < ActiveRecord::Base
             else
                 order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order_id)
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
-                    if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.update(quantity: quantity, total: @total)
+                    if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
                         return order
                     else
                         return false
                     end
                 else
-                    if  order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.create(item_id: item_id,quantity: quantity, restaurant_id: restaurant_id, total: @total, order_restaurant_id: order.order_restaurants.where(restaurant_id: restaurant_id).first.id, order_id:  order.id)
+                    if  order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.create(item_id: item_id,quantity: quantity, restaurant_id: restaurant_id, total: @total, order_restaurant_id: order.order_restaurants.where(restaurant_id: restaurant_id).first.id, order_id:  order.id, name: name)
                         return order
                     else
                         return false
