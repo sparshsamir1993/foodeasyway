@@ -20,14 +20,14 @@
 				input type="hidden" name="user_id" value="#{current_user.id}"
 				input type="hidden" name="total" value="#{t.price * params[:quantity].to_i}"
 				-if session[:order_id].present? && Order.find(session[:order_id]).order_items.present?
-					h1 m here
+					
 					-if Order.find(session[:order_id]).order_items.find_by_item_id(t.id).present?
-						h1 if
+
 						input type="integer" id="quantity_#{t.id}" value="#{Order.find(session[:order_id]).order_items.find_by_item_id(t.id).quantity}" style="width: 100%"
 					-else
-						h1 else
+
 						input type="integer" id="quantity_#{t.id}"  style="width: 100%"
 
 				-else
 					input type="integer" id="quantity_#{t.id}"  style="width: 100%"
-				input#products_index_add_to_cart.btn.btn-danger.btn-outline.btn-block data-item="#{t.id}" data-restaurant="#{@restaurant.id}" data-order-restaurant="#{@restaurant.id}" data-user="#{current_user.id}" data-total="#{t.price * params[:quantity].to_i}"  value="Add to Order"
+				input#products_index_add_to_cart.btn.btn-danger.btn-outline.btn-block data-item="#{t.id}" data-restaurant="#{@restaurant.id}" data-order-restaurant="#{@restaurant.id}" data-user="#{current_user.id}" data-total="#{t.price * params[:quantity].to_i}" data-item-name="#{t.name}" value="Add to Order"
