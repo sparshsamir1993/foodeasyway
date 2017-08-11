@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
 
 	def edit
 		@restaurant = Restaurant.find(params[:restaurant_id])
-  		@item  = @restaurant.items.find(params[:item_id])
+  	@item  = @restaurant.items.find(params[:item_id])
 	end
 
 	def update

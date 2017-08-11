@@ -4,7 +4,7 @@ class OrderItemsController < ApplicationController
         @items = Restaurant.find(params[:restaurant_id]).items
         @restaurant = Restaurant.find(params[:restaurant_id])
         if session[:order_id].present?
-            order = OrderItem.update_order(session[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
+            order = OrderItem.update_order(session[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:name])
             #@cart_item = CartItem.new(cart_item_params)
             if order
                 # if order.order_restaurants.group_by(&:restaurant_id).keys.include?(params[:restaurant_id].to_i)
@@ -32,7 +32,7 @@ class OrderItemsController < ApplicationController
                 end
             end
         else
-            order = OrderItem.create_order(params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
+            order = OrderItem.create_order(params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:name])
 
             if order
                 session[:order_id] = order.id

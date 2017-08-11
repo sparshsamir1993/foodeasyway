@@ -10,7 +10,7 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
         @items = Restaurant.find(params[:restaurant_id]).items
         @restaurant = Restaurant.find(params[:restaurant_id])
         if params[:order_id].present?
-            order = OrderItem.update_order(params[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
+            order = OrderItem.update_order(params[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:name])
             #@cart_item = CartItem.new(cart_item_params)
             if order
                 # if order.order_restaurants.group_by(&:restaurant_id).keys.include?(params[:restaurant_id].to_i)
@@ -27,7 +27,7 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
                 end
             end
         else
-            order = OrderItem.create_order(params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id])
+            order = OrderItem.create_order(params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:name])
 
             if order
                 params[:order_id] = order.id
@@ -42,4 +42,8 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
         end
 
     end
+    private
+        def order_item_params
+            params.require(:order_item).permit(:item_id, :quantity, :restaurant_id, :user_id, :order_id, :total, :order_restaurant_id, :name)
+        end
 end

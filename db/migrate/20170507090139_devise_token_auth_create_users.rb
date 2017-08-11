@@ -1,5 +1,6 @@
 class DeviseTokenAuthCreateUsers < ActiveRecord::Migration
   def change
+    drop_table :users, force: :cascade
     create_table(:users) do |t|
       ## Required
       t.string :provider, :null => false, :default => "email"

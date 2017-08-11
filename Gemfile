@@ -56,7 +56,6 @@ gem 'autoprefixer-rails'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem "slim-rails"
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'devise'
 gem 'devise_token_auth' , '0.1.40'
 gem 'omniauth'

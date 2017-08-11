@@ -23,6 +23,7 @@ $(document).on 'click', '#products_index_add_to_cart', (e) ->
   restaurant_id = $(this).attr('data-restaurant')
   user_id = $(this).attr('data-user')
   item_id = $(this).attr('data-item')
+  name = $(this).attr('data-item-name')
   id = 'quantity_' + item_id
   quantity = $("#quantity_"+ item_id).val()
   total = $(this).attr('data-total')
@@ -34,6 +35,7 @@ $(document).on 'click', '#products_index_add_to_cart', (e) ->
       user_id: user_id
       item_id: item_id
       quantity: quantity
+      name: name
       template: false
     }
     success:(data, jqxhr, textStatus) ->
