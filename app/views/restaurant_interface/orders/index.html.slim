@@ -10,7 +10,7 @@ table.table
     - @orders.each do |order|
         tbody
             tr
-                -if order.present && order.order_restaurants.where(restaurant_id: @restaurant_id).first.id?
-                    td = link_to "#{order.id}", restaurant_interface_order_path(order)
-                    td = "#{Order.find(order).user.address}"
+                -if order.has_user_confirmed
+                    td = link_to "#{order.id}", restaurant_interface_order_path(order.order)
+                    td = "#{order.order.user.address}"
                     td = "#{order.order_items.where(restaurant_id: @restaurant_id).map{ |x| x.total}.sum}"

@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
     include DeviseTokenAuth::Concerns::User
 	devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
-    has_many :orders
+  has_many :orders
 	has_many :restaurant_owners
-
+  has_many :order_restaurants, through: :orders
 	def generate_authentication_token
 	 loop do
 	   self.authentication_token = SecureRandom.base64(64)

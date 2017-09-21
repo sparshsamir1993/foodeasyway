@@ -1,48 +1,49 @@
 .padding-all-around
-		body
-			.jumbotron.text-center
-				h2
-					= @restaurant.name
-				h5 order
-				= @analytics.this_month_order.count
-			.col-md-3
-				= link_to "New Item",new_admin_item_path(:id=>@restaurant.id)
-			.col-md-3
+	.jumbotron.text-center
+		h2
+			= @restaurant.name
+		h5 order
+		= @analytics.this_month_order.count
+	.row
+		.col-md-3
+			= link_to "New Item",new_admin_item_path(:id=>@restaurant.id)
+	.row
+		.col-md-3
 
-				table.table
-					thead
+			table.table
+				thead
+					tr
+						th Name
+						th Price
+						th
+						th
+				tbody
+
+					- @item.each do |f|
 						tr
-							th Name
-							th Price
-							th
-							th
-					tbody
+							td = f.name
+							td = f.price
+							td =  link_to '',edit_admin_item_path(:restaurant_id => @restaurant.id, :item_id=>f.id), class: "btn btn-success fa fa-pencil"
+							td = link_to '', {:action=>"destroy", :controller=>"admin/items",:id => @restaurant.id, :item_id =>f.id }, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash"
+		.col-md-6
+			table.table
+				thead
+					tr
+						th Name
+						th quantity
+						th Price
+						th Order Id
+				tbody
 
-						- @item.each do |f|
-							tr
-								td = f.name
-								td = f.price
-								td =  link_to '',edit_admin_item_path(:restaurant_id => @restaurant.id, :item_id=>f.id), class: "btn btn-success fa fa-pencil"
-								td = link_to '', {:action=>"destroy", :controller=>"admin/items",:id => @restaurant.id, :item_id =>f.id }, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger fa fa-trash"
-			.col-md-6
-				table.table
-					thead
+					- @orders.each do |f|
 						tr
-							th Name
-							th quantity
-							th Price
-							th Order Id
-					tbody
-
-						- @orders.each do |f|
-							tr
-							  -if(f[0])
-								td = link_to f[0] , admin_order_path(f[0])
-								- restaurant_total = 0
-								- f[1].each do |item|
-									-if item.total.present?
-										- restaurant_total = restaurant_total + item.total
-								td = restaurant_total
+						  -if(f[0])
+							td = link_to f[0] , admin_order_path(f[0])
+							- restaurant_total = 0
+							- f[1].each do |item|
+								-if item.total.present?
+									- restaurant_total = restaurant_total + item.total
+							td = restaurant_total
 
 
-			= link_to "Back to restaurant", admin_restaurant_path, class: "btn btn-primary fa fa-arrow-left fa-2x"
+	= link_to "Back to restaurant", admin_restaurant_path, class: "btn btn-primary fa fa-arrow-left fa-2x"

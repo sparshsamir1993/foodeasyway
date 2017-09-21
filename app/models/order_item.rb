@@ -12,7 +12,7 @@ class OrderItem < ActiveRecord::Base
 
             if order = Order.create(restaurant_id: restaurant_id, user_id: user_id)
                 @total = quantity.to_i * Item.find(item_id).price
-                order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order.id)
+                order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order.id, user_id: user_id)
                 if order.order_restaurants.last.order_items.create( item_id: item_id,
                                                                     quantity: quantity,
                                                                     restaurant_id: restaurant_id,
@@ -62,7 +62,7 @@ class OrderItem < ActiveRecord::Base
                     end
                 end
             else
-                order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order_id)
+                order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order_id, user_id: user_id)
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
                     if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
                         return order
