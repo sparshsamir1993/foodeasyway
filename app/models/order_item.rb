@@ -41,11 +41,15 @@ class OrderItem < ActiveRecord::Base
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
                     print 'updating item'
 
-                    if order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
-                        print order.order_items
-                        return order
+                    if quantity.to_i > 0
+                        if order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
+                            print order.order_items
+                            return order
+                        else
+                            return false
+                        end
                     else
-                        return false
+                        order.order_restaurants.find(order.order_restaurants.where(restaurant_id: restaurant_id).first.id).order_items.where(item_id: item_id).first.destroy
                     end
                 else
                     if  order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.create(  item_id: item_id,
@@ -64,17 +68,23 @@ class OrderItem < ActiveRecord::Base
             else
                 order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order_id, user_id: user_id)
                 if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.group_by(&:item_id).keys.include?(item_id.to_i)
-                    if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
-                        return order
+                    if quantity.to_i > 0
+                        if order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.update(name: name, quantity: quantity, total: @total)
+                            return order
+                        else
+                            return false
+                        end
                     else
-                        return false
+                        order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.where(item_id: item_id).first.destroy
                     end
                 else
+                
                     if  order.order_restaurants.where(restaurant_id: restaurant_id).first.order_items.create(item_id: item_id,quantity: quantity, restaurant_id: restaurant_id, total: @total, order_restaurant_id: order.order_restaurants.where(restaurant_id: restaurant_id).first.id, order_id:  order.id, name: name)
                         return order
                     else
                         return false
                     end
+
                 end
             end
         end
