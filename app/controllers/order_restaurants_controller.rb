@@ -61,12 +61,12 @@ class OrderRestaurantsController < ApplicationController
     end
   end
 
-  def confirm
+  def user_order_confirm
       @order = Order.find(params[:order_id])
       @order_restaurant = OrderRestaurant.find(params[:order_restaurant_id])
-      @order_restaurant.confirm
+      @order_restaurant.confirm_user()
       respond_to do |format|
-          format.html { render partial: 'orders/cards', collection: @order}
+          format.html { render partial: 'orders/cards',  :locals => {:order => @orders}}
       end
   end
 

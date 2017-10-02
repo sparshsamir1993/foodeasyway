@@ -1,5 +1,5 @@
--@order.order_restaurants.each do |restaurant|
-  -if(restaurant.restaurant)
+- @order.order_restaurants.each do |restaurant|
+  -if(restaurant.restaurant && !restaurant.has_user_confirmed)
     .order-flex-items
         .card
             .card-block.pad2

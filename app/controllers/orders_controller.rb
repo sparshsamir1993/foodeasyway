@@ -109,51 +109,52 @@ class OrdersController < ApplicationController
 	end
 
 
-    def send_message
-      @restaurant_id = params[:restaurant_id]
-	  @restaurant = Restaurant.find(@restaurant_id)
-      @phone_numbers = ["+918056100208", "+91#{@restaurant.contact.to_s}"]
-      @twilio_number = '+14782027248'
-      @client = Twilio::REST::Client.new('AC5dee8c153517e73b44172c169fbac183', 'f941bca314a94fab093b1290a91757a8')
+ #    def send_message
+ #      @restaurant_id = params[:restaurant_id]
+	#   @restaurant = Restaurant.find(@restaurant_id)
+ #      @phone_numbers = ["+918056100208", "+91#{@restaurant.contact.to_s}"]
+ #      @twilio_number = '+14782027248'
+ #      @client = Twilio::REST::Client.new('AC5dee8c153517e73b44172c169fbac183', 'f941bca314a94fab093b1290a91757a8')
 
-      @user = current_user
-	  @order = Order.find(session[:order_id])
-	  @order_items = @order.order_items
-	  @array = Array.new
-	  @order_items.each do |item|
-		  @array.push("#{item.item.name} #{item.quantity}")
-	  end
-	  @array = @array.join(',')
-	  @bill = params[:total]
-	#   @text_order = ""
-	#   @bill_S=""
-	#   @prices =Array.new
-	#   sum = 0
-	#   if @order.last.present?
-	# 	@order.last.order.each do |id,quantity|
-	# 	  if @restaurant.items.find_by_id(id).present?
-	# 		@item = @restaurant.items.find_by_id(id).name
-	# 		@price =  @restaurant.items.find_by_id(id).price * quantity
-	# 		@text_order.concat(" #{@item} #{quantity}")
-	# 		@prices.push(@price)
-	# 	  end
-	# 	end
+ #      @user = current_user
+	#   @order = Order.find(session[:order_id])
+	#   @order_items = @order.order_items
+	#   @array = Array.new
+	#   @order_items.each do |item|
+	# 	  @array.push("#{item.item.name} #{item.quantity}")
 	#   end
-	#   @prices.each do |p|
-	#   	sum+=p
-	#   end
-	  @phone_numbers.each do |p|
-	      message = @client.account.messages.create(
-	        :from => @twilio_number,
-	        :to => p,
-	        :body => "#{@array} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address} Total is #{@bill}"
-	        # US phone numbers can make use of an image as well.
-	        # :media_url => image_url
-	      )
-      end
+	#   @array = @array.join(',')
+	#   @bill = params[:total]
+	# #   @text_order = ""
+	# #   @bill_S=""
+	# #   @prices =Array.new
+	# #   sum = 0
+	# #   if @order.last.present?
+	# # 	@order.last.order.each do |id,quantity|
+	# # 	  if @restaurant.items.find_by_id(id).present?
+	# # 		@item = @restaurant.items.find_by_id(id).name
+	# # 		@price =  @restaurant.items.find_by_id(id).price * quantity
+	# # 		@text_order.concat(" #{@item} #{quantity}")
+	# # 		@prices.push(@price)
+	# # 	  end
+	# # 	end
+	# #   end
+	# #   @prices.each do |p|
+	# #   	sum+=p
+	# #   end
+	#   @phone_numbers.each do |p|
+	#       message = @client.account.messages.create(
+	#         :from => @twilio_number,
+	#         :to => p,
+	#         :body => "#{@array} ordered by #{@user.name} Phone => #{@user.contact} Address => #{@user.address} Total is #{@bill}"
+	#         # US phone numbers can make use of an image as well.
+	#         # :media_url => image_url
+	#       )
+ #      end
 
-	  redirect_to order_path(@order)
-    end
+	#   redirect_to order_path(@order)
+ #    end
+
 
 	private
 

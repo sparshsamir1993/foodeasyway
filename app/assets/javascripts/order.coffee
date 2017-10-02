@@ -12,7 +12,7 @@ $(document).on 'ready', ->
         total = $(this).attr('name')
         console.log order_restaurant_id
         console.log order_id
-        $.ajax '/order_restaurants/' + order_restaurant_id+ '/confirm.html',
+        $.ajax '/order_restaurants/' + order_restaurant_id+ '/user_order_confirm',
             type: 'POST'
             data:{
                 order_restaurant_id: order_restaurant_id
