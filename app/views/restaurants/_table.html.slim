@@ -17,17 +17,20 @@
 				input type="hidden" name="item_id" value="#{t.id}"
 				input type="hidden" name="restaurant_id" value="#{@restaurant.id}"
 				input type="hidden" name="order_restaurant_id" value="#{@restaurant.id}"
-				input type="hidden" name="user_id" value="#{current_user.id}"
-				input type="hidden" name="total" value="#{t.price * params[:quantity].to_i}"
-				-if session[:order_id].present? && Order.find(session[:order_id]).order_items.present?
-					
-					-if Order.find(session[:order_id]).order_items.find_by_item_id(t.id).present?
+				-if current_user
+					input type="hidden" name="user_id" value="#{current_user.id}"
+					input type="hidden" name="total" value="#{t.price * params[:quantity].to_i}"
+					-if session[:order_id].present? && Order.find(session[:order_id]).order_items.present?
+						
+						-if Order.find(session[:order_id]).order_items.find_by_item_id(t.id).present?
 
-						input type="integer" id="quantity_#{t.id}" value="#{Order.find(session[:order_id]).order_items.find_by_item_id(t.id).quantity}" style="width: 100%"
+							input type="integer" id="quantity_#{t.id}" value="#{Order.find(session[:order_id]).order_items.find_by_item_id(t.id).quantity}" style="width: 100%"
+						-else
+
+							input type="integer" id="quantity_#{t.id}"  style="width: 100%"
+
 					-else
-
 						input type="integer" id="quantity_#{t.id}"  style="width: 100%"
-
+					input#products_index_add_to_cart.btn.btn-danger.btn-outline.btn-block data-item="#{t.id}" data-restaurant="#{@restaurant.id}" data-order-restaurant="#{@restaurant.id}" data-user="#{current_user.id}" data-total="#{t.price * params[:quantity].to_i}" data-item-name="#{t.name}" value="Add to Order"
 				-else
-					input type="integer" id="quantity_#{t.id}"  style="width: 100%"
-				input#products_index_add_to_cart.btn.btn-danger.btn-outline.btn-block data-item="#{t.id}" data-restaurant="#{@restaurant.id}" data-order-restaurant="#{@restaurant.id}" data-user="#{current_user.id}" data-total="#{t.price * params[:quantity].to_i}" data-item-name="#{t.name}" value="Add to Order"
+					= link_to 'Login to continue.', new_user_session_path, class: "btn btn-primary whiteFont"
