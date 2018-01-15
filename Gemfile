@@ -56,8 +56,8 @@ gem 'autoprefixer-rails'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem "slim-rails"
-gem 'devise'
-gem 'devise_token_auth' , '0.1.40'
+gem 'devise', git: 'https://github.com/plataformatec/devise' , ref: '88e9a85'
+gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 # Use Unicorn as the app server
