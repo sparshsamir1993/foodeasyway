@@ -16,9 +16,9 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: sudiksha_development
+  database: sparsh-4768_development
   pool:     5
-  username: sudikshakhanduja
+  username: sparsh-4768
   password: 
   template: template0
 
@@ -45,9 +45,9 @@ test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: sudiksha_test
+  database: sparsh-4768_test
   pool:     5
-  username: sudikshakhanduja
+  username: sparsh-4768
   password: 
   template: template0
   port: 5432
@@ -56,8 +56,8 @@ production:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: sudiksha_production
+  database: sparsh-4768_production
   pool:     5
-  username: sudikshakhanduja
+  username: sparsh-4768
   password: 
   template: template0
