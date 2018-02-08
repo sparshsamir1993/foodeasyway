@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :orders
 	has_many :restaurant_owners
-  has_many :order_restaurants, through: :orders
+	has_many :order_restaurants, through: :orders
+	has_many :addresses
 	def generate_authentication_token
 	 loop do
 	   self.authentication_token = SecureRandom.base64(64)
