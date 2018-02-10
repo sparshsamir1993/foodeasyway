@@ -32,9 +32,13 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-        mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
-        as :user do
-             post 'users/authenticatFacebookToken', to: 'users#authenticatFacebookToken', as: :fbtokenauth
+        resources :users, only: [:index, :show]
+        mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks],
+            controllers:{
+                omniauth_callbacks: 'api/v1/users'
+            }
+        devise_scope :users do
+             post '/auth/authenticatFacebookToken' => 'users#authenticatFacebookToken', as: :fbtokenauth
         end
         resources :restaurants, only: [:index, :create, :show, :update, :destroy]
         resources :orders, only: [:index, :create, :show, :update, :destroy]
