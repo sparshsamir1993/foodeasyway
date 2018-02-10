@@ -18,7 +18,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.5'
 gem 'active_model_serializers', '0.10.0.rc4'
 gem 'rack-cors', :require => 'rack/cors'
-
+gem "koala"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-material-design'
@@ -56,8 +56,8 @@ gem 'autoprefixer-rails'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem "slim-rails"
-gem 'devise'
-gem 'devise_token_auth' , '0.1.40'
+gem 'devise', git: 'https://github.com/plataformatec/devise' , ref: '88e9a85'
+gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 # Use Unicorn as the app server

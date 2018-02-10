@@ -8,6 +8,18 @@ Bundler.require(*Rails.groups)
 
 module Sparsh
   class Application < Rails::Application
+   config.middleware.use Rack::Cors do
+    allow do
+      origins '*'
+      resource '*',
+        :headers => :any,
+        :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+        :methods => [:get, :post, :options, :delete, :put]
+    end
+    end
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -25,5 +37,6 @@ module Sparsh
     config.serve_static_files = true
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << "#{Rails.root}/app/assets"
+    
   end
 end

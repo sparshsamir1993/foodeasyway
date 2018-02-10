@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :addresses
   resources :restaurant_owners
   get 'admin/dashboard'
 
@@ -31,10 +32,18 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-        mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+        resources :users, only: [:index, :show]
+        mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks],
+            controllers:{
+                omniauth_callbacks: 'api/v1/users'
+            }
+        devise_scope :users do
+             post '/auth/authenticatFacebookToken' => 'users#authenticatFacebookToken', as: :fbtokenauth
+        end
         resources :restaurants, only: [:index, :create, :show, :update, :destroy]
         resources :orders, only: [:index, :create, :show, :update, :destroy]
         get "order_items/:order_id" => "order_items#index"
+        # post "users/:authenticatFacebookToken" => "users#authenticatFacebookToken"
         resources :order_items, only: [:create, :show, :update, :destroy]
         
         namespace :restaurant_interface do
@@ -45,7 +54,7 @@ Rails.application.routes.draw do
             resources :users, only:[:index, :show]
         end
         
-        resources :users, only:[:index, :show]
+        
         
     end
   end
