@@ -3,4 +3,5 @@
   		= f.hidden_field_tag :id, @restaurant.id
   		= f.input :name
   		= f.input :price
+		= f.input :item_type, :as => :select, :collection => Item.item_types.keys.to_a  
   		= f.submit   

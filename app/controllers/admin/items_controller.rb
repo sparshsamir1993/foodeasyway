@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
 
 	def edit
 		@restaurant = Restaurant.find(params[:restaurant_id])
-  	@item  = @restaurant.items.find(params[:item_id])
+  		@item  = @restaurant.items.find(params[:item_id])
 	end
 
 	def update
@@ -23,7 +23,7 @@ class Admin::ItemsController < ApplicationController
   		@item  = @restaurant.items.find(params[:item_id])
   		@item_id = @item.id
   		if @item.update_attributes(item_params)
-        		redirect_to edit_admin_restaurant_path(:item_id=>@item.id, :restaurant_id=>@restaurant.id)
+        		redirect_to admin_restaurant_path(:item_id=>@item.id, :restaurant_id=>@restaurant.id)
      	else
 
         		render :action => 'edit'
@@ -57,8 +57,8 @@ class Admin::ItemsController < ApplicationController
 	private
 		def item_params
 			if :action =='new'
-				params.permit(:name, :quantity, :price, :id,:item)
+				params.permit(:name, :quantity, :price, :id,:item, :item_type)
 			end
-			params.require(:item).permit(:name, :price, :quantity)
+			params.require(:item).permit(:name, :price, :quantity, :item_type)
 		end
 end

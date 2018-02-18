@@ -1,6 +1,12 @@
 class Item < ActiveRecord::Base
 	belongs_to :restaurant
 	has_many :order_items
+	enum item_type: {
+    "Soup": 0,
+		"Starters": 1,
+		"Main course": 2,
+		"Dessert": 3
+  }
 	has_many :orders, through: :order_items
 	validates :name,  :presence => true
 	validates :price, :presence => true

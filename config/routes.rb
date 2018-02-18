@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
 
   resources :delivery_locations
-  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, skip: ["devise_token_auth/concerns"]
+  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, skip: ["devise_token_auth/concerns"], via: [:get, :post]
   resources :order_restaurants do
       member do
         post  :user_order_confirm
@@ -33,17 +33,13 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
         resources :users, only: [:index, :show]
-        mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks],
-            controllers:{
-                omniauth_callbacks: 'api/v1/users'
-            }
-        devise_scope :users do
-             post '/auth/authenticatFacebookToken' => 'users#authenticatFacebookToken', as: :fbtokenauth
-        end
+        mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks], via: [:get, :post]
+        
+        post '/auth/authenticatFacebookToken' => 'users#authenticatFacebookToken', as: :fbtokenauth
+        
         resources :restaurants, only: [:index, :create, :show, :update, :destroy]
         resources :orders, only: [:index, :create, :show, :update, :destroy]
         get "order_items/:order_id" => "order_items#index"
-        # post "users/:authenticatFacebookToken" => "users#authenticatFacebookToken"
         resources :order_items, only: [:create, :show, :update, :destroy]
         
         namespace :restaurant_interface do
