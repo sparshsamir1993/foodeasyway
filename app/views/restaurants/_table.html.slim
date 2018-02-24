@@ -1,36 +1,52 @@
 
-- @items.each do |t|
-	tr
+div.tab-content
+	- @items.each do |k,v|
 
-		td width="33%"
+		div id="#{k}" class="itemTable invisible"
+			table.table#items_table
+				thead
+					tr
+						th width="33%" Item
 
-			= t.name
+						th width="33%" Price
 
-		td width="33%"
+						th width="33%" Quantity
+				tbody
+					- v.each do |item|
+						tr
+							td width="33%"
 
-			= t.price
+								= item.name
 
-		td width="33%"
+							td width="33%"
 
-			form#products_index_add_to_cart_form action='/order_restaurants' method='POST' autocomplete="off"
-				input type="hidden" name="authenticity_token" value="#{form_authenticity_token}"
-				input type="hidden" name="item_id" value="#{t.id}"
-				input type="hidden" name="restaurant_id" value="#{@restaurant.id}"
-				input type="hidden" name="order_restaurant_id" value="#{@restaurant.id}"
-				-if current_user
-					input type="hidden" name="user_id" value="#{current_user.id}"
-					input type="hidden" name="total" value="#{t.price * params[:quantity].to_i}"
-					-if session[:order_id].present? && Order.find(session[:order_id]).order_items.present?
-						
-						-if Order.find(session[:order_id]).order_items.find_by_item_id(t.id).present?
+								= item.price
 
-							input type="integer" id="quantity_#{t.id}" value="#{Order.find(session[:order_id]).order_items.find_by_item_id(t.id).quantity}" style="width: 100%"
-						-else
-
-							input type="integer" id="quantity_#{t.id}"  style="width: 100%"
-
-					-else
-						input type="integer" id="quantity_#{t.id}"  style="width: 100%"
-					input#products_index_add_to_cart.btn.btn-danger.btn-outline.btn-block data-item="#{t.id}" data-restaurant="#{@restaurant.id}" data-order-restaurant="#{@restaurant.id}" data-user="#{current_user.id}" data-total="#{t.price * params[:quantity].to_i}" data-item-name="#{t.name}" value="Add to Order"
-				-else
-					= link_to 'Login to continue.', new_user_session_path, class: "btn btn-primary whiteFont"
+							td width="33%"
+								.orderBtnFlex
+									-if session[:order_id].present? && Order.find(session[:order_id]).order_items.present?
+										-if Order.find(session[:order_id]).order_items.find_by_item_id(item.id).present?
+											-if Order.find(session[:order_id]).order_items.find_by_item_id(item.id).quantity.present? && Order.find(session[:order_id]).order_items.find_by_item_id(item.id).quantity >0
+												.orderBtn data-itemId="#{item.id}" data-restaurant="#{@restaurant.id}" data-quantity="#{Order.find(session[:order_id]).order_items.find_by_item_id(item.id).quantity}" data-name="#{item.name}" data-usr="#{current_user.id}"
+													a.removeItem.btn.btn-danger -
+											.itemQuant
+												h3 = Order.find(session[:order_id]).order_items.find_by_item_id(item.id).quantity
+											.orderBtn data-itemId="#{item.id}" data-restaurant="#{@restaurant.id}" data-quantity="#{Order.find(session[:order_id]).order_items.find_by_item_id(item.id).quantity}" data-name="#{item.name}" data-usr="#{current_user.id}"
+												a.addItem.btn.btn-success +
+										-else
+											-if item.quantity.present? && item.quantity >0
+												.orderBtn data-itemId="#{item.id}" data-restaurant="#{@restaurant.id}" data-quantity="#{item.quantity}" data-name="#{item.name}" data-usr="#{current_user.id}"
+													a.removeItem.btn.btn-danger -
+											.itemQuant
+												h3 = item.quantity
+											.orderBtn data-itemId="#{item.id}" data-restaurant="#{@restaurant.id}" data-quantity="#{item.quantity}" data-name="#{item.name}" data-usr="#{current_user.id}"
+												a.addItem.btn.btn-success +
+									-else
+											-if item.quantity.present? && item.quantity >0
+												.orderBtn data-itemId="#{item.id}" data-restaurant="#{@restaurant.id}" data-quantity="#{item.quantity}" data-name="#{item.name}" data-usr="#{current_user.id}"
+													a.removeItem.btn.btn-danger -
+											.itemQuant
+												h3 = item.quantity
+											.orderBtn data-itemId="#{item.id}" data-restaurant="#{@restaurant.id}" data-quantity="#{item.quantity}" data-name="#{item.name}" data-usr="#{current_user.id}"
+												a.addItem.btn.btn-success +
+											

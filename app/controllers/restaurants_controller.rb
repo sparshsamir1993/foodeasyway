@@ -10,20 +10,21 @@ class RestaurantsController < ApplicationController
 	def show
 
 		@restaurant = Restaurant.find(params[:id])
-		@items = @restaurant.items.paginate(page: params[:page], per_page: 40).search(params[:search])
-			respond_to do |format|
-		        if params.has_key?(:template)
-		            if params[:template] == 'false'
-		                format.html {render partial: 'table.html', locals: {users: @items}}
-		            else
-		                format.html
-		            end
-		        else
-		            format.html
-		        end
-		        format.html
-		        format.json {render json: @items}
-		    end
+		# @items = @restaurant.items.group_by(&:item_type).paginate(page: params[:page], per_page: 40).search(params[:search])
+		@items = @restaurant.items.group_by(&:item_type)
+		respond_to do |format|
+			if params.has_key?(:template)
+				if params[:template] == 'false'
+					format.html {render partial: 'table.html', locals: {users: @items}}
+				else
+					format.html
+				end
+			else
+				format.html
+			end
+			format.html
+			format.json {render json: @items}
+		end
 	end
 
 	def new

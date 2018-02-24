@@ -1,0 +1,5 @@
+= simple_form_for @item, :url => admin_item_path(:restaurant_id=>@restaurant.id, :item_id=>@item.id), :method => :PATCH do |f|
+    = f.input :name
+    = f.input :price
+    = f.input :item_type, collection: Item.item_types.keys.to_a
+    = f.submit

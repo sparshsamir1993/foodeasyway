@@ -22,7 +22,7 @@ html
     = javascript_include_tag :modernizr
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body.grey-overlay
+  body
     #fb-root
     javascript:
        (function(d, s, id) {
@@ -37,11 +37,6 @@ html
     - else
         == render 'layouts/navbar'
     #content1
-      .notice
-        = notice
-      .alert
-        = alert
-
 
       = yield
     br

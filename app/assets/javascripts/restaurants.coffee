@@ -56,3 +56,53 @@ $(document).on 'click', '.restaurant-text', ->
         event.preventDefault()
         $('html, body').stop().animate { scrollTop: target.offset().top }, 1000
     return
+
+$(document).on 'click', '#typesTab li', ->
+  console.log($(this).find('a').attr('href'))
+  id = $(this).find('a').data('type');
+  $('.itemTab').removeClass('active')
+  $(this).addClass('active')
+
+  $('.tab-content .itemTable').map (x) ->
+    if($('.tab-content  .itemTable').eq(x).hasClass('visible'))
+      $('.tab-content  .itemTable').eq(x).removeClass 'visible'
+    if(!$('.tab-content  .itemTable').eq(x).hasClass('invisible'))
+      $('.tab-content  .itemTable').eq(x).addClass 'invisible'
+    return
+  if($(".tab-content #"+id).hasClass('invisible'))
+    $(".tab-content #"+id).removeClass('invisible');
+  $(".tab-content #"+id).addClass('visible');
+
+$(document).on 'ready', ->
+  if $('.itemTypeNav').find('.itemTab.active').length == 0
+    $('#itemsTablePartial .tab-content #Soup').removeClass('invisible')
+    $('#itemsTablePartial .tab-content #Soup').addClass('visible')
+
+$(document).on 'click', '.orderBtn', ->
+  console.log($(this));
+  item_id = $(this).data('itemid')
+  restaurant_id = $(this).data('restaurant')
+  name = $(this).data('name')
+  quantity = $(this).data('quantity')
+  user_id= $(this).data('usr')
+  if quantity == "" || quantity== undefined
+    quantity = 0
+  if $(this).find('.addItem').length > 0
+    quantity += 1
+  else if $(this).find('.removeItem').length > 0
+    quantity -= 1
+  $.ajax "/order_items",
+      type: 'POST',
+      data:{
+        item_id: item_id
+        restaurant_id: restaurant_id
+        quantity: quantity
+        name: name
+        user_id: user_id
+        template: false
+      }
+      success:(data, jqxhr, textStatus) ->
+        $('#itemsTablePartial').html data
+        tab = $('#typesTab').find('.itemTab.active a').data('type')
+        $('#itemsTablePartial .tab-content #'+tab).removeClass('invisible')
+        $('#itemsTablePartial .tab-content #'+tab).addClass('visible')

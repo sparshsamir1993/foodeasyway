@@ -11,6 +11,7 @@ class OrderItem < ActiveRecord::Base
         def self.create_order(item_id, quantity, restaurant_id, user_id, name)
 
             if order = Order.create(restaurant_id: restaurant_id, user_id: user_id)
+                
                 @total = quantity.to_i * Item.find(item_id).price
                 order.order_restaurants.create(restaurant_id: restaurant_id, order_id: order.id, user_id: user_id)
                 if order.order_restaurants.last.order_items.create( item_id: item_id,

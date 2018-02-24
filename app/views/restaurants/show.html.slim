@@ -1,32 +1,24 @@
+.padding-all-around
+	.container-fluid
+	h1.sofia.upper
+		= @restaurant.name
+	hr
+	#table
+		.col-md-12
+			.r-id value="#{@restaurant.id}"
+				- if @restaurant.present?
+					/= will_paginate @items
+					/input#item_search.form-control name="search_term_for_items" placeholder="Search items, start typing..." type="text" /
+					div.itemTypeNav
+						ul#typesTab.nav.nav-tabs
+							- Item.item_types.keys.to_a.each do |t|
+								li.itemTab
+									a data-type="#{t}"
+										= t
+					#itemsTablePartial
+						= render partial: 'table'
 
-	body#menu-show
-		.padding-all-around
-		  .container-fluid
-			h1.sofia.upper
-				= @restaurant.name
-			hr
+					/ = will_paginate @items
+				end
 
-				br
-				br
-			#table
-			    .col-md-12
-					.r-id value="#{@restaurant.id}"
-						- if @restaurant.present?
-							/= will_paginate @items
-							input#item_search.form-control name="search_term_for_items" placeholder="Search items, start typing..." type="text" /
-							table.table#items_table
-
-								thead
-									tr
-										th width="33%" Item
-
-										th width="33%" Price
-
-										th width="33%" Quantity
-								tbody
-									= render partial: 'table'
-
-						    = will_paginate @items
-						end
-
-				= link_to "Back to GrubStore", {:action => 'index'}, :class =>'back-link  btn btn-danger'
+	= link_to "Back to GrubStore", {:action => 'index'}, :class =>'back-link  btn btn-danger'
