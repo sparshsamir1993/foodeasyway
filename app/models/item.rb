@@ -4,8 +4,10 @@ class Item < ActiveRecord::Base
 	enum item_type: {
     "Soup": 0,
 		"Starters": 1,
-		"Main course": 2,
-		"Dessert": 3
+		"Breads":2,
+		"Rice/Biriyani":3,
+		"Main course": 4,
+		"Dessert": 5,
   }
 	has_many :orders, through: :order_items
 	validates :name,  :presence => true
