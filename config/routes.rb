@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-        resources :users, only: [:index, :show]
+        # resources :users, only: [:index, :show]
         mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks], via: [:get, :post]
         
         post '/auth/authenticatFacebookToken' => 'users#authenticatFacebookToken', as: :fbtokenauth
