@@ -41,7 +41,11 @@ Rails.application.routes.draw do
         resources :orders, only: [:index, :create, :show, :update, :destroy]
         get "order_items/:order_id" => "order_items#index"
         resources :order_items, only: [:create, :show, :update, :destroy]
-        
+        resources :order_restaurants do
+            member do
+              post  :user_order_confirm
+            end
+        end
         namespace :restaurant_interface do
             mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
             resources :restaurant_owners

@@ -1,5 +1,5 @@
 class Api::V1::AddressSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :full_address, :name
+  attributes :id, :user_id, :full_address, :name, :lat, :lng
   belongs_to :user
   has_many :order_addresses
   def created_at
