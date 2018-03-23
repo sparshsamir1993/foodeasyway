@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
 
     def create
-        @items = Restaurant.find(params[:restaurant_id]).items
+        @items = Restaurant.find(params[:restaurant_id]).items.group_by(&:item_type)
         @restaurant = Restaurant.find(params[:restaurant_id])
         if session[:order_id].present?
             order = OrderItem.update_order(session[:order_id],params[:item_id], params[:quantity], params[:restaurant_id], params[:user_id], params[:name])
@@ -31,7 +31,6 @@ class OrderItemsController < ApplicationController
 
             if order
                 session[:order_id] = order.id
-
                 respond_to do |format|
     		        if params.has_key?(:template)
     		            if params[:template] == 'false'

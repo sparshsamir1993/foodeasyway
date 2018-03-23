@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	protect_from_forgery with: :exception
+	include DeviseTokenAuth::Concerns::SetUserByToken
 	skip_before_filter :verify_authenticity_token
 	def show
 

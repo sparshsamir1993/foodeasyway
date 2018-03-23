@@ -218,19 +218,16 @@ input{
 	color: black !important;
 	text-decoration-color: black !important;
 }
-.notice{
-	color:white;
-	background-color: black;
-	font-size: 25px;
-	font-weight: bold;
-}
+
 .padding-all-around{
 	padding: 3%;
 }
 #login h2{
 	font-size: 40px;
 }
-
+.black{
+    background-color: black;
+}
 
 @media screen and (max-width: 768px){
   .nav-tabs{
