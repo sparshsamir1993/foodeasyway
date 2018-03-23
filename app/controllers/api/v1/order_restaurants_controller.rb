@@ -6,6 +6,11 @@ class Api::V1::OrderRestaurantsController <  Api::V1::BaseController
     end
     def user_order_confirm
         @order = Order.find(params[:order_id])
+        address_id = params[:address_id]
+        order_id = params[:order_id]
+        if address_id && order_id
+            OrderAddress.create(order_id: order_id, address_id: address_id)
+        end
         @order_restaurant = OrderRestaurant.find(params[:order_restaurant_id])
         grand_total = params[:grand_total]
         if(grand_total)

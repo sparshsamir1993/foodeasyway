@@ -8,7 +8,7 @@ class OrderRestaurant < ActiveRecord::Base
         "order_sent": 0,
 		"accepted": 1,
 		"in_kitchen":2,
-		"on_the_yay":3
+		"on_the_way":3
   }
     def confirm_user
         self.update(has_user_confirmed: true)

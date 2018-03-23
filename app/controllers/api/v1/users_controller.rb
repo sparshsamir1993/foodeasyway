@@ -53,4 +53,14 @@ class Api::V1::UsersController < Api::V1::BaseController
       # end
       
     end
+
+    def order_history
+      id = params[:id]
+      @user=User.find(params[:id])
+      @orders = @user.orders
+      if @orders
+        render json: @orders,
+            each_serializer: Api::V1::OrderSerializer
+      end
+    end
 end
