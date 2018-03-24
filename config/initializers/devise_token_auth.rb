@@ -22,7 +22,7 @@ DeviseTokenAuth.setup do |config|
   # This route will be the prefix for all oauth2 redirect callbacks. For
   # example, using the default '/omniauth', the github oauth2 provider will
   # redirect successful authentications to '/omniauth/github/callback'
-  # config.omniauth_prefix = "/omniauth"
+  config.omniauth_prefix = "/omniauth"
 
   # By default sending current password is not needed for the password update.
   # Uncomment to enforce current_password param to be checked before all
@@ -45,5 +45,6 @@ DeviseTokenAuth.setup do |config|
   # If, however, you wish to integrate with legacy Devise authentication, you can
   # do so by enabling this flag. NOTE: This feature is highly experimental!
   # config.enable_standard_devise_support = false
+  
 
 end

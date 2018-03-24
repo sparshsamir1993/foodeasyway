@@ -26,9 +26,14 @@ class Api::V1::UsersController < Api::V1::BaseController
       @user = User.find_or_create_by(email: profile['email'])
       if @user.update('access-token': params[:'access-token'])
         puts "------------"
-        sign_in @user
+        
+        if !current_user          
+          @current_user = @user
+          current_user = @user
+        end
+        puts "-----signed inn-------"
         @client_id = SecureRandom.urlsafe_base64(nil, false)
-        @token     = SecureRandom.urlsafe_base64(nil, false)
+        @token     = Devise.friendly_token
         @user.tokens[@client_id] = {
           token: BCrypt::Password.create(@token),
           expiry: (Time.now + DeviseTokenAuth.token_lifespan).to_i
@@ -36,7 +41,10 @@ class Api::V1::UsersController < Api::V1::BaseController
         auth_header = @user.build_auth_header(@token, @client_id)
         # update the response header
         response.headers.merge!(auth_header)
-        
+        # resource = warden.authenticate!(auth_header)
+        warden.set_user(@user, scope: :user)
+        sign_in(@user)
+
         render(json: Api::V1::UserSerializer.new(@user).to_json)
       
         # sign_in_and_redirect (@user)

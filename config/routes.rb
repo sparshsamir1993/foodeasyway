@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
 
   resources :delivery_locations
-  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, skip: ["devise_token_auth/concerns"], via: [:get, :post]
+  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },skip: ["devise_token_auth/concerns"], via: [:get, :post]
   resources :order_restaurants do
       member do
         post  :user_order_confirm

@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-    before_create :generate_authentication_token
-    before_validation :set_provider
-    before_validation :set_uid
+  before_create :generate_authentication_token
+  before_validation :set_provider
+  before_validation :set_uid
 
-    include DeviseTokenAuth::Concerns::User
-	devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
-  has_many :orders
+	include DeviseTokenAuth::Concerns::User
+  
+	devise :database_authenticatable,:recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
+	has_many :orders
 	has_many :restaurant_owners
 	has_many :order_restaurants, through: :orders
 	has_many :addresses
@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 	 end
     end
 	def self.from_omniauth(auth)
-		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+		
+		where(email: auth.info.email).first_or_create do |user|
 	      user.provider = auth.provider
 	      user.uid = auth.uid
 	      user.name = auth.info.name
