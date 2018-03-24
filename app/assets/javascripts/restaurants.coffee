@@ -60,6 +60,8 @@ $(document).on 'click', '.restaurant-text', ->
 $(document).on 'click', '#typesTab li', ->
   console.log($(this).find('a').attr('href'))
   id = $(this).find('a').data('type');
+  if(id.split(' ').length >1)
+    id =id.replace(/ /g,"\\\ ")
   $('.itemTab').removeClass('active')
   $(this).addClass('active')
 
@@ -75,8 +77,9 @@ $(document).on 'click', '#typesTab li', ->
 
 $(document).on 'ready', ->
   if $('.itemTypeNav').find('.itemTab.active').length == 0
-    $('#itemsTablePartial .tab-content #Soup').removeClass('invisible')
-    $('#itemsTablePartial .tab-content #Soup').addClass('visible')
+    el = $('#itemsTablePartial .tab-content').children().eq(0);
+    el.removeClass('invisible')
+    el.addClass('visible')
 
 $(document).on 'click', '.orderBtn', ->
   console.log($(this));

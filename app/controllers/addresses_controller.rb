@@ -69,6 +69,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.fetch(:address, {})
+      params.require(:address).permit(:house_number, :map_address, :city, :user_id, :full_address)
     end
 end

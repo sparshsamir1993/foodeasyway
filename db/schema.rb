@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211102321) do
+ActiveRecord::Schema.define(version: 20180324115223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "house_number"
-    t.string   "map_address"
     t.string   "city"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.string   "full_address"
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   create_table "delivery_locations", force: :cascade do |t|
@@ -71,10 +73,10 @@ ActiveRecord::Schema.define(version: 20180211102321) do
     t.integer  "order_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.string   "status"
     t.integer  "grand_total"
     t.boolean  "has_user_confirmed"
     t.integer  "user_id"
+    t.integer  "status"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -101,6 +103,8 @@ ActiveRecord::Schema.define(version: 20180211102321) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "min_order"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   create_table "users", force: :cascade do |t|
@@ -132,6 +136,8 @@ ActiveRecord::Schema.define(version: 20180211102321) do
     t.string   "authentication_token"
     t.string   "access-token"
     t.string   "client"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

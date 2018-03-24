@@ -59,7 +59,7 @@ gem "slim-rails"
 gem 'devise', git: 'https://github.com/plataformatec/devise' , ref: '88e9a85'
 gem 'devise_token_auth'
 gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook', '4.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
