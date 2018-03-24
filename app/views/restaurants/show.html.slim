@@ -11,7 +11,7 @@
 					/input#item_search.form-control name="search_term_for_items" placeholder="Search items, start typing..." type="text" /
 					div.itemTypeNav
 						ul#typesTab.nav.nav-tabs
-							- Item.item_types.keys.to_a.each do |t|
+							- @items.keys.to_a.each do |t|
 								li.itemTab
 									a data-type="#{t}"
 										= t
