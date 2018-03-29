@@ -79,7 +79,7 @@ class Admin::RestaurantsController < RestaurantsController
 
 	private
 		def restaurants_params
-			params.require(:restaurant).permit(:name, :contact, :avatar, :min_order)
+			params.require(:restaurant).permit(:name, :contact, :avatar, :min_order, :deliver_distance)
 		end
 
 		def items_params
