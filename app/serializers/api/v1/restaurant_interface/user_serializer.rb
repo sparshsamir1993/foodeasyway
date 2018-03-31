@@ -1,4 +1,4 @@
-class Api::V1::UserSerializer < ActiveModel::Serializer
+class Api::V1::RestaurantInterface::UserSerializer < ActiveModel::Serializer
     has_many :orders
     has_many :restaurant_owners
     has_many :address

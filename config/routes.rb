@@ -54,7 +54,13 @@ Rails.application.routes.draw do
         end
         namespace :restaurant_interface do
             mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
-            resources :restaurant_owners
+            resources :restaurant_owners do
+                member do
+                    post :save_location
+                end
+            end
+            
+            post '/auth/authenticatFacebookToken' => 'users#authenticatFacebookToken', as: :fbtokenauth
             resources :order_restaurants do
                 member do
                     post :change_order_status
