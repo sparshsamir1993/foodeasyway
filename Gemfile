@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'skrollr-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.0"
 gem 'aws-sdk', '~> 2.5'
 gem 'active_model_serializers', '0.10.0.rc4'
 gem 'rack-cors', :require => 'rack/cors'
