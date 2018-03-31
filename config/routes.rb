@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   namespace :restaurant_interface do
       resources :orders
   end
-  namespace :api do
-    namespace :v1 do
+  namespace :api, defaults: { format: :json }, path: '/api' do
+    namespace :v1, defaults: { format: :json }, path: '/v1' do
         # resources :users, only: [:index, :show]
         mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks], via: [:get, :post]
         
