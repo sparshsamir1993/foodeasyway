@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
 	belongs_to :user
 	serialize :order, Hash
 	has_many :order_restaurants, dependent: :destroy
-	belongs_to :restaurant
+	has_many :restaurants, through: :order_restaurants
 	has_many :order_items, dependent: :destroy
 	has_one :order_address
 	has_one :address
