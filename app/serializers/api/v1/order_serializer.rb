@@ -4,9 +4,10 @@ class Api::V1::OrderSerializer < ActiveModel::Serializer
 	has_many :order_restaurants
 	has_many :restaurants, through: :order_restaurants
 	has_one :order_address
+	has_one :address, through: :order_address
 	has_many :order_items
 	has_many :items, through: :order_items
-	attributes :id, :order_address, :order_items, :order_address, :order_restaurants
+	attributes :id, :order_address, :order_items, :order_address, :order_restaurants, :address
     def total_bill
     end
 
