@@ -1,13 +1,19 @@
 class Api::V1::RestaurantInterface::OrdersSerializer < ActiveModel::Serializer
-    belongs_to :order
-    belongs_to :restaurant
     belongs_to :user
-    has_many :order_items
-    has_many :items ,through: :order_items
-    attributes :restaurant, :order_items,:restaurant_id, :order_id, :has_user_confirmed, :grand_total, :user_id, :grand_total, :status, :id, :order
-    def confirm_user
-        self.update(has_user_confirmed: true)
-        return true
+	has_many :order_restaurants
+	has_many :restaurants, through: :order_restaurants
+	has_one :order_address
+	has_one :address, through: :order_address
+	has_many :order_items
+	has_many :items, through: :order_items
+	attributes :id, :order_address, :order_items, :order_address, :order_restaurants, :address
+    def total_bill
+    end
+
+    def confirmed
+    	self.status = 'confirmed'
+    	save!
+    	return true
     end
 
 
