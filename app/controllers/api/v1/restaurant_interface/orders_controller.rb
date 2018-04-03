@@ -1,4 +1,4 @@
-class Api::V1::RestaurantInterface::OrdersController < Api::V1::BaseController
+class Api::V1::RestaurantInterface::OrdersController < Api::V1::RestaurantInterface::BaseController
 	
 
     def index

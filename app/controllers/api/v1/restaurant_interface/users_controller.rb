@@ -1,4 +1,4 @@
-class Api::V1::RestaurantInterface::UsersController < Api::V1::BaseController
+class Api::V1::RestaurantInterface::UsersController < Api::V1::RestaurantInterface::BaseController
     def authenticatFacebookToken
         @graph = Koala::Facebook::API.new(params[:'access-token'])
         profile = @graph.get_object('me', fields:'email,first_name,last_name')

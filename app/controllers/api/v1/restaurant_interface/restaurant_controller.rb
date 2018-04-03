@@ -1,4 +1,4 @@
-class Api::V1::RestaurantInterface::RestaurantsController < Api::V1::BaseController
+class Api::V1::RestaurantInterface::RestaurantsController < Api::V1::RestaurantInterface::BaseController
     # def save_location
     #     restaurant_id = params[:id]
     #     @restaurant.find(restaurant_id)

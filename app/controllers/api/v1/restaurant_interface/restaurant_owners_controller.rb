@@ -1,4 +1,4 @@
-class Api::V1::RestaurantInterface::RestaurantOwnersController < Api::V1::BaseController
+class Api::V1::RestaurantInterface::RestaurantOwnersController < Api::V1::RestaurantInterface::BaseController
     def save_location
         @restaurant = User.find(params[:id]).restaurant_owners.first.restaurant
         if @restaurant.update(lat: params[:lat], lng: params[:lng])
