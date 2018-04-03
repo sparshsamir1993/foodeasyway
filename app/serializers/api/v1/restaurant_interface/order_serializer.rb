@@ -1,4 +1,4 @@
-class Api::V1::RestaurantInterface::OrdersSerializer < ActiveModel::Serializer
+class Api::V1::RestaurantInterface::OrderSerializer < ActiveModel::Serializer
     belongs_to :user
 	has_many :order_restaurants
 	has_many :restaurants, through: :order_restaurants
